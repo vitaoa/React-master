@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>React app</title>
+    <script src="libs/react.js"></script>
+    <script src="libs/react-dom.js"></script>
+</head>
+<body>
+
+    <div id="reactApp">
+
+    </div>
+    <script>
+        var HelloBox = React.createElement('h1',null,'HelloBox');
+
+        var cc = React.createElement('div', null, HelloBox );
+
+        ReactDOM.render(
+            cc,
+            document.getElementById('reactApp')
+        );
+    </script>
+</body>
