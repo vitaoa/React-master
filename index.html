@@ -2,22 +2,37 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>React app</title>
+    <!--<title>React app</title>-->
     <script src="libs/react.js"></script>
     <script src="libs/react-dom.js"></script>
+    <title>热门活动</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no" name="format-detection">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <link rel="stylesheet" media="screen" href="css/appHdlist.css">
 </head>
 <body>
+    <div id="reactApp"></div>
 
-    <div id="reactApp">
-
-    </div>
     <script>
-        var HelloBox = React.createElement('h1',null,'HelloBox');
+        /*Header*/
+        var Header_i = React.createElement('i');
+        var Header_a = React.createElement('a',{href:'#',className:'app-hd-back'},Header_i,'返回');
+        var Header_span = React.createElement('span',{className:'app-hd-title'},'热门活动');
+        var Header = React.createElement('header',{className:'app-hd-top'},Header_a,Header_span);
 
-        var cc = React.createElement('div', null, HelloBox );
+       /*LiItem*/
+        var LiItem_s = React.createElement('s');
+        var LiItem_i = React.createElement('i', null, '最高',LiItem_s);
+        var LiItem_aside = React.createElement('aside', {className:'hd-im-tt fl'}, LiItem_i );
+        var LiItem_a = React.createElement('a', {href:'huodList-detial.html'}, LiItem_aside );
+        var LiItem = React.createElement('li', {className:'clearfix'}, LiItem_a );
+        var LiItem_ul = React.createElement('ul', null, LiItem );
+        var LiItem_section = React.createElement('section', {className:'app-hd-cen'}, LiItem_ul );
+
 
         ReactDOM.render(
-            cc,
+            React.createElement('div', { className: 'app-hd-box' },Header,LiItem_section),
             document.getElementById('reactApp')
         );
     </script>
