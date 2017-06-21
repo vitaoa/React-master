@@ -1,7 +1,0 @@
-/.idea
-/libs/browser.min.js
-/node_modules
-/react-component/APP/huodList
-html
-dist
-/.gitignore
