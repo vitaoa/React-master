@@ -11,7 +11,7 @@ var rename = require('gulp-rename');
 
 
 // 具体项目文件目录
-var CUR_PATH =   'react-component/APP/demo/';
+var CUR_PATH =   'react-component/APP/GTS2/';
 var SRC_DIR = CUR_PATH + 'src/';     // 源文件目录
 var LESS_DIR = SRC_DIR + 'less/'; // 样式预处理文件目录
 var JSX_DIR = SRC_DIR + 'jsx/'; // 脚本文件目录
@@ -23,7 +23,11 @@ gulp.task('less',function(){
         .pipe(less())
         .pipe(gulp.dest(DIST_DIR + 'css'));
 });
-gulp.task('jsxtojs',['less'], function () {
+gulp.task('copyimages', function () {
+    gulp.src(SRC_DIR+'images/**/*')
+        .pipe(gulp.dest(DIST_DIR+'images'));
+});
+gulp.task('jsxtojs',['less','copyimages'], function () {
     return gulp.src(JSX_DIR + '*.jsx')
         .pipe(react())
         .pipe(gulp.dest(JSX_DIR));
@@ -53,6 +57,7 @@ gulp.task('htmlmin', function () {
         .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest(DIST_DIR));
 });
+
 
 //项目运行
 gulp.task('server',['jsxtojs'],function(event){
