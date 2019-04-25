@@ -1,0 +1,26 @@
+/.idea
+
+/node_modules
+dist
+tinypng
+
+sp-*.scss
+# sp-*.png
+/fileinclude/fonts
+*.mp4
+*mw979.scss
+!/**/css/*mw979.scss
+# lp_public.css
+
+
+
+# /.gitignore
+#/**/promote
+!/fileinclude/**/promote
+/gwfxglobal/main/public/font
+[a-z]*2018[0-9]*.css
+
+*.zip
+*.rar
+.font-spider
+*.bat
