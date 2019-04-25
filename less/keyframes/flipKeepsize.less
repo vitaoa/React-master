@@ -1,0 +1,39 @@
+
+@-webkit-keyframes flipKeepsize{
+    0%{-webkit-transform:rotateY(0deg)}
+    50%{-webkit-transform:rotateY(360deg)}
+}
+@-moz-keyframes flipKeepsize{
+    0%{-moz-transform:rotateY(0deg)}
+    50%{-moz-transform:rotateY(360deg)}
+}
+
+@-ms-keyframes flipKeepsize {
+	0% {
+		-ms-transform: rotateY(0deg);
+	}
+	50% {
+		-ms-transform: rotateY(360deg);
+	}
+}
+@-o-keyframes flipKeepsize {
+	0% {
+		-o-transform: rotateY(0deg);
+	}
+	50% {
+		-o-transform: rotateY(360deg);
+	}
+}
+@keyframes flipKeepsize {
+	0% {
+		transform: rotateY(0deg);
+	}
+	50% {
+		transform: rotateY(360deg);
+	}
+}
+
+.flipKeepsize {
+	.backface-visibility(~"visible !important");
+    .animation-name(flipKeepsize);
+}

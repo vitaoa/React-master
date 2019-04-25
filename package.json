@@ -1,0 +1,34 @@
+{
+  "name": "react-step-by-step",
+  "version": "1.0.0",
+  "description": "react step by step",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vitaoa/React-master.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "vitaoa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vitaoa/React-master/issues"
+  },
+  "homepage": "https://github.com/vitaoa/React-master#readme",
+  "dependencies": {
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-less": "^3.3.0",
+    "gulp-react": "^3.1.0",
+    "gulp-rename": "^1.2.2"
+  }
+}

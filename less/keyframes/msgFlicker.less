@@ -1,0 +1,29 @@
+@-webkit-keyframes msgFlicker {
+    0%,40%,50%,60%,100%{-webkit-transform: translate(0,0);}
+    45%,55%{-webkit-transform: translate(-1px,1px);}
+}
+
+@-moz-keyframes msgFlicker {
+    0%,40%,50%,60%,100%{-moz-transform: translate(0,0);}
+    45%,55%{-moz-transform: translate(-1px,1px);}
+}
+@-ms-keyframes msgFlicker {
+    0%,40%,50%,60%,100%{-ms-transform: translate(0,0);}
+    45%,55%{-ms-transform: translate(-1px,1px);}
+}
+@-o-keyframes msgFlicker {
+    0%,40%,50%,60%,100%{-o-transform: translate(0,0);}
+    45%,55%{-o-transform: translate(-1px,1px);}
+}
+
+@keyframes msgFlicker {
+    0%,40%,50%,60%,100%{transform: translate(0,0);}
+    45%,55%{transform: translate(-1px,1px);}
+}
+
+.msgFlicker {
+  .animation-name(msgFlicker);
+//.animation-duration(1s);
+//.animation-timing-function(ease-in-out);
+//.animation-iteration-count(infinite);
+}
