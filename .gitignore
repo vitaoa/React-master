@@ -24,3 +24,4 @@ sp-*.scss
 *.rar
 .font-spider
 *.bat
+/generateHtmlTemple/**/*.html
