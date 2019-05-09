@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+/// @example scss
+///   .element {
+///     @include prefixer(appearance, none, ("webkit", "moz"));
+///   }
+///
+///   // CSS Output
+///   .element {
+///     -webkit-appearance: none;
+///     -moz-appearance: none;
+///     appearance: none;
+///   }
+///
+
+@mixin prefixer($property,$value,$prefixes: ()) {
+  @each $prefix in $prefixes {
+    #{"-" + $prefix + "-" + $property}: $value;
+  }
+  #{$property}: $value;
+}

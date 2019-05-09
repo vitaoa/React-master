@@ -1,0 +1,49 @@
+
+/*  ============ sprites ============  */
+.i-learn-elementary{ width:169px;height:173px;background-image:url("../images/base64/i-learn-elementary.svg"); }
+.i-learn-graduation{ width:169px;height:173px;background-image:url("../images/base64/i-learn-graduation.svg"); }
+.i-learn-high-school{ width:169px;height:173px;background-image:url("../images/base64/i-learn-high-school.svg"); }
+.i-learn-kindergarten{ width:169px;height:173px;background-image:url("../images/base64/i-learn-kindergarten.svg"); }
+.i-learn-middle-school{ width:169px;height:173px;background-image:url("../images/base64/i-learn-middle-school.svg"); }
+.i-learn-preschool{ width:1.7px;height:1.74px;background-image:url("../images/base64/i-learn-preschool.svg"); }
+.i-learn-summer-school{ width:169px;height:173px;background-image:url("../images/base64/i-learn-summer-school.svg"); }
+.i-learn-undergraduate-freshman{ width:169px;height:173px;background-image:url("../images/base64/i-learn-undergraduate-freshman.svg"); }
+.i-learn-undergraduate-junior{ width:169px;height:173px;background-image:url("../images/base64/i-learn-undergraduate-junior.svg"); }
+.i-learn-undergraduate-senior{ width:169px;height:173px;background-image:url("../images/base64/i-learn-undergraduate-senior.svg"); }
+.i-learn-undergraduate-sophomore{ width:169px;height:173px;background-image:url("../images/base64/i-learn-undergraduate-sophomore.svg"); }
+.pagenum-badge + .i-learn-elementary{ width:198px;height:206px; }
+.pagenum-badge + .i-learn-graduation{ width:173px;height:206px; }
+.pagenum-badge + .i-learn-high-school{ width:198px;height:206px; }
+.pagenum-badge + .i-learn-kindergarten{ width:198px;height:206px; }
+.pagenum-badge + .i-learn-middle-school{ width:198px;height:206px; }
+.pagenum-badge + .i-learn-preschool{ width:198px;height:206px; }
+.pagenum-badge + .i-learn-summer-school{ width:198px;height:206px; }
+.pagenum-badge + .i-learn-undergraduate-freshman{ width:198px;height:197px; }
+.pagenum-badge + .i-learn-undergraduate-junior{ width:198px;height:197px; }
+.pagenum-badge + .i-learn-undergraduate-senior{ width:198px;height:197px; }
+.pagenum-badge + .i-learn-undergraduate-sophomore{ width:198px;height:197px; }
+[class*='i-learn-']{ background-repeat:no-repeat;background-size:100% 100%; }
+@media (max-width: 750px) {
+    .i-learn-elementary{ width:1.69rem;height:1.73rem; }
+    .i-learn-graduation{ width:1.69rem;height:1.73rem; }
+    .i-learn-high-school{ width:1.69rem;height:1.73rem; }
+    .i-learn-kindergarten{ width:1.69rem;height:1.73rem; }
+    .i-learn-middle-school{ width:1.69rem;height:1.73rem; }
+    .i-learn-preschool{ width:1.7rem;height:1.74rem; }
+    .i-learn-summer-school{ width:1.69rem;height:1.73rem; }
+    .i-learn-undergraduate-freshman{ width:1.69rem;height:1.73rem; }
+    .i-learn-undergraduate-junior{ width:1.69rem;height:1.73rem; }
+    .i-learn-undergraduate-senior{ width:1.69rem;height:1.73rem; }
+    .i-learn-undergraduate-sophomore{ width:1.69rem;height:1.73rem; }
+    .pagenum-badge + .i-learn-elementary{ width:1.98rem;height:2.06rem; }
+    .pagenum-badge + .i-learn-graduation{ width:1.73rem;height:2.06rem; }
+    .pagenum-badge + .i-learn-high-school{ width:1.98rem;height:2.06rem; }
+    .pagenum-badge + .i-learn-kindergarten{ width:1.98rem;height:2.06rem; }
+    .pagenum-badge + .i-learn-middle-school{ width:1.98rem;height:2.06rem; }
+    .pagenum-badge + .i-learn-preschool{ width:1.98rem;height:2.06rem; }
+    .pagenum-badge + .i-learn-summer-school{ width:1.98rem;height:2.06rem; }
+    .pagenum-badge + .i-learn-undergraduate-freshman{ width:1.98rem;height:1.97rem; }
+    .pagenum-badge + .i-learn-undergraduate-junior{ width:1.98rem;height:1.97rem; }
+    .pagenum-badge + .i-learn-undergraduate-senior{ width:1.98rem;height:1.97rem; }
+    .pagenum-badge + .i-learn-undergraduate-sophomore{ width:1.98rem;height:1.97rem; }
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "url": "/app/article1.html",
+    "category": "News",
+    "time":"08/29 9:03",
+    "tit":"Kelima Tambang Emas Terbesar Di Dunia",
+    "cont":"Grasberg di Indonesia menduduki peringkat yang pertama"
+  },
+  {
+    "url": "/app/article2.html",
+    "category": "Edukasi",
+    "time":"08/29 9:03",
+    "tit":"Kenali Cut Loss dan Mengapa Cut Loss itu Penting",
+    "cont":"Cut Loss adalah wajib untuk menjaga modal"
+  },
+  {
+    "url": "/app/article3.html",
+    "category": "Edukasi",
+    "time":"08/29 9:03",
+    "tit":"Apa Itu Trading? ",
+    "cont":"Kegiatan trading paling awal dikenal sebagai barter"
+  },
+  {
+    "url": "/app/article4.html",
+    "category": "Edukasi",
+    "time":"08/29 9:03",
+    "tit":"Persiapan Untuk Belajar Trading Forex",
+    "cont":"Trading Forex ibarat tentara pergi berperang,butuh ransel penuh perlengkapan, plus amunisi memadai"
+  }
+]

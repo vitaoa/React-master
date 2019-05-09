@@ -1,0 +1,214 @@
+@import "mixins/library";
+
+$background: #fff !default;
+$color: #000 !default;
+$support_for_ie: true !default;
+$normalized_font_family: sans-serif !default;
+$page_h5:false !default;
+$has_typography:false !default;
+$has_form_element:false !default;
+
+$normalize_headings: false !default;
+$h1_font_size: 2em !default;
+$h2_font_size: 1.5em !default;
+$h3_font_size: 1.17em !default;
+$h4_font_size: 1em !default;
+$h5_font_size: 0.83em !default;
+$h6_font_size: 0.75em !default;
+$h1_margin: 0.67em 0 !default;
+$h2_margin: 0.83em 0 !default;
+$h3_margin: 1em 0 !default;
+$h4_margin: 1.33em 0 !default;
+$h5_margin: 1.67em 0 !default;
+$h6_margin: 2.33em 0 !default;
+
+
+/* ============ Normalize ============ */
+
+// =============================================================================
+// HTML5 display definitions
+// =============================================================================
+@if $page_h5{
+    article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary {display: block;}
+    audio,canvas,video {display: inline-block;
+        @if $support_for_ie {*display: inline;*zoom: 1;}
+    }
+    audio:not([controls]) {
+        display: none; // Prevents modern browsers from displaying 'audio' without controls
+        height: 0; // Remove excess height in iOS5 devices
+    }
+    [hidden], template {display: none;}
+}
+
+// =============================================================================
+// Base
+// =============================================================================
+body {
+    @if $support_for_ie {
+        font-size: 100%;
+    }
+    background: $background;color: $color;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust:100%;
+    -ms-text-size-adjust:100%;
+    text-size-adjust:100%;
+}
+html,button,input,select,textarea {font-family: $normalized_font_family;} // Addresses font-family inconsistency between 'textarea' and other form elements.
+body{margin:0;padding:0;}
+
+// =============================================================================
+// Links
+// =============================================================================
+a { color: inherit;cursor: pointer;text-decoration: none;outline:none;
+    background: transparent;// Remove the gray background color from active links in IE 10.
+    &:hover{text-decoration: none;}
+    &:hover,&:active,&:focus {outline: 0;}
+    //&:active{noOutline:unquote("expression_r(this.onFocus=this.blur())");}
+
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    -moz-user-focus: none;
+    -moz-user-select: none;
+}
+
+// =============================================================================
+// Typography
+// =============================================================================
+p,h1,h2,h3,h4,h5,h6{margin:0;padding:0;}
+b,strong {font-weight: bold;} // Addresses style set to 'bolder' in FF3+, S4/5, Chrome
+small {font-size: 80%;} // Address inconsistent and variable font size in all browsers.
+@if $normalize_headings == true {
+    h1 {font-size: $h1_font_size;margin: $h1_margin;}
+    h2 {font-size: $h2_font_size;margin: $h2_margin;}
+    h3 {font-size: $h3_font_size;margin: $h3_margin;}
+    h4 {font-size: $h4_font_size;margin: $h4_margin;}
+    h5 {font-size: $h5_font_size;margin: $h5_margin;}
+    h6 {font-size: $h6_font_size;margin: $h6_margin;}
+}
+@if $has_typography{
+    sub,sup {font-size: 75%;line-height: 0;position: relative;vertical-align: baseline;}
+    sup {top: -0.5em;}
+    sub {bottom: -0.25em;}
+    abbr[title] {border-bottom: 1px dotted;} // Addresses styling not present in IE 8/9, S5, Chrome
+    @if $support_for_ie {
+        blockquote {margin: 1em 40px;}
+    }
+    dfn {font-style: italic;} // Addresses styling not present in S5, Chrome
+    mark {background: #ff0;color: #000;} // Addresses styling not present in IE6/7/8/9
+    @if $support_for_ie { // Addresses margins set differently in IE6/7
+        p,pre {margin: 1em 0;}
+    }
+    code,kbd,pre,samp {font-family: monospace, serif;font-size: 1em;
+        @if $support_for_ie {
+            _font-family: 'courier new', monospace;
+        }
+    }
+    pre {white-space: pre;white-space: pre-wrap;word-wrap: break-word;}// Improves readability of pre-formatted text in all browsers
+    q {quotes: "\201C" "\201D" "\2018" "\2019";}// Set consistent quote types.
+    @if $support_for_ie {// 1
+        q {quotes: none;}
+    }
+    q {
+        &:before, &:after {content: '';content: none;}
+    }
+}
+
+// =============================================================================
+// Lists
+// =============================================================================
+ol,ul,li,dl,dt,dd{margin:0;padding:0;}
+ol,ul{list-style:none;}
+@if not($support_for_ie){
+    nav {
+        ul,ol {// Corrects list images handled incorrectly in IE7
+            @if $support_for_ie {
+                list-style-image: none;
+            }
+        }
+    }
+}
+
+// =============================================================================
+// Embedded content
+// =============================================================================
+img{margin:0;padding:0;}
+img {border: 0;max-width:100%; // Removes border when inside 'a' element in IE6/7/8/9, FF3
+    @if $support_for_ie {
+        -ms-interpolation-mode: bicubic; // Improves image quality when scaled in IE7
+    }
+}
+@if not($support_for_ie){
+    svg:not(:root) {overflow: hidden;}// Corrects overflow displayed oddly in IE9
+}
+
+// =============================================================================
+// Figures
+// =============================================================================
+@if not($support_for_ie){
+    figure {margin: 0;}// Addresses margin not present in IE6/7/8/9, S5, O11
+}
+
+// =============================================================================
+// Forms
+// =============================================================================
+input,button,textarea{margin:0;padding:0;}
+@if $has_form_element{
+    @if $support_for_ie {// Corrects margin displayed oddly in IE6/7
+        form {margin: 0;}
+    }
+    fieldset {border: 1px solid #c0c0c0;margin: 0 2px;padding: 0.35em 0.625em 0.75em;}// Define consistent border, margin, and padding
+    legend {
+        border: 0; // Corrects color not being inherited in IE6/7/8/9
+        padding: 0; // Remove padding so people aren't caught out if they zero out fieldsets.
+        white-space: normal; // Corrects text not wrapping in FF3
+        @if $support_for_ie {
+            *margin-left: -7px; // Corrects alignment displayed oddly in IE6/7
+        }
+    }
+}
+button,input,select,textarea {
+    font-family: inherit; // not in IE6/7.
+    font-size: 100%; // Corrects font size not being inherited in all browsers
+    margin: 0; // Addresses margins set differently in IE6/7, FF3+, S5, Chrome
+    vertical-align: baseline; // Improves appearance and consistency in all browsers
+    @if $support_for_ie {
+        *vertical-align: middle;
+    }
+}
+button,input {line-height: normal;}
+button,select {text-transform: none;}
+button,html input[type="button"],input[type="reset"],input[type="submit"] {-webkit-appearance: button;cursor: pointer;
+    @if $support_for_ie {
+        *overflow: visible;
+    }
+}
+input[type=text],input[type=password]{-webkit-appearance:none;outline:none;-webkit-tap-highlight-color:transparent;}
+input:-webkit-autofill{background-color: transparent !important;-webkit-box-shadow: 0 0 0 1000px white inset;}
+button[disabled],input[disabled] {cursor: default;}// Re-set default cursor for disabled elements
+button,input {border: 0;
+    &::-moz-focus-inner {border: 0;padding: 0;}
+}
+input {
+    &[type="search"] {-webkit-appearance: textfield; // Addresses appearance set to searchfield in S5, Chrome
+        @include box-sizing(content-box); //Addresses box-sizing set to border-box in S5, Chrome (include -moz to future-proof)
+        &::-webkit-search-cancel-button,&::-webkit-search-decoration {// Remove inner padding and search cancel button in Safari 5 and Chrome on OS X.
+            -webkit-appearance: none;
+        }
+    }
+    &[type="checkbox"],&[type="radio"] {padding: 0; // Remove excess padding in IE 8/9/10.
+        @include box-sizing(border-box); // Address box sizing set to `content-box` in IE 8/9/10.
+        @if $support_for_ie {
+            *height: 13px; *width: 13px; // Removes excess padding in IE7 Known issue: excess padding remains in IE6
+        }
+    }
+}
+textarea {
+    overflow: auto; // Removes default vertical scrollbar in IE6/7/8/9
+    vertical-align: top; // Improves readability and alignment in all browsers
+}
+
+// =============================================================================
+// Tables
+// =============================================================================
+table,tr,td{margin:0;padding:0;}
+table {border-collapse: collapse;border-spacing: 0;}// Remove most spacing between table cells

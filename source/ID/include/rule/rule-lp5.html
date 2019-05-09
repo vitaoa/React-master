@@ -1,0 +1,61 @@
+<div class="PopupLayer popup-tb pop-rule-layer" style="display: none;">
+	<div class="popup-tb-cell">
+		<div class="PopupBox">
+			<a href="javascript:;" class="PopupCloseBtn"></a>
+			<div class="rule-title">Deposit and Dapatkan Data Pulsa</div>
+			<div class="PopupCon mCustomScrollbar">
+				<ol class="decimal">
+					<li>Periode Promosi mulai dari 1 Oktober - 31 Desember.</li>
+					<li>Tidak diperlukan pendaftaran, semua akun real berhak menerima hadiahnya.</li>
+					<li>Buka Akun real dan telah melakukan deposit dalam waktu 24 jam akan mendapatkan minimal data pulsa 8GB atau setara nilainya
+						<p>-	Deposit＄200 Hadiah data pulsa 8GB atau nilai yang setara</p>
+						<p>-	Deposit＄500 Hadiah data pulsa 16GB atau nilai yang setara</p>
+						<p>-	Deposit＄1000 Hadiah data pulsa 25GB atau nilai yang setara</p>
+					</li>
+				</ol>
+				<div class="rule-txt1">Syarat Peserta</div>
+				<ol class="decimal">
+					<li>Promosi ini hanya berlaku untuk nasabah akun real Hanson. Pulsa Data yang diperoleh hanya akan disimpan di nomor telepon peserta bersangkuran. Hanya untuk deposit pertama dari akun real. Jumlah setoran minimum adalah $ 200.</li>
+					<li>Peserta harus warga negara Indonesia berusia 18 tahun ke atas dan harus warga negara non-AS.</li>
+					<li>Metode partisipasi: tidak diperlukan pendaftaran, semua akun real berhak menerima penghargaan.</li>
+					<li>Hanson berhak untuk membatalkan kualifikasi setiap peserta karena alasan yang masuk akal selama promosi .</li>
+				</ol>
+				<div class="rule-txt1">Syarat Claim</div>
+				<ol class="decimal">
+					<li>Nasabah harus mengirim email ke cs@hsb.co.id dalam waktu 24 jam setelah deposit atau menghubungi layanan nasabah untuk claim hadiahnya. Nasabah harus melampirkan nomor rekening bank, jumlah deposit, dan slip/bukti setoran.</li>
+					<li>Pulsa data akan dibagikan ke nomor telepon peserta bersangkutan  dalam waktu 24 jam setelah berhasil deposit akun real Hanson (nomor telepon yang terdaftar pada akun real).</li>
+					<li>Hanson berhak menolak mendistribusikan hadiah kepada nasabah yang telah melewati waktu yang telah ditentukan.</li>
+				</ol>
+				<div class="rule-txt1">Syarat dan ketentuan</div>
+				<ol class="decimal">
+					<li>Peserta promosi ini tidak dapat menikmati manfaat lain pada saat yang bersamaan kecuali dinyatakan diperbolehkan oleh Hanson.</li>
+					<li>Dengan berpartisipasi dalam kegiatan promosi ini, Anda mengkonfirmasi bahwa Anda telah membaca, memahami, dan setuju untuk terikat dengan syarat dan ketentuan yang berlaku.</li>
+					<li>Hanson berhak atas interpretasi akhir dari Syarat dan Ketentuan yang berlaku dan berhak untuk memodifikasi atau menghentikan kegiatan ini setiap saat tanpa pemberitahuan sebelumnya.</li>
+					<li>Syarat dan ketentuan di atas mungkin tidak berlaku bagi nasabah di bawah nama agen/ IB. Silakan hubungi agen Anda untuk detailnya.</li>
+					<li>Peserta harus menyelesaikan setidaknya 0.1 lot transaksi sebelum mengajukan permohonan penarikan, jika tidak, Hanson berhak memotong $ 10 dalam bentuk biaya administrasi.</li>
+				</ol>
+				<br>
+				<p>Jumlah bonus selama kegiatan ini akan dihitung pada kurs rate 1USD = IDR 12000.</p>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="/public/lp/js/jquery.min.js"></script>
+<link href="/public/lp/css/Scrollbar.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/public/lp/js/mCustomScrollbar.js"></script>
+<script type="text/javascript">
+	// rule
+	$(".terms-conditions-link a").click(function(e){
+		e.preventDefault();
+		$(".pop-rule-layer").show();
+		$(".pop-rule-layer .PopupBox").slideDown();
+	});
+	$(".PopupCloseBtn").click(function(){
+		$(".pop-rule-layer").hide();
+		$(".pop-rule-layer .PopupBox").hide();
+	});
+	$.mCustomScrollbar.defaults.scrollButtons.enable=true;
+	$(".terms-conditions-Scroll").mCustomScrollbar({theme:"dark-thick"});
+
+
+</script>

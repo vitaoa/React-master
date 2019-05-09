@@ -1,0 +1,36 @@
+
+<li>
+<% if (info.group.length>1) { %>
+<% info.group.forEach(function(item,i){ %>
+    <div class="item-block <% if (item.class) { %><%- item.class %><% } %>">
+        <% if (item.video) { %><i class="<%- item.video %>"></i><% } %>
+        <% if (item.author) { %>
+        <div class="txt-data">
+            <div class="data-author"><%- item.author %></div>
+            <div class="figure-caption">
+                <%- item.caption %>
+            </div>
+            <a href="javascript:;" class="piclink"><%- item.piclink %></a>
+        </div>
+        <% } %>
+        <% if (item.img1) { %><img src="<%- item.img1 %>" alt=""><% } %>
+        <% if (item.img2) { %><img src="<%- item.img2 %>" alt=""><% } %>
+    </div>
+<% })%>
+<% } else {%>
+<div class="item-block <% if (info.group.class) { %><%- info.group.class %><% } %>">
+    <% if (info.group.video) { %><i class="<%- info.group.video %>"></i><% } %>
+    <% if (info.group.author) { %>
+    <div class="txt-data">
+        <div class="data-author"><%- info.group.author %></div>
+        <div class="figure-caption">
+            <%- info.group.caption %>
+        </div>
+        <a href="javascript:;" class="piclink"><%- info.group.piclink %></a>
+    </div>
+    <% } %>
+    <% if (info.group.img1) { %><img src="<%- info.group.img1 %>" alt=""><% } %>
+    <% if (info.group.img2) { %><img src="<%- info.group.img2 %>" alt=""><% } %>
+</div>
+<% } %>
+</li>

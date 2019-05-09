@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+$current-prefix: null;
+
+@mixin keyframes($name,$prefixs) {
+  @each $current-prefix in $prefixs {
+    $current-prefix: $current-prefix !global;
+    @if $current-prefix == moz    { @-moz-keyframes    #{$name} { @content; } }
+    @if $current-prefix == webkit { @-webkit-keyframes #{$name} { @content; } }
+    @if $current-prefix == o      { @-o-keyframes      #{$name} { @content; } }
+    @if $current-prefix == ms     { @-ms-keyframes     #{$name} { @content; } }
+  }
+  $current-prefix: null !global;
+  @keyframes         #{$name} { @content; }
+}
+@function prefixerAttr($ident, $prefix: $current-prefix) {
+  @return unquote("#{if($prefix, '-', null)}#{$prefix}#{if($prefix, '-', null)}#{$ident}");
+}
+
+@mixin generateAnimation($name,$prefix){
+  @include keyframes($name,$prefix) {
+    @content;
+  }
+  .#{$name}{
+    @include prefixer(animation-name, $name,$prefix);
+  }
+}

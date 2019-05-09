@@ -1,0 +1,49 @@
+
+<div class="form-box account-form">
+    <div class="form-title"><% if (locals.title) { %><%- title %><% } else {%>Informasi Registrasi<% } %></div>
+    <% if (locals.ponsel) { %>
+    <div class="form-listbox ponsel-listbox">
+        <label class="input-label"><%- ponsel.title %></label>
+        <div class="input-box border-active">
+            <span class="result-msg"></span>
+            <input type="text" autocomplete="off" id="exmobile" name="exmobile" required="required" alt="SIlakan masukkan kode area nomor telepon" readonly="readonly" value="62" class="input-readonly"/>
+            <input type="text" class="input-txt" onkeypress = "return ((event.which || event.keyCode)>=48 && (event.which || event.keyCode)<=57) || (event.which || event.keyCode)==46"  onpaste = "return !clipboardData.getData('text').match(/\D/)" placeholder="<% if (locals.ponsel.placeholder) { %><%- ponsel.placeholder %><% } else {%>NOMOR PONSEL<% } %>" autocomplete="off" id="mobile"/>
+        </div>
+    </div>
+    <% } %>
+    <% if (locals.kode) { %>
+    <div class="form-listbox getcode-listbox" id="checkCode_div">
+        <label class="input-label"><%- kode.title %></label>
+        <div class="input-box border-active">
+            <span class="result-msg"></span>
+            <input type="text" class="input-txt input-txt-code" maxlength="6" placeholder="<% if (locals.kode.placeholder) { %><%- kode.placeholder %><% } else {%>MASUKKAN KODE<% } %>" autocomplete="off" id="mobile_code"/>
+            <input type="button" name="sendVeriCode" value="<% if (locals.kode.value) { %><%- kode.value %><% } else {%>DAPATKAN KODE<% } %>" class="get-code" id="phone-code-btn" onclick="getVerifyCode(this)"/>
+        </div>
+    </div>
+    <% } %>
+    <% if (locals.mail) { %>
+    <div class="form-listbox mail-listbox">
+        <label class="input-label"><%- mail.title %></label>
+        <div class="input-box border-active">
+            <span class="result-msg"></span>
+            <input type="text" class="input-txt" placeholder="<% if (locals.mail.placeholder) { %><%- mail.placeholder %><% } else {%>E-MAIL<% } %>" autocomplete="off" id="emailAddress"/>
+        </div>
+    </div>
+    <% } %>
+    <% if (locals.katasandi) { %>
+    <div class="form-listbox katasandi-listbox">
+        <label class="input-label"><%- katasandi.title %></label>
+        <div class="input-box border-active">
+            <span class="result-msg"></span>
+            <input type="password" class="input-txt" placeholder="<% if (locals.katasandi.placeholder) { %><%- katasandi.placeholder %><% } else {%>6 DIGIT KATA SANDI<% } %>" autocomplete="off" id="password"/>
+        </div>
+    </div>
+    <% } %>
+    <% if (locals.submit) { %>
+    <button class="submit-btn register-submit" onclick="checkVerifycode(0);dataLayer.push({'event':'<%- submit %>','gtm.elementTarget': $GA_NAME,'gtm.element': 'float_right'});"><%- submit %></button>
+    <% } else{ %>
+    <button class="submit-btn register-submit" onclick="checkVerifycode(0,function() {
+                  window.location.href=doneurl;
+                });dataLayer.push({'event':'Register Sekarang','gtm.elementTarget': $GA_NAME,'gtm.element': 'float_right'});">Register Sekarang</button>
+    <% }  %>
+</div>

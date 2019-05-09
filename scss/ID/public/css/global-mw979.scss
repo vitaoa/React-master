@@ -1,0 +1,13 @@
+
+/*btn-group*/
+.btn-group{
+  .btn{border-width:.02rem;
+    &:hover{padding-left: 0;padding-right: 0;}
+  }
+  &.btn-group-index{font-size: .26rem;
+    .btn{border-radius: .04rem;@include size(3.26rem,.7rem);line-height: .7rem;
+      & + .btn{margin-left: .2rem;}
+    }
+    & + .headline{padding-top: .45rem;}
+  }
+}

@@ -1,0 +1,17 @@
+
+<!--popup-->
+<div class="popup-tb registerResultPopup" style="display: none;">
+    <div class="popup-tb-cell">
+        <div class="PopupBox bounceIn">
+            <div class="PopupCon">
+                <div class="msg-title"><% if (locals.msg.title) { %><%- msg.title %><% } else {%>Akun Demo berhasil!<% } %></div>
+                <div class="msg-txt"><% if (locals.msg.txt) { %><%- msg.txt %><% } else {%>Deposit $200,Dapatkan $300<% } %></div>
+                <div class="btn-group">
+                    <p>Lanjutkan</p>
+                    <a href="http://www.hsb.co.id/apk/hansonApp_prd-yn08-release.apk" download="" onclick="formReset();dataLayer.push({'event':'download','gtm.elementTarget': $GA_NAME,'gtm.element': 'float_center'});" class="btn mobile">Unduh</a>
+                    <a href="javascript:void(0);" class="btn computer" onclick="toLogin();dataLayer.push({'event':'login','gtm.elementTarget': $GA_NAME,'gtm.element': 'float_center'});">Masuk akun</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

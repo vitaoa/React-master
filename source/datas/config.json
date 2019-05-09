@@ -1,4 +1,62 @@
 {
   "ID": {
+    "app":{
+      "infos":[
+        {
+          "url": "/app/article1.html",
+          "category": "News",
+          "time":"08/29 9:03",
+          "tit":"GBP/USD: Peluang Brexit Tanpa Kesepakatan Meningkat Pasca Kegagalan Rencana May",
+          "cont":"Grasberg di Indonesia menduduki peringkat yang pertama",
+          "direction":2,
+          "arr1":[
+            {"name":"EURUSD"}
+          ]
+        },
+        {
+          "url": "/app/article2.html",
+          "category": "Edukasi",
+          "time":"08/29 9:03",
+          "tit":"Kenali Cut Loss dan Mengapa Cut Loss itu Penting",
+          "cont":"Cut Loss adalah wajib untuk menjaga modal",
+          "direction":1,
+          "arr1":[
+            {"name":"USDJPY"}
+          ]
+        },
+        {
+          "url": "/app/article3.html",
+          "category": "Edukasi",
+          "time":"08/29 9:03",
+          "tit":"Apa Itu Trading? ",
+          "cont":"Kegiatan trading paling awal dikenal sebagai barter",
+          "arr1":[
+            {"name":"EURUSD"},
+            {"name":"USDJPY"}
+          ]
+        },
+        {
+          "url": "/app/article4.html",
+          "category": "Edukasi",
+          "time":"08/29 9:03",
+          "tit":"Persiapan Untuk Belajar Trading Forex",
+          "cont":"Trading Forex ibarat tentara pergi berperang,butuh ransel penuh perlengkapan, plus amunisi memadai",
+          "arr1":[
+            {"name":"EURUSD"}
+          ]
+        },
+        {
+          "url": "/app/article5.html",
+          "category": "Edukasi",
+          "time":"08/29 9:03",
+          "tit":"Kenali Cut Loss dan Mengapa Cut Loss itu Penting",
+          "cont":"Cut Loss adalah wajib untuk menjaga modal",
+          "direction":1,
+          "arr1":[
+            {"name":"EURUSD"}
+          ]
+        }
+      ]
+    }
   }
 }

@@ -1,0 +1,20 @@
+
+<% if (blockBg) { %>
+<div class="<%- blockBg[index] %>">
+    <p class="item-top">Deposit Awal <span>$<%- info.deposit %></span></p>
+    <div class="item-badge">
+        <b class="badge-txt"><span>Komisi</span></b>
+    </div>
+    <div class="item-body">
+        <span class="txt-num"><i>$</i><%- info.lot %><i>/Lot</i></span>
+    </div>
+</div>
+<% } else {%>
+<p class="item-top">Deposit Awal <span>$<%- info.deposit %></span></p>
+<div class="item-badge">
+    <b class="badge-txt"><span>Komisi</span></b>
+</div>
+<div class="item-body">
+    <span class="txt-num"><i>$</i><%- info.lot %><i>/Lot</i></span>
+</div>
+<% } %>

@@ -1,0 +1,70 @@
+<div class="PopupLayer popup-tb pop-rule-layer" style="display: none;">
+	<div class="popup-tb-cell">
+		<div class="PopupBox">
+			<a href="javascript:;" class="PopupCloseBtn"></a>
+			<div class="rule-title">Syarat dan Ketentuan Kontes Demo</div>
+			<div class="PopupCon mCustomScrollbar">
+				<div class="rule-txt1">Syarat Peserta</div>
+				<ol class="decimal">
+					<li>Kontes ini hanya untuk nasabah baru Hanson, bonus akan didepositkan ke akun real baru (akun real dibuka pada atau setelah 17 September). Jika pemenang adalah exisiting client, maka hasil kontes akan dibatalkan.</li>
+					<li>Peserta harus berusia 18 tahun ke atas.</li>
+					<li>Pendaftaran: Peserta dapat mendaftar secara online untuk setiap periode, pendaftaran terakhir setiap periode adalah hari Minggu GMT 17:00. Setelah pendaftaran berhasil, klien akan menerima email konfirmasi dan informasi trading akun demo, dan akun demo hanya boleh melakukan trading sesuai dengan waktu kontes.</li>
+					<li>Peserta hanya bisa mengikuti satu periode kompetisi, peserta bisa memilih periode kompetisi mana yang mau diikuti.</li>
+					<li>Peserta hanya boleh memiliki satu akun demo sepanjang kompetisi, bila peserta diketahui mempunyai lebih dari satu akun, maka peserta akan didiskualifikasi.</li>
+					<li>Peserta wajib memberikan informasi asli pada saat pendaftaran.</li>
+					<li>Hanson berhak untuk membatalkan kualifikasi peserta dengan alasan yang jelas dan masuk akal. </li>
+				</ol>
+				<div class="rule-txt1">Trading Rules Kontes:</div>
+				<ol class="decimal">
+					<li>Akun Demo yang digunakan untuk kompetisi hanya boleh digunakan pada saat kompetisi dimulai, margin awal akun demo semua peserta adalah USD 10.000.</li>
+					<li>Minimal trading volume adalah 0.1 lot.</li>
+					<li>Semua trading yang belum diclose pada periode berakhir tidak akan ikut dihitung.</li>
+					<li>Semua trading rules lainnya mengikuti peraturan real akun Hanson.</li>
+				</ol>
+				<div class="rule-txt1">Hasil Kontes:</div>
+				<ol class="decimal">
+					<li>Setiap minggu akan diumumkan pemenang periode lalu. </li>
+					<li>Hanson akan mengumumkan hasil kompetisi di website/ APP perusahaan pada Rabu berikutnya setelah periode kompetisi berakhir dan menyelesaikan semua prosedur pemeriksaan. </li>
+					<li>Jika ada dua kontestan memiliki profit yang sama, maka pemenang akan dipilih dari yang memiliki trading lot terbanyak.</li>
+					<li>Selama dan setelah kompetisi, Hanson diberi hak untuk mempublikasikan informasi seperti nama akun peserta di situs web perusahaan. Pemenang harus menyetujui publikasi informasi tersebut. </li>
+				</ol>
+				<div class="rule-txt1">Pemenang Kontes</div>
+				<ol class="decimal">
+					<li>Setiap minggu akan diumumkan pemenang periode lalu. Hasil dari kompetisi akan diumumkan dalam waktu 3 hari, pemenang akan menerima email yang meminta informasi untuk pembukaan akun real. Nasabah harus membuka akun real baru dalam waktu 10 hari setelah pengumuman hasil kompetisi dan memberitahukan informasi pembukaan akun real melalui email. Hanson berhak mendisfikualikasi pemenang yang tidak memberikan informasi akun real dalam waktu yang ditentukan.</li>
+					<li>Hanson akan memverifikasi akun real yang diberikan dalam waktu 10 hari, bonus akan dikreditkan ke akun real peserta dalam 30 hari kerja setelah pemenang membuka akun real. Bonus akun dikreditkan sebesar $50/lot standar, jumlah maksimum bonus yang dapat diperoleh dalam tiga bulan sesuai dengan bonus yang didapat. </li>
+					<li>Bonus akan dikreditkan ke akun real sebesar $50/standar lot, dan pemenang bisa memperoleh hadiah setelah trading minimal 0.1 lot.</li>
+					<li>Bonus akan diberikan kepada pemenang untuk kontes periode 17 September 2018 - 10 November 2018 sesuai dengan persen jumlah profit tertinggi. </li>
+				</ol>
+				<div class="rule-txt1">Syarat dan Ketentuan Kontes</div>
+				<ol class="decimal">
+					<li>Peserta tidak bisa mengikuti promo lain yang diadakan dalam waktu yang bersamaan.</li>
+					<li>Dengan berpartisipasi, Anda telah menyetujui syarat dan ketentuan yang berlaku.</li>
+					<li>Hanson berhak atas interpretasi akhir syarat dan ketentuan berlaku, dan berhak mengakhiri kompetisi setiap saat tanpa pemberitahuan sebelumnya.</li>
+					<li>Akun dibawah IB tidak bisa mengikuti kompetisi ini.</li>
+					<li>Bonus akan dikreditkan ke akun real dalam 30 hari kerja setelah pemenang membuka akun real.
+						<p>Rate yang digunakan untuk kompetisi ini adalah 1 USD = 12.000 IDR</p>
+					</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="/public/lp/js/jquery.min.js"></script>
+<link href="/public/lp/css/Scrollbar.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/public/lp/js/mCustomScrollbar.js"></script>
+<script type="text/javascript">
+	// rule
+	$(".terms-conditions-link a").click(function(e){
+		e.preventDefault();
+		$(".pop-rule-layer").show();
+		$(".pop-rule-layer .PopupBox").slideDown();
+	});
+	$(".PopupCloseBtn").click(function(){
+		$(".pop-rule-layer").hide();
+		$(".pop-rule-layer .PopupBox").hide();
+	});
+	$.mCustomScrollbar.defaults.scrollButtons.enable=true;
+	$(".terms-conditions-Scroll").mCustomScrollbar({theme:"dark-thick"});
+
+
+</script>

@@ -1,0 +1,12 @@
+
+
+@mixin scaleX($sx) {
+  @include prefixer(transform, scaleX(#{$sx}), ("webkit", "moz","ms","o"));
+}
+
+@mixin scaleY($sy) {
+  @include prefixer(transform, scaleY(#{$sy}), ("webkit", "moz","ms","o"));
+}
+@mixin scale($sx,$sy: $sx) {
+  @include prefixer(transform, scale(#{$sx}), ("webkit", "moz","ms","o"));
+}

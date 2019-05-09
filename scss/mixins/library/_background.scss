@@ -1,0 +1,10 @@
+
+@mixin background($w,$h,$url,$pos:center center){
+  background: url($url) no-repeat $pos;
+  height:$h;
+  width:$w;
+}
+@mixin background-responsive($w,$h,$url,$pos:center center){
+  @include background($w,$h,$url,$pos);
+  background-size: auto $h;
+}

@@ -1,0 +1,37 @@
+// Rgba Background
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  // IE8 filter
+  $opacity-ie: ($opacity * 100);
+  filter: alpha(opacity=$opacity-ie);
+}
+
+//@mixin rgba-background($rgba){
+//  // prevent click through in IE 8 using a transparent background image
+//  background: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7) repeat;
+//  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($rgba)}',endColorstr='#{ie-hex-str($rgba)}');
+//  zoom: 1;
+//  background: $rgba;
+//  // hack for IE9 to prevent applying rgba and filter at the same time
+//  :root & {
+//    filter:none\9;
+//  }
+//}
+
+@mixin rgba-background($values) {
+    $a: nth($values, 1);
+    $b: if(length($values) < 2, $a, nth($values, 2));
+
+    $rgba: transparentize($a, $b);
+    // prevent click through in IE 8 using a transparent background image
+    background: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7) repeat;
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($rgba)}',endColorstr='#{ie-hex-str($rgba)}');
+    zoom: 1;
+    background: $rgba;
+    // hack for IE9 to prevent applying rgba and filter at the same time
+    :root & {
+        filter:none\9;
+    }
+}
+

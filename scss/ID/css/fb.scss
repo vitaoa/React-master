@@ -1,0 +1,223 @@
+@charset "utf-8";
+$support_for_ie: true;
+$prefixes:('webkit','moz','ms','o');
+$normalized_font_family: PingFang SC,Arial, Helvetica, sans-serif;
+@import "../../mixins/library";
+@import "../../mixins/keyframes/keyframes";
+
+/* ============ Reset ============ */
+@import "../../normalize";
+body {font-size: 14px;color: #333; }
+
+.al-c{text-align:center}
+.al-r{text-align:right}
+.fl{float:left}
+.fr{float:right}
+.w-part{ width:1190px; margin:0 auto;}
+.mobile{ display: none}
+
+.fixed-bar{position: fixed;left:0;right:0;z-index: 2;
+  &.fb-header{top:0;}
+  &.fb-footer{bottom:0;}
+}
+//header
+.fb-header{height: 88px;
+  i{@include inline-block;}
+  .header-inner{border-bottom: 1px solid rgba(#fff,.1);@include clearfix;text-align: right;padding: 22px 80px;
+    .logo{float: left;}
+  }
+  .header-link-group{@include inline-block;vertical-align: middle;
+    a{color:#fff;font-size: 14px;@include inline-block;@include size(210px,44px);line-height:44px;border-radius: 30px;background: #ea5419;text-align: center;
+      i{vertical-align: middle;margin-right: 12px;}
+    }
+  }
+  &.fixed-bar + .wrapper{
+    .mTopHeader{padding-top: 88px;}
+  }
+  &.fbheader-bg{@include rgba-background((#000,.6));position: relative;z-index: 3;
+    .header-inner{border-bottom: 0;}
+  }
+}
+//fooer
+.fb-footer{text-align: center;color:#404d64;font-size: 12px;padding: 23px 0;
+  p{line-height: 14px;}
+}
+
+//common
+.banner1{background: url(/images/fb/banner1.jpg) no-repeat center top;background-color:#062c6d;width:100%;height:100%;background-size: cover;
+  .banner-con{width:52%;padding-top: 204px;}
+  .banner1-title{margin-bottom: 42px;}
+  .w-part{position: relative;}
+  .account-form{position: absolute;right:0;top:136px;border-radius: 6px;background:#fff;box-shadow: -9.851px 12.608px 54px 0px rgba(26, 3, 57, 0.4);padding:36px 64px 50px;
+    .form-title{color:#331103;font-size: 36px;}
+  }
+  .p-tips{font-size: 26px;color:#fff;}
+  .i-fb-money{margin-left: 14px;
+    &.mobile{display: none;}
+  }
+}
+.banner2{background: url(/images/fb/banner2.jpg) no-repeat center top;
+  .banner{height:432px;}
+}
+.banner-txt{color:#fff;font-size: 44px;border-bottom:1px solid rgba(#fff,.21);padding-bottom: 10px;margin-bottom: 56px;
+  p{border-top:1px solid #fff;border-bottom:1px solid #fff;line-height: 90px;@include justify-text;padding: 0 5px;}
+}
+.banner-msg{font-size: 60px;color:#fff;line-height: 85px;padding-top: 80px;padding-bottom: 63px;
+  p{font-size: 36px;line-height: 1;padding-top: 12px;}
+}
+.p-txt{font-size: 16px;color:#444;font-family:"Arial";line-height: 28px;}
+.btn-group{
+  .btn{font-size: 24px;line-height: 1;@include inline-block;@include size(412px,73px);border-radius: 10px;@include prefixer(transition, all .3s ease-in-out,$prefixes);
+    span{display: block;font-size: 16px;}
+    b{display: block;padding-top: 13px;padding-bottom: 6px;}
+    &:hover{padding-left: 10px;padding-right: 10px;}
+  }
+  .download-btn{background:#ea5419;color:#fff;}
+}
+.titlebar{padding-top: 60px;padding-bottom:25px;font-size: 22px;color:#000;font-family:"Arial";
+  p{padding-top: 16px;}
+  & + .p-txt{padding: 0 45px;}
+}
+.wrapper{
+  i{@include inline-block;}
+  .i-fb-icongroup{margin-top: 52px;}
+}
+[class*="part"]{
+  .w-part{padding-bottom: 60px;}
+}
+.part2{background: #f2f3f6;}
+
+
+///* ============ Components ============ */
+.banner-v2{position: relative;width:100%;
+  &.fixed-banner{position: fixed;z-index: 1;left:0;
+    & + .part1{margin-top: 100vh;}
+  }
+  &.banner_hide{z-index:30;height:0;
+    .w-part,.banner-gold,.banner-deco{display: none;}
+  }
+  p{font-size: 28px;color:#ffd39c;
+    &.txt-tips{font-size: 16px;padding-top: 42px;}
+  }
+  .banner-deco,.banner-gold{position: absolute;top:-89px;left:50%;}
+  .banner-deco{margin-left: -853px;}
+  .banner-gold{margin-left:-982px;}
+  .w-part{padding-top: 261px;}
+  .banner-title{margin-bottom: 20px;
+  }
+  [class*="banner-badge"]{margin: 25px 15px;}
+  [class*="i-supervise0"]{margin: 36px 68px;}
+  .banner-badge2{position: relative;
+    span{position: absolute;top:100%;left:5%;right:12%;font-style: normal;color:#fff;}
+  }
+  .banner_form_fixed{margin-top: -280px;
+    & + .w-part{padding-top: 0;}
+  }
+  .form-box{font-family: Arial;padding: 60px 36px 0;}
+}
+.banner-fb2{background: #0f1922 url(/images/fb/banner-fb2.jpg) no-repeat center top;width:100%;height:100%;background-size: cover;overflow: hidden;}
+
+// variables
+$active-c:#ff3434;
+@import "../lp/lp19/components/login";
+
+//@media(min-width:1920px) {
+//  .banner1{background-size:cover;}
+//}
+
+//******* sprites
+//----------------------------
+@import "sp-p-fb";
+@import "sp-p-fbbanner";
+@import "sp-p-fbbannergold";
+@media(max-width:979px) {
+  html{font-size: 100px;}
+  .computer{display: none;}
+  .mobile{display: block;}
+  .banner1{
+    .w-part{padding-left: .5rem;padding-right: .5rem;}
+  }
+  .w-part{max-width:750px;width:auto;@include box-sizing(border-box);padding-left: .3rem;padding-right: .3rem;
+  }
+  @import "fb-mw979";
+  @import "sp-m-fb";
+  @import "sp-m-fbbanner";
+  @import "sp-m-fbbannergold";
+}
+@media(min-width:980px) and (max-width:1279px){
+  .w-part{width:950px;
+  }
+  .banner1{
+    .banner1-title{@include prefixer(transform,scale(.8),$prefixes);@include prefixer(transform-origin,left,$prefixes);}
+    .account-form{padding:36px 26px 50px;
+      .form-title{font-size: 30px;}
+    }
+    .p-tips{font-size: 26px;color:#fff;}
+    .i-fb-money{margin-left: 14px;}
+  }
+  .banner-txt{font-size: 38px;
+  }
+}
+
+
+/* ============ Animation ============ */
+//@import "../../mixins/keyframes/keyframes";
+//$lighttime:1s;
+//$numheight:-10%;
+//$numspeed:1s;
+//.number-animate-dom{position: relative;top:0;display: block;}
+//.numtransy0{@include prefixer(animation, numtransy-0 $numspeed linear,$prefixes);transition: $numspeed;}
+//.numtransy1{@include prefixer(animation, numtransy-1 $numspeed linear,$prefixes);transition: $numspeed;}
+//.numtransy2{@include prefixer(animation, numtransy-2 $numspeed linear,$prefixes);transition: $numspeed;}
+//.numtransy3{@include prefixer(animation, numtransy-3 $numspeed linear,$prefixes);transition: $numspeed;}
+//.numtransy4{@include prefixer(animation, numtransy-4 $numspeed linear,$prefixes);transition: $numspeed;}
+//.numtransy5{@include prefixer(animation, numtransy-5 $numspeed linear,$prefixes);transition: $numspeed;}
+//.numtransy6{@include prefixer(animation, numtransy-6 $numspeed linear,$prefixes);transition: $numspeed;}
+//.numtransy7{@include prefixer(animation, numtransy-7 $numspeed linear,$prefixes);transition: $numspeed;}
+//.numtransy8{@include prefixer(animation, numtransy-8 $numspeed linear,$prefixes);transition: $numspeed;}
+//.numtransy9{@include prefixer(animation, numtransy-9 $numspeed linear,$prefixes);transition: $numspeed;}
+//.numtransy10{@include prefixer(animation, numtransy-10 $numspeed linear,$prefixes);transition: $numspeed;}
+//@include keyframes(numtransy-0,$prefixes) {
+//  0%{transform: translateY(0);}
+//  100%{transform: translateY($numheight*10);}
+//}
+//@include keyframes(numtransy-1,$prefixes) {
+//  0%{transform: translateY(0);}
+//  100%{transform: translateY($numheight);}
+//}
+//@include keyframes(numtransy-2,$prefixes) {
+//  0%{transform: translateY(0);}
+//  100%{transform: translateY($numheight*2);}
+//}
+//@include keyframes(numtransy-3,$prefixes) {
+//  0%{transform: translateY(0);}
+//  100%{transform: translateY($numheight*3);}
+//}
+//@include keyframes(numtransy-4,$prefixes) {
+//  0%{transform: translateY(0);}
+//  100%{transform: translateY($numheight*4);}
+//}
+//@include keyframes(numtransy-5,$prefixes) {
+//  0%{transform: translateY(0);}
+//  100%{transform: translateY($numheight*5);}
+//}
+//@include keyframes(numtransy-6,$prefixes) {
+//  0%{transform: translateY(0);}
+//  100%{transform: translateY($numheight*6);}
+//}
+//@include keyframes(numtransy-7,$prefixes) {
+//  0%{transform: translateY(0);}
+//  100%{transform: translateY($numheight*7);}
+//}
+//@include keyframes(numtransy-8,$prefixes) {
+//  0%{transform: translateY(0);}
+//  100%{transform: translateY($numheight*8);}
+//}
+//@include keyframes(numtransy-9,$prefixes) {
+//  0%{transform: translateY(0);}
+//  100%{transform: translateY($numheight*9);}
+//}
+//@include keyframes(numtransy-10,$prefixes) {
+//  0%{transform: translateY(0);}
+//  100%{transform: translateY($numheight*10);}
+//}

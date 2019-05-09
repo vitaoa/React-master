@@ -1,0 +1,31 @@
+<% if (msg.app.infos) { %>
+<% msg.app.infos.forEach(function(info){ %>
+<li>
+	<a href="<%- info.url %>" class="addLocationPath">
+		<div class="inf1">
+			<span class="category"><%- info.category %></span>
+			<span class="time"><%- info.time %></span>
+			<!--<span class="author">Analysts</span>-->
+		</div>
+		<h5 class="tit"><%- info.tit %></h5>
+		<p class="cont">Suggestion: <%- info.cont %></p>
+
+		<div class="bot <% if (info.direction) { %>
+			<% if (info.direction==2) { %>
+				green
+			<% } %>
+			<% if (info.direction==1) { %>
+				red
+			<% } %>
+		<% } %> ">
+			<span class="item-n">AUDUSD</span>
+			<% if(info.arr1){ %>
+			<% info.arr1.forEach(function(arr){ %>
+			<span><%- arr.name %></span>
+			<% }) %>
+			<% } %>
+		</div>
+	</a>
+</li>
+<% }); %>
+<% } %>

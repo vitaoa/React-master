@@ -1,0 +1,15 @@
+
+@mixin unstyled-link() {
+  color: inherit;
+  text-decoration: inherit;//IE8+
+  *text-decoration: none;//IE7
+  //  cursor: inherit;
+  &:hover {
+    text-decoration: none;
+  }
+  &:active,
+  &:focus {
+    outline: none;
+  }
+}
+

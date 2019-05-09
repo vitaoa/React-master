@@ -1,0 +1,55 @@
+[
+  {
+    "type":"1",
+    "url": "/app/article1.html",
+    "category": "News",
+    "time":"08/29 9:03",
+    "tit":"Kelima Tambang Emas Terbesar Di Dunia",
+    "cont":"Grasberg di Indonesia menduduki peringkat yang pertama"
+  },
+  {
+    "type":"1",
+    "url": "/app/article2.html",
+    "category": "Edukasi",
+    "time":"08/29 9:03",
+    "tit":"Kenali Cut Loss dan Mengapa Cut Loss itu Penting",
+    "cont":"Cut Loss adalah wajib untuk menjaga modal"
+  },
+  {
+    "type":"1",
+    "url": "/app/article3.html",
+    "category": "Edukasi",
+    "time":"08/29 9:03",
+    "tit":"Apa Itu Trading? ",
+    "cont":"Kegiatan trading paling awal dikenal sebagai barter"
+  },
+  {
+    "type":"1",
+    "url": "/app/article4.html",
+    "category": "Edukasi",
+    "time":"08/29 9:03",
+    "tit":"Persiapan Untuk Belajar Trading Forex",
+    "cont":"Trading Forex ibarat tentara pergi berperang,butuh ransel penuh perlengkapan, plus amunisi memadai"
+  },
+  {
+    "type":"img",
+    "url":"",
+    "src":"/app/images/midban.jpg"
+  },
+  {
+    "type":"1",
+    "url": "/app/article5.html",
+    "category": "News",
+    "time":"08/29 9:03",
+    "tit":"Generasi Milenial Mulai Berani Investasi di DPLK",
+    "cont":"Generasi muda harus mulai investasi walaupun mulai dari nominal yang kecil"
+  },
+  {
+    "type":"1",
+    "url": "/app/article6.html",
+    "category": "News",
+    "time":"08/29 9:03",
+    "tit":"Mau Nabung Lebih Untung? Lekas Investasi Emas",
+    "cont":"Kenaikan harga emas 100% per 5 tahun Investasi Emas"
+  }
+]

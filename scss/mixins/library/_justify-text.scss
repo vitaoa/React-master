@@ -1,0 +1,6 @@
+
+@mixin justify-text() {
+  text-align-last:justify;
+  text-align:justify;
+  text-justify:distribute-all-lines; // 兼容ie浏览器
+}

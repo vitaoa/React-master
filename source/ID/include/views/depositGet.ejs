@@ -1,0 +1,22 @@
+<li>
+    <% if (blockBg) { %>
+    <div class="<%- blockBg[index] %>">
+        <p class="item-top">Deposit <span>$<%- info.deposit %></span></p>
+        <div class="item-badge">
+            <i class="<% if(badgeLine) {  %><%-blockBg[index]%>line<% } %>"></i>
+            <b class="badge-txt"><span>Dapatkan</span></b>
+        </div>
+        <div class="item-body">
+            <span class="txt-num"><i>$</i><%- info.get %></span>
+        </div>
+    </div>
+    <% } else {%>
+    <p class="item-top">Deposit <span>$<%- info.deposit %></span></p>
+    <div class="item-badge">
+        <b class="badge-txt"><span>Dapatkan</span></b>
+    </div>
+    <div class="item-body">
+        <span class="txt-num"><i>$</i><%- info.get %></span>
+    </div>
+    <% } %>
+</li>

@@ -1,0 +1,24 @@
+
+// "Unstyle" lists, `.no-bullet()` for `<li>`s and `.no-bullets()` for `<ul>` & `<ol>`
+@mixin no-bullet() {
+  list-style-image: none;
+  list-style-type: none;
+  margin-left: 0;
+}
+@mixin no-bullets() {
+  list-style: none;
+  li {
+    @include no-bullet();
+  }
+}
+
+@mixin style-bullet($type,$image) {
+  list-style-image: $image;
+  list-style-type: $type;
+}
+@mixin style-bullets($type,$image) {
+  list-style: $type;
+  li {
+    @include style-bullet($type,$image);
+  }
+}

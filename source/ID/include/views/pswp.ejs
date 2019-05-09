@@ -1,0 +1,249 @@
+
+<div id="gallery" class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+
+    <div class="pswp__scroll-wrap">
+
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <!--<button class="pswp__button pswp__button&#45;&#45;share" title="Share"></button>-->
+
+                <!--<button class="pswp__button pswp__button&#45;&#45;fs" title="Toggle fullscreen"></button>-->
+
+                <!--<button class="pswp__button pswp__button&#45;&#45;zoom" title="Zoom in/out"></button>-->
+
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- <div class="pswp__loading-indicator"><div class="pswp__loading-indicator__line"></div></div> -->
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip">
+                    <!-- <a href="#" class="pswp__share--facebook"></a>
+                    <a href="#" class="pswp__share--twitter"></a>
+                    <a href="#" class="pswp__share--pinterest"></a>
+                    <a href="#" download class="pswp__share--download"></a> -->
+                </div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left"><i class="pswp-arrow-left"></i></button>
+            <button class="pswp__button pswp__button--arrow--right"><i class="pswp-arrow-right"></i></button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center w-part">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+<script type="text/javascript">
+    var initPhotoSwipeFromDOM = function(gallerySelector) {
+        // 解析来自DOM元素幻灯片数据（URL，标题，大小...）
+        var parseThumbnailElements = function(el) {
+            if(!el)return;
+            var thumbElements = el.childNodes,
+                numNodes = thumbElements.length,
+                items = [],
+//                figureEl,
+                linkEl,
+                item;
+
+            for(var i = 0; i < numNodes; i++) {
+                linkEl = thumbElements[i]; // <a> element
+                // 仅包括元素节点
+                if(linkEl.nodeType !== 1) {
+                    continue;
+                }
+
+                // 创建幻灯片对象
+                item = {
+                    title:el.getAttribute('preview-text'),// caption (contents of figure)
+                    author:el.getAttribute('data-author'),// author
+                    src: linkEl.getAttribute('href'),
+                    w: (linkEl.getAttribute('href').indexOf('video')!=-1)?linkEl.children[0].naturalWidth*6:linkEl.children[0].naturalWidth,
+                    h: (linkEl.getAttribute('href').indexOf('video')!=-1)?linkEl.children[0].naturalHeight*6:linkEl.children[0].naturalHeight
+                };
+                if(item.src.indexOf('(VIDEO)_1')!=-1){
+                    item.videoSrc = item.src.replace('.jpg','.mp4');
+                }
+                if(item.src.indexOf('(SHARED)')!=-1){
+                    item.videoSharedSrc = item.src;
+                }
+                item.el = linkEl; // 保存链接元素 for getThumbBoundsFn
+                if(linkEl.children.length > 0) {
+                    item.msrc = linkEl.children[0].getAttribute('src'); // thumbnail url
+                }
+                items.push(item);
+            }
+            return items;
+        };
+
+        // 查找最近的父节点
+        var closest = function closest(el, fn) {
+            return el && ( fn(el) ? el : closest(el.parentNode, fn) );
+        };
+
+        // 当用户点击缩略图触发
+        var onThumbnailsClick = function(e) {
+            e = e || window.event;
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+            var eTarget = e.target || e.srcElement;
+            var clickedListItem = closest(eTarget, function(el) {
+                return (el.tagName && el.tagName.toUpperCase() === 'A');
+            });
+            if(!clickedListItem) {
+                return;
+            }
+
+            var clickedGallery = clickedListItem.parentNode,
+                childNodes = clickedListItem.parentNode.childNodes,
+                numChildNodes = childNodes.length,
+                nodeIndex = 0,
+                index;
+            for (var i = 0; i < numChildNodes; i++) {
+                if(childNodes[i].nodeType !== 1) {
+                    continue;
+                }
+                if(childNodes[i] === clickedListItem) {
+                    index = nodeIndex;
+                    break;
+                }
+                nodeIndex++;
+            }
+            if(index >= 0) {
+                openPhotoSwipe( index, clickedGallery );
+            }
+            return false;
+        };
+
+        var photoswipeParseHash = function() {
+            var hash = window.location.hash.substring(1),
+                params = {};
+            if(hash.length < 5) {
+                return params;
+            }
+            var vars = hash.split('&');
+            for (var i = 0; i < vars.length; i++) {
+                if(!vars[i]) {
+                    continue;
+                }
+                var pair = vars[i].split('=');
+                if(pair.length < 2) {
+                    continue;
+                }
+                params[pair[0]] = pair[1];
+            }
+            if(params.gid) {
+                params.gid = parseInt(params.gid, 10);
+            }
+            return params;
+        };
+
+        var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
+            if(!galleryElement)return;
+            var pswpElement = document.querySelectorAll('.pswp')[0],
+                gallery,
+                options,
+                items;
+            items = parseThumbnailElements(galleryElement);
+            // 这里可以定义参数
+            options = {
+                barsSize: {
+                    top: 100,
+                    bottom: 100
+                },
+                fullscreenEl : false,
+//                shareButtons: [
+//                    {id:'wechat', label:'分享微信', url:'#'},
+//                    {id:'weibo', label:'新浪微博', url:'#'},
+//                    {id:'download', label:'保存图片', url:'{{raw_image_url}}', download:true}
+//                ],
+                galleryUID: galleryElement.getAttribute('data-pswp-uid'),
+                getThumbBoundsFn: function(index) {
+                    var thumbnail = items[index].el, // find thumbnail
+                        pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+                        rect = thumbnail.getBoundingClientRect();
+                    return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
+                },
+                addCaptionHTMLFn: function(item, captionEl, isFake) {
+                    if(!item.title) {
+                        captionEl.children[0].innerText = '';
+                        return false;
+                    }
+                    captionEl.children[0].innerHTML = '<div class="p-author">' + item.author + '</div><p>'+item.title+'</p>';
+                    return true;
+                },
+            };
+            if(fromURL) {
+                if(options.galleryPIDs) {
+                    for(var j = 0; j < items.length; j++) {
+                        if(items[j].pid == index) {
+                            options.index = j;
+                            break;
+                        }
+                    }
+                } else {
+                    options.index = parseInt(index, 10) - 1;
+                }
+            } else {
+                options.index = parseInt(index, 10);
+            }
+            if( isNaN(options.index) ) {
+                return;
+            }
+            if(disableAnimation) {
+                options.showAnimationDuration = 0;
+            }
+            gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+            gallery.init();
+        };
+
+        var galleryElements = document.querySelectorAll( gallerySelector );
+        for(var i = 0, l = galleryElements.length; i < l; i++) {
+            galleryElements[i].setAttribute('data-pswp-uid', i+1);
+            galleryElements[i].onclick = onThumbnailsClick;
+        }
+        var hashData = photoswipeParseHash();
+        if(hashData.pid) {
+            openPhotoSwipe( hashData.pid ,  galleryElements[ hashData.gid - 1 ], true, true );
+        }
+    };
+    $(function () {
+        $('.picswitch-itmes .item-block').each(function () {
+            var _this = $(this);
+            var _txt = _this.find('.figure-caption span').text();
+            var _author = _this.find('.data-author').text();
+            _this.append('<div class="my-gallery" preview-text="'+_txt+'" data-author="'+_author+'"></div>');
+            $(this).find('img').each(function () {
+                var _src = $(this).attr('src');
+                var _wrapDiv ='<a href='+_src+'></a>';
+                _this.find('.my-gallery').append($(_wrapDiv).append($(this)));
+            });
+        });
+        $('.piclink,.i-video').click(function () {
+            $(this).closest('.item-block').find('.my-gallery a')[0].click();
+        });
+        initPhotoSwipeFromDOM('.my-gallery');
+    })
+</script>

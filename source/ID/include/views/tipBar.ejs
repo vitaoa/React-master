@@ -1,0 +1,33 @@
+
+<div class="tip-bar mobile">
+    <a href="javascript:;" class="a-close" onclick="closeTipBar(this);dataLayer.push({'event':'close Download App Gratis','gtm.elementTarget': $GA_NAME,'gtm.element': 'float_bottom'})"><i class="tip-btn-close"></i></a>
+    <a href="javascript:;" target="_blank" class="a-download" onclick="lp_downloadApp(this);dataLayer.push({'event':'Download App Gratis','gtm.elementTarget': $GA_NAME,'gtm.element': 'float_bottom'})">
+        <i class="tip-bar-logo"></i>
+        <% if (locals.msg.s1) { %>
+        <span class="s1"><%- msg.s1 %></span>
+        <% } %>
+        <% if (locals.msg.s2) { %>
+        <span class="s2"><%- msg.s2 %></span>
+        <% } %>
+        <% if (locals.msg.s3) { %>
+        <span class="s2"><%- msg.s3 %></span>
+        <% } %>
+        <i class="tip-bar-linkarrow"></i>
+    </a>
+</div>
+<script type="text/javascript">
+    function closeTipBar(o) {
+        $(o).closest('.tip-bar').remove();
+    }
+    function lp_downloadApp(_obj) {
+        var mType = mobileType();
+        console.log(mType)
+        if(mType == 'pc'){
+            $(_obj).attr("href",loginurl);
+        }else if(mType == 'android'){
+            $(_obj).attr("href","https://www.hsb.co.id/apk/hansonApp_1.1.5.4.16.5_yn05_prd_release.apk");
+        }else if(mType == 'ios'){
+            $(_obj).attr("href","https://itunes.apple.com/id/app/hanson-forex-trader/id1403262751");
+        }
+    }
+</script>
