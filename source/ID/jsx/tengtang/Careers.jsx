@@ -1,11 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const Header = React.createClass({
-    render: function() {
-        return <div className="top-head-title fixed-top"><span className="tit">新手学堂123</span></div>;
-    }
-});
 const Banner = React.createClass({
     render: function() {
         return <div className="page-banner careers_banner al-c">
