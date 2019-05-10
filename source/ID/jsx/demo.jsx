@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const Banner = React.createClass({
-    render: function() {
-        return <div className="page-banner careers_banner al-c">
+function Banner() {
+    return (
+        <div className="page-banner careers_banner al-c">
             <div className="table">
                 <div className="table-cell">
                     <h1 className="banner-title">Bergabunglah bersama tim kami di Hanson
@@ -12,9 +12,9 @@ const Banner = React.createClass({
                     <a href="javascript:;" className="banner-title-sub">Jelajahi Lowongan Pekerjaan &gt;&gt;</a>
                 </div>
             </div>
-        </div>;
-    }
-});
+        </div>
+    )
+}
 
 function ListGroup2(props) {
     return (

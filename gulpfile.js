@@ -161,7 +161,7 @@ gulp.task('saveAsHtml',gulp.series('downloadHtml',function (cb) {
                 });
                 res.on('end',function(){  //数据传输完
                     var data = Buffer.concat(chunks,size);
-                    var html = "<!DOCTYPE html>\n\r"+data.toString();
+                    var html = "<!doctype html>\n\r"+data.toString();
 
                     // 将抓取的内容保存到本地文件中
                     let dirpath = root_DIR+CUR_PATH;

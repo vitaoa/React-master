@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>Careers | Hanson Forex</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta content="telephone=no" name="format-detection">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover" name="viewport" />
+    @@include('./include/ftl/head.html', {
+    "title": "Careers | Hanson Forex",
+    "keywords": false,
+    "description": false,
+    "abstract": false
+    })
     <meta name="author" content="<%= dateYMD.year %>.<%= dateYMD.month %> Designed by Pepe; Coded by Vita">
     @@include('./include/tags/header_css.html')
     <link rel="stylesheet" type="text/css" href="/css/page.css" />
@@ -13,13 +14,13 @@
 
 <body>
 @@include('./include/noscript.html')
-@@include('./include/tags/remPC.html')
 @@include('./include/tags/header.html')
 <div id="wrapperContent"></div>
 
 <!-- footer begin -->
 @@include('./include/tags/footer.html')
 <!-- footer end -->
+</div>
 <script src="<%= rollupOps.url %>"></script>
 <script>
     $('.list-item-panel .panel-head').click(function () {
