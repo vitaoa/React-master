@@ -92,42 +92,65 @@ gulp.task("clean:downloadHtml", function(){
 //第二步:编译ejs下载模板
 var Temple_DIR = 'generateHtmlTemple/';   // ejs模板引擎目录
 var Temple_Name = 'temple.ejs'; // 指定ejs模板文件
-gulp.task('ejs:temple', function(cb) {
-    glob.sync(_src).filter(function (file) {
-        return file.endsWith('.html');
-    }).forEach(function (file) {
-        console.log(file);
-        console.log("ejs:temple");
-        return gulp.src(root_DIR+Temple_DIR+Temple_Name, {base: root_DIR+Temple_DIR})
-            .pipe(ejs({templeOps:{"url":_url.host+":"+_url.port+_url.path+file.replace(root_DIR+Download_DIR,''),"title":HTMLNAME}}))
-            .pipe(rename({ extname: '.html' }))
-            .pipe(gulp.dest(root_DIR+Temple_DIR));
-    });
-    cb();
-});
+
+// gulp.task('ejs:temple', function(cb) {
+//     glob.sync(_src).filter(function (file) {
+//         return file.endsWith('.html');
+//     }).forEach(function (file) {
+//         console.log(file);
+//         console.log("ejs:temple");
+//         return gulp.src(root_DIR+Temple_DIR+Temple_Name, {base: root_DIR+Temple_DIR})
+//             .pipe(ejs({templeOps:{"url":_url.host+":"+_url.port+_url.path+file.replace(root_DIR+Download_DIR,''),"title":HTMLNAME}}))
+//             .pipe(rename({ extname: '.html' }))
+//             .pipe(gulp.dest(root_DIR+Temple_DIR));
+//     });
+//     cb();
+// });
+
 //第三步:下载html文件
 //下载html文件，访问路径http://172.30.10.52:1111（_url.host+":"+_url.savePort）
 //文件名：_src.split('/')[_src.split('/').length-1]
-gulp.task('downloadHtml',gulp.series("clean:downloadHtml","ejs:temple", function(cb) {
-    glob.sync(_src).filter(function (file) {
-        return file.endsWith('.html');
-    }).forEach(function (file) {
-        console.log(_url.host+":"+_url.port+_url.path+Temple_DIR+Temple_Name.replace('.ejs','.html'));
-        console.log("_templeSrc");
-        c.exec('start firefox '+_url.host+":"+_url.port+_url.path+Temple_DIR+Temple_Name.replace('.ejs','.html'));
-    })
+gulp.task('downloadHtml',gulp.series('clean:downloadHtml',function(cb) {
+    cb();
+    if(_HTMLpath.length>0){
+        for (var r = 0; r < _HTMLpath.length; r++) {
+            (function (r,file) {
+                setTimeout(function(){
+                    // console.log(r+"======="+file);
+                    gulp.src(root_DIR+Temple_DIR+Temple_Name, {base: root_DIR+Temple_DIR})
+                        .pipe(ejs({templeOps:{"url":_url.host+":"+_url.port+_url.path+file.replace(root_DIR+source_DIR,'').replace('.ejs','.html'),"title":path.basename(file)}}))
+                        .pipe(rename({ extname: '.html' }))
+                        .pipe(gulp.dest(root_DIR+Temple_DIR));
+                    let _templeSrc = _url.host+":"+_url.port+_url.path+Temple_DIR+Temple_Name.replace('.ejs','.html');
+                    // console.log(_templeSrc);
+                    c.exec('start firefox '+_templeSrc);
+                },r*3000);
+            }(r,_HTMLpath[r]))
+        }
+        setTimeout(function () {
+            console.log('close  浏览器')
+            c.exec('taskkill /IM firefox.exe');
+        },(_HTMLpath.length+10)*1000);
+    }
+    else{
+        gulp.src(root_DIR+Temple_DIR+Temple_Name, {base: root_DIR+Temple_DIR})
+            .pipe(ejs({templeOps:{"url":_url.host+":"+_url.port+_url.path+source_DIR+CUR_PATH+HTMLNAME+'.html',"title":path.basename(file)}}))
+            .pipe(rename({ extname: '.html' }))
+            .pipe(gulp.dest(root_DIR+Temple_DIR));
+        let _templeSrc = _url.host+":"+_url.port+_url.path+Temple_DIR+Temple_Name.replace('.ejs','.html');
+        c.exec('start firefox '+_templeSrc);
+    }
     cb();
 }));
 //第四步:html文件另存到项目打包文件并格式化
 gulp.task('saveAsHtml',gulp.series('downloadHtml',function (cb) {
-    // console.log(_savePage);
     setTimeout(function () {
-        c.exec('taskkill /IM firefox.exe');
         glob.sync(_src).filter(function (file) {
             return file.endsWith('.html');
         }).forEach(function (file) {
             console.log(file)
             var _savePage = path.basename(file);
+            var _curHtml = file.replace(root_DIR+Download_DIR+CUR_PATH,'');
             http.get(_url.host+":"+_url.savePort+"/"+_savePage,function(res){  //通过get方法获取对应地址中的页面信息
                 var chunks = [];
                 var size = 0;
@@ -151,11 +174,11 @@ gulp.task('saveAsHtml',gulp.series('downloadHtml',function (cb) {
                                 console.log("写入错误")
                                 console.log(err)
                                 return false;
-                            } else{
+                            }else{
                                 console.log("写入成功");
                                 //html文件格式化
-                                console.log('saveAsHtml完成');
-                                return gulp.src(dirpath+HTMLNAME+".html")
+                                console.log(dirpath+_curHtml)
+                                return gulp.src(dirpath+_curHtml,{base:dirpath})
                                     .pipe(htmlbeautify({
                                         "indent_size": 4,
                                         "eol": "\n",
@@ -174,7 +197,7 @@ gulp.task('saveAsHtml',gulp.series('downloadHtml',function (cb) {
             }).on('error', function(err) {
                 console.log('错误信息：' + err)
             });
-        })
+        });
     },7000);
     cb();
 }));
@@ -492,7 +515,7 @@ const _dateMonth = _date.split('-')[1];
 const _dateDay = _date.split('-')[2];
 const cfg = require(root_DIR+source_DIR + 'datas/config.json');
 
-let ejs_dirs = glob.sync(root_DIR+source_DIR+CUR_PATH + "**/*.{html,ejs}");
+let ejs_dirs = glob.sync(root_DIR+source_DIR+CUR_PATH + "**/*.ejs");
 if(_HTMLpath.length>0){
     ejs_dirs = _HTMLpath;
 }
@@ -500,7 +523,7 @@ console.log("ejs_dirs=============")
 console.log(ejs_dirs)
 gulp.task('ejs',function(cb) {
     ejs_dirs.filter(function (file) {
-        return (file.endsWith('.ejs') && file.indexOf('include/')===-1);//过滤不是ejs文件
+        return (file.endsWith('.ejs') && file.indexOf('include/')===-1 /*&& file.indexOf('demo.ejs')===-1*/);//过滤
     }).forEach(function (file) {
         let name;
         let _lpNAME;
