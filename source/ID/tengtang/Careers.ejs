@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Careers | Hanson Forex</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no" name="format-detection">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover" name="viewport" />
+    <meta name="author" content="<%= dateYMD.year %>.<%= dateYMD.month %> Designed by Pepe; Coded by Vita">
+    @@include('./include/tags/header_css.html')
+    <link rel="stylesheet" type="text/css" href="/css/page.css" />
+</head>
+
+<body>
+@@include('./include/noscript.html')
+@@include('./include/tags/remPC.html')
+@@include('./include/tags/header.html')
+<div id="wrapperContent"></div>
+
+<!-- footer begin -->
+@@include('./include/tags/footer.html')
+<!-- footer end -->
+<script src="<%= rollupOps.url %>"></script>
+<script>
+    $('.list-item-panel .panel-head').click(function () {
+       $(this).closest('.list-item-panel').toggleClass('current')
+    });
+    $('.page-banner .banner-title-sub').click(function () {
+        document.body.scrollTop = document.documentElement.scrollTop = $('.careers_part3bg')[0].offsetTop;
+    })
+</script>
+</body>
+</html>

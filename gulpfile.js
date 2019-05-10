@@ -40,6 +40,7 @@ const SASS_DIR =   'scss/'; // 样式预处理文件目录
 // 具体项目文件目录
 // var CUR_PATH = 'ID/app/';
 var CUR_PATH = 'ID/';
+//const CUR_PATH = 'ID/public/';
 // var CUR_PATH =   'react-component/APP/GTS2/';
 
 var SRC_DIR = 'src/';     // 源文件目录
@@ -98,7 +99,7 @@ gulp.task('ejs:temple', function(cb) {
         console.log(file);
         console.log("ejs:temple");
         return gulp.src(root_DIR+Temple_DIR+Temple_Name, {base: root_DIR+Temple_DIR})
-            .pipe(ejs({templeOps:{"url":_url.host+":"+_url.port+_url.path+Download_DIR+CUR_PATH+file.replace(root_DIR+Download_DIR+CUR_PATH,''),"title":HTMLNAME}}))
+            .pipe(ejs({templeOps:{"url":_url.host+":"+_url.port+_url.path+file.replace(root_DIR+Download_DIR,''),"title":HTMLNAME}}))
             .pipe(rename({ extname: '.html' }))
             .pipe(gulp.dest(root_DIR+Temple_DIR));
     });
@@ -534,7 +535,7 @@ gulp.task('ejs',function(cb) {
                     arr: ['test1', 'test2']
                 }
             }))
-            .pipe(gulp.dest(root_DIR+Download_DIR));
+            .pipe(gulp.dest(root_DIR));
     })
     cb();
 });

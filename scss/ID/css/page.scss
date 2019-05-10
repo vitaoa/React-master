@@ -842,6 +842,67 @@ $qaColor:#f05825;
   }
 }
 
+/*careers*/
+.careers-page{background: #fafafa;
+  i{@include inline-block;}
+  .part1{
+    p{font-size: 20px;color:#555;padding: 80px 90px;line-height: 1.8;}
+  }
+  .part2{background: #fff;padding-top: 80px;}
+  .list-group{padding-top: 20px;
+    .list-item{@include inline-block;font-size: 20px;color:#222328;margin: 0 30px;
+      p{margin-top: 20px;
+        br{}
+      }
+    }
+  }
+  .part3{padding-top: 80px;}
+  .list-item-panel{color:#222328;font-size: 20px;margin-bottom: 10px;
+    .panel-head{position: relative;cursor: pointer;height:110px;line-height: 110px;display: block;background: #fff;border-radius: 4px;text-align: left;padding: 0 58px;
+      span{color:#9a9a9a;margin-left: 22px;}
+      [class*='i-tri']{position: absolute;top:50%;margin-top:-5px;right:48px;
+        &.i-tri3-d{display: none;}
+      }
+      & + .panel-body{margin-top: 4px;display: none;}
+    }
+    .panel-body{border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;background: #fff;padding: 38px 58px 58px;text-align: left;font-size: 16px;color:#555555;
+      p{margin-bottom: 20px;}
+      .p1{font-size: 20px;color:#222328;padding-top: 20px;}
+      .p2{}
+      .btn-group{padding-top: 40px;
+        & + .p2{margin-top: 40px;}
+      }
+      .panel-btn{display: block;@include size(274px,60px);line-height: 60px;font-size:22px;text-align: center;border-radius: 4px;}
+      .btn-yellow{background: #f05825;color:#fff;}
+      ul{
+        li{margin-bottom: 10px;}
+      }
+    }
+    &.current{
+      .panel-head{border-bottom-left-radius: 0;border-bottom-right-radius: 0;
+        [class*='i-tri']{display: none;
+          &.i-tri3-d{@include inline-block;}
+        }
+        & + .panel-body{display: block;}
+      }
+    }
+  }
+}
+
+.careers_banner{background: url(../images/tengtang/careers_banner.jpg) no-repeat center center;height: 486px;width:100%;
+  &.page-banner{color:#fff;
+    //h1{font-size: 44px;}
+    a{color:#f05825;border-bottom: 1px solid #f05825;}
+  }
+}
+.page-titlebar{font-size: 40px;color:#0e3468;
+  .titlebar-line{
+    h2{font-size: 100%;font-weight: normal;}
+    .title-line-b{@include inline-block;@include size(60px,3px);background: #f05825;margin-top: 15px;}
+  }
+}
+.careers_part3bg{background: url(../images/tengtang/careers_part3bg.png) no-repeat center 80px;width:100%;}
+
 /* ============ Responsive ============ */
 @media(max-width:1160px){
   .blackboard-bg{width:100%;
@@ -1023,7 +1084,6 @@ $qaColor:#f05825;
   .qa-content{padding: 0;margin-top: .98rem;
     .container{padding: 0;width: auto;}
   }
-
   @import "page-mw979";
 }
 
