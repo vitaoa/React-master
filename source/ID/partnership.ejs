@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+    @@include('./include/ftl/head.html', {
+    "title": "Kemitraan - Real Time Pembayaran | Hanson Forex",
+    "keywords": "investasi saham, forex trading",
+    "description": "Hanson Forex menawarkan trading all-in-one yang mencakup forex, emas, perak, minyak dan investasi saham dengan komisi yang sangat kompetitif. Bekerja dengan Hanson Forex, dapatkan penghasilan tambahan tanpa batas selama periode transaksi pelanggan!",
+    "abstract": false
+    })
+    <meta name="author" content="<%= dateYMD.year %>.<%= dateYMD.month %> Designed by Pepe; Coded by Vita">
+    @@include('./include/tags/header_css.html')
+    <link rel='canonical' href='https://www.hsb.co.id/partnership.html' />
+    <link rel="stylesheet" type="text/css" href="/css/page.css" />
+</head>
+<body>
+
+@@include('./include/noscript.html')
+@@include('./include/tags/header.html')
+<div id="wrapperContent"></div>
+<!-- footer begin -->
+@@include('./include/tags/footer.html')
+<!-- footer end -->
+</div>
+<script src="<%= rollupOps.url %>"></script>
+</body>
+</html>
