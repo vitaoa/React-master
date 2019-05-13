@@ -11,7 +11,13 @@
 </head>
 
 <body>
-<div class="wrapper"></div>
-<script src="<%= rollupOps.url %>"></script>
+<div id="wrapperContent"></div>
+
+
+<script src="<%= reactOpts.babelStandaloneUrl %>"></script>
+<script src="<%= reactOpts.reactUrl %>"></script>
+<script src="<%= reactOpts.reactDomUrl %>"></script>
+<script src="<%= rollupOps.url %>" type="text/babel"></script>
+
 </body>
 </html>

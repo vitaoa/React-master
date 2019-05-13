@@ -14,7 +14,7 @@ const rollup = require('rollup');
 const nodeResolve = require('rollup-plugin-node-resolve');
 const commonjs = require('rollup-plugin-commonjs');
 const replace = require('rollup-plugin-replace');
-const env = process.env.NODE_ENV;
+let env = process.env.NODE_ENV;
 const babel = require('rollup-plugin-babel');
 /*html*/
 const ejs  = require('gulp-ejs');
@@ -31,6 +31,7 @@ const spritesmith = require('gulp.spritesmith');
 const vinylBuffer = require("vinyl-buffer");
 const tinypng_nokey = require('gulp-tinypng-nokey');   //压缩图片2 免费 不限制压缩次数，模拟用户上传和下载的行为
 
+
 //---------------------------------------参数声明----------------------------//
 const root_DIR = './';     // 项目根目录
 const source_DIR = 'source/';   // 源文件目录
@@ -38,8 +39,8 @@ const Download_DIR = 'dist/';   // 文件下载保存目录
 const SASS_DIR =   'scss/'; // 样式预处理文件目录
 
 // 具体项目文件目录
-// var CUR_PATH = 'ID/app/';
-var CUR_PATH = 'ID/';
+var CUR_PATH = 'ID/app/';
+// var CUR_PATH = 'ID/';
 //const CUR_PATH = 'ID/public/';
 // var CUR_PATH =   'react-component/APP/GTS2/';
 
@@ -48,9 +49,8 @@ var JSX_DIR = 'jsx/'; // 脚本文件目录
 var IMG_DIR = 'images/'; // 图片文件目录
 // var DIST_DIR = 'dist/';   // 文件处理后存放的目录
 
-
 //---------------------------------------html编译----------------------------//
-const globalHtml =1;
+const globalHtml =0;
 let HTMLNAME = 'index';//页面名称
 if(globalHtml){
     HTMLNAME = '**/*';
@@ -58,7 +58,7 @@ if(globalHtml){
 let HTML_PATH = [];
 let _HTMLpath=[];
 //id 官网
-HTML_PATH = ['ID/snippets/','ID/siapaKami/','ID/marketInsight/quoteHarga','ID/trading/platformHansonTrader','ID/partnership/partnership','ID/edukasi/','ID/deposit/deposit-withdraw','ID/','ID/trading-produk/','ID/forex/','ID/komoditas/','ID/saham/','ID/belajar-forex/','ID/market-insight/','ID/tengtang/'];
+// HTML_PATH = ['ID/snippets/','ID/siapaKami/','ID/marketInsight/quoteHarga','ID/trading/platformHansonTrader','ID/partnership/partnership','ID/edukasi/','ID/deposit/deposit-withdraw','ID/','ID/trading-produk/','ID/forex/','ID/komoditas/','ID/saham/','ID/belajar-forex/','ID/market-insight/','ID/tengtang/'];
 
 if(HTML_PATH.length>0){
     for(let i = 0;i<HTML_PATH.length;i++){
@@ -134,7 +134,7 @@ gulp.task('downloadHtml',gulp.series('clean:downloadHtml',function(cb) {
     }
     else{
         gulp.src(root_DIR+Temple_DIR+Temple_Name, {base: root_DIR+Temple_DIR})
-            .pipe(ejs({templeOps:{"url":_url.host+":"+_url.port+_url.path+source_DIR+CUR_PATH+HTMLNAME+'.html',"title":path.basename(file)}}))
+            .pipe(ejs({templeOps:{"url":_url.host+":"+_url.port+_url.path+source_DIR+CUR_PATH+HTMLNAME+'.html',"title":HTMLNAME}}))
             .pipe(rename({ extname: '.html' }))
             .pipe(gulp.dest(root_DIR+Temple_DIR));
         let _templeSrc = _url.host+":"+_url.port+_url.path+Temple_DIR+Temple_Name.replace('.ejs','.html');
@@ -217,11 +217,11 @@ function mkdirs(dirpath,callback){
 //---------------------------------------html编译----------------------------//
 
 //---------------------------------------scss编译----------------------------//
-const STYLENAME = 'test'; //项目样式名
+const STYLENAME = 'index'; //项目样式名
 let STYLE_PATH = [];
 let _SASSsrc = [];
 let _CSSsrc = [];
-STYLE_PATH = ['ID/css/index'/*,'ID/css/fb'*/,'ID/css/page','ID/css/forex','ID/css/icons','ID/public/css/global'];
+// STYLE_PATH = ['ID/css/index'/*,'ID/css/fb'*/,'ID/css/page','ID/css/forex','ID/css/icons','ID/public/css/global'];
 
 if(STYLE_PATH.length>0){
     for(let i = 0;i<STYLE_PATH.length;i++){
@@ -461,7 +461,7 @@ gulp.task('rollup',function (cb) {
                     preferBuiltins: true
                 }),
                 replace({
-                    'process.env.NODE_ENV': JSON.stringify(env)
+                    'process.env.NODE_ENV': JSON.stringify("production")
                 }),
                 commonjs(),
                 babel({
@@ -541,9 +541,14 @@ gulp.task('ejs',function(cb) {
         } else {
             value = {}
         }
+        let reactOpts = {
+            reactUrl : _url.host+":"+_url.port+_url.path + 'node_modules/react/dist/react.min.js',
+            reactDomUrl : _url.host+":"+_url.port+_url.path + 'node_modules/react-dom/dist/react-dom.min.js',
+            babelStandaloneUrl : _url.host+":"+_url.port+_url.path + 'node_modules/@babel/standalone/babel.min.js',
+        };
         // console.log(value)
         return gulp.src(file, {base: root_DIR+source_DIR})
-            .pipe(ejs({msg:value,dateYMD:{"year":_dateYear,"month":_dateMonth,"day":_dateDay},rollupOps:{"url":_url.host+":"+_url.port+_url.path + Download_DIR + CUR_PATH + 'js/'+path.basename(file).split('.')[0]+'.js',"title":path.basename(file).split('.')[0]},lpNAME:_lpNAME}))
+            .pipe(ejs({msg:value,dateYMD:{"year":_dateYear,"month":_dateMonth,"day":_dateDay},rollupOps:{"url":_url.host+":"+_url.port+_url.path + source_DIR + CUR_PATH + 'jsx/'+path.basename(file).split('.')[0]+'.jsx',"title":path.basename(file).split('.')[0]},reactOpts:reactOpts,lpNAME:_lpNAME}))
             .pipe(rename({ extname: '.html' }))
             .pipe(gulp.dest(root_DIR+Download_DIR))
             .pipe(fileinclude({
@@ -565,8 +570,8 @@ gulp.task('ejs',function(cb) {
 //---------------------------------------ejs原生页面编译----------------------------//
 
 //---------------------------------------开发(没有处理react页面)----------------------------//
-gulp.task('dev',gulp.series('rollup','ejs','css-format',function () {
-    gulp.watch(root_DIR+source_DIR+CUR_PATH + '**/*.jsx', gulp.series('rollup'));
+gulp.task('dev',gulp.series(/*'rollup',*/'ejs','css-format',function () {
+    // gulp.watch(root_DIR+source_DIR+CUR_PATH + '**/*.jsx', gulp.series('rollup'));
     gulp.watch(root_DIR+source_DIR+CUR_PATH + '**/*.ejs', gulp.series('ejs'));
     if(STYLE_PATH.length>0){
         gulp.watch(_SASSsrc, gulp.series('css-format'));

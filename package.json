@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/vitaoa/React-master#readme",
   "dependencies": {
+    "@babel/standalone": "^7.4.4",
     "react": "^15.6.2",
     "react-dom": "^15.6.2"
   },
