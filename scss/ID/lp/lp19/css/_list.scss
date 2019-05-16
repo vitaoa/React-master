@@ -1,0 +1,91 @@
+/* list */
+[class*="list-col-"]{@include clearfix;
+  & > li{float: left;}
+  .list-item{@include inline-block;
+    [class*="i-icon"]{@include inline-block;}
+    .item-txt{
+      .txt-tit{}
+    }
+  }
+  //.list-item{position: relative;top:0;@include prefixer(transition, all 0.15s ease-out 0.05s, $prefixes);
+  //  &:hover{top:-10px;@include prefixer(transition, all 0.15s ease-out 0.05s, $prefixes);}
+  //}
+  .list-item{position:relative;color:#fff;font-size: 20px;max-width: 100%;border-radius: 6px;}
+  //.item-txt{
+  //  p{font-size: 16px;line-height: 20px;color:#555;}
+  //  .txt-tit{font-size: 24px;}
+  //}
+  &.list-col-2{
+    & > li{width:50%;margin-bottom: 38px;}
+  }
+  &.list-col-3{
+    & > li{width: 32%;
+      &:first-child{
+        .list-item{}
+        & + li{margin-left:2%;margin-right: 2%;
+          .list-item{}
+        }
+      }
+    }
+  }
+  &.list-col-4{
+    & > li{width: 25%;
+      .list-item{width:93%;
+        .item-txt{
+          .txt-tit{}
+        }
+      }
+    }
+  }
+}
+
+
+@media(min-width:980px) and (max-width:1279px){
+  //[class*="list-col-"]{
+  //  .theme-c{background-size:100% 560px;}
+  //}
+}
+
+@media(max-width:979px) {
+  //list-tb
+  .list-tb{
+    .list-item{display: table;width:100%;border-collapse: collapse;vertical-align: top;
+      .tb-cell{display: table-cell;vertical-align: middle;}
+    }
+  }
+  [class*="list-col-"]{
+    .list-item{font-size: .2rem;border-radius: .06rem;}
+    //.item-txt{
+    //  p{font-size: .22rem;line-height:.22rem;}
+    //  .txt-tit{font-size: .3rem;}
+    //}
+    &.list-col-2{
+      & > li{width:100%;margin-bottom: .38rem;}
+    }
+    &.list-col-3{
+      & > li{width: 100%;margin-bottom: .2rem;
+        .list-item{/*float: left;*/
+          .item-txt{
+          }
+        }
+        &:first-child{
+          .list-item{}
+          & + li{margin-left:0;margin-right: 0;
+            .list-item{}
+          }
+        }
+      }
+    }
+    &.list-col-4{
+      & > li{width:50%;margin-top: .2rem;
+        &:nth-child(odd){text-align: left;}
+        &:nth-child(even){text-align: right;}
+        .list-item{width:97%;text-align: center;
+          .item-txt{
+          }
+        }
+      }
+    }
+  }
+
+}

@@ -73,17 +73,20 @@
                 }
                 @@if (context.Promosi) {
                 <li>
-                    <span>Promosi</span>
-                    <div class="submenu submenu-products">
-                        <div class="container">
-                            <div class="f-pl">
-                                @@for (var i = 0; i < (context.Promosi.length); i++) {
-                                <div class="submenu-item"><a href="`+context.Promosi[i].url+`">`+context.Promosi[i].text+`</a></div>
-                                }
-                            </div>
-                        </div>
-                    </div>
+                    <a href="@@if(rootUrl){@@rootUrl}promosi.html">Promosi</a>
                 </li>
+                <!--<li>-->
+                    <!--<span>Promosi</span>-->
+                    <!--<div class="submenu submenu-products">-->
+                        <!--<div class="container">-->
+                            <!--<div class="f-pl">-->
+                                <!--@@for (var i = 0; i < (context.Promosi.length); i++) {-->
+                                <!--<div class="submenu-item"><a href="`+context.Promosi[i].url+`">`+context.Promosi[i].text+`</a></div>-->
+                                <!--}-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</li>-->
                 }
                 @@if (context.Siapa) {
                 <li>

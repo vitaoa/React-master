@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+    @@include('./include/ftl/head.html', {
+    "title": "Promosi | Hanson Forex",
+    "keywords": false,
+    "description": false,
+    "abstract": false
+    })
+    <meta name="author" content="<%= dateYMD.year %>.<%= dateYMD.month %> Designed by Pepe; Coded by Vita">
+    @@include('./include/tags/header_css.html')
+    <link rel="stylesheet" type="text/css" href="/css/page.css" />
+</head>
+
+<body>
+@@include('./include/noscript.html')
+@@include('./include/tags/header.html')
+<div id="wrapperContent"></div>
+<!-- footer begin -->
+@@include('./include/tags/footer.html')
+<!-- footer end -->
+</div>
+<script src="<%= reactOpts.babelStandaloneUrl %>"></script>
+<script src="<%= reactOpts.reactUrl %>"></script>
+<script src="<%= reactOpts.reactDomUrl %>"></script>
+<script src="<%= rollupOps.url %>" type="<%= reactOpts.type %>"></script>
+</body>
+</html>

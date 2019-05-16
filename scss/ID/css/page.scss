@@ -896,15 +896,90 @@ $qaColor:#f05825;
   }
 }
 .page-titlebar{font-size: 40px;color:#0e3468;
-  .titlebar-line{
+  & > h2{font-size: 100%;font-weight: normal;}
+  .titlebar-line{font-size: 16px;color:#777;
     h2{font-size: 100%;font-weight: normal;}
     .title-line-b{@include inline-block;@include size(60px,3px);background: #f05825;margin-top: 15px;}
   }
 }
 .careers_part3bg{background: url(../images/tengtang/careers_part3bg.png) no-repeat center 80px;width:100%;}
 
+/*promosi*/
+.promosi-page{
+  .page-titlebar{padding: 85px 0 76px;
+    & > h2{font-weight: bold;text-transform: uppercase;}
+  }
+  .part1{padding-bottom: 132px;
+    .container{width: 1190px;}
+  }
+  .part2-bg{background: url(/images/promosi/part2-bg.jpg) no-repeat center center;padding-bottom: 100px;background-size: cover;}
+  .part3-bg{background: url(/images/partnership/cont-bg-1.jpg) center 0 no-repeat;padding-top: 0;padding-bottom: 0;background-size: cover;}
+  .btn-group{
+    .btn{@include size(300px,58px);line-height: 58px;border-radius: 6px;font-size: 24px;
+      & + .btn{margin-left: 20px;}
+    }
+    .btn-yellow{ background:#ff6100;border-color:#ff6100;}
+    .btn-yellow-default{ border-color:#ff6100;color:#ff6100; }
+  }
+  .advantage-comp{margin-top: 20px;}
+}
+.i-hot-badge{font-size: 30px;text-indent:5px;color:#fff;@include inline-block;text-transform: uppercase;text-align: center;line-height: 140px;font-style: normal;}
+.part-pic-list{
+  .pic-item{display: block;position: relative;
+    & + .pic-item{margin-top: 30px;}
+    .i-hot-badge{position: absolute;bottom:-33px;right:-50px;}
+  }
+}
+.step-block{
+  .step-item{@include inline-block;font-size: 16px;color:#777;position: relative;margin: 0 42px;
+    [class*="block-tit"]{line-height: 50px;font-size: 20px;color:#fff;margin: -25px auto 38px;font-weight: bold;}
+    i{@include inline-block;}
+    .i-step-arrow{position: absolute;left:0;top:50%;margin-top: -42px;margin-left: -60px;}
+    .item-txt{padding: 13px 18px;}
+  }
+  & + .btn-group{margin-top: 64px;}
+}
+.advantage-comp{
+  [class*="-icons-bg"]{@include clearfix;
+    li{position: relative;width: 50%;float: left;font-size: 18px;margin-bottom: 51px;color:#444;text-align: center;}
+    i{@include inline-block;}
+    span{display: block;line-height: 1.3;margin-top: 5px;}
+  }
+}
+.promosi-icons-bg{background: url(/images/promosi/promosi-icons-bg.png) no-repeat center top;padding-bottom: 50px;
+  li{top:12px;
+    &:first-child{left:-80px;
+      & + li{left:73px;
+        & + li{left:-152px;
+          & + li{left:152px;
+            & + li{left:-80px;
+              & + li{left:73px;}
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 /* ============ Responsive ============ */
+@media(max-width:1366px) {
+  .promosi-page{
+    .part1{
+      .container {
+        width: 1135px;
+      }
+    }
+  }
+}
 @media(max-width:1160px){
+  .promosi-page{
+    .part1{
+      .container {
+        width: 900px;
+      }
+    }
+  }
   .blackboard-bg{width:100%;
     .blackboard-tit{font-size: 40px;
       span{font-size: 20px;}
@@ -943,6 +1018,11 @@ $qaColor:#f05825;
     .p2{font-size: 14px;}
     .list-item{height:380px;max-width:278px;
 
+    }
+  }
+  .step-block{
+    .step-item{margin: 0 5px;
+      .i-step-arrow{margin-left: -22px;}
     }
   }
 }

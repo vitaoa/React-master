@@ -1,0 +1,41 @@
+
+/* animation */
+@include generateAnimation(bounceIn,("webkit","moz","ms","o")){
+  0% {opacity: 0;#{prefixerAttr(transform, $current-prefix)}: scale(.3);}
+  50% {opacity: 1;#{prefixerAttr(transform, $current-prefix)}: scale(1.05);}
+  70% {#{prefixerAttr(transform, $current-prefix)}: scale(.9);}
+  100% {#{prefixerAttr(transform, $current-prefix)}: scale(1);}
+}
+@include generateAnimation(fadeIn,("webkit","moz","ms","o")){
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+@include generateAnimation(AnimUp,("webkit","moz","ms","o")){
+  0% {#{prefixerAttr(transform, $current-prefix)}: translate3d(0, 50%, 0);}
+  100% {#{prefixerAttr(transform, $current-prefix)}: none;}
+}
+@include generateAnimation(fadeInDown,("webkit","moz","ms","o")){
+  0% {opacity: 0;#{prefixerAttr(transform, $current-prefix)}: translate3d(0, -50%, 0);}
+  100% {opacity: 1;#{prefixerAttr(transform, $current-prefix)}: none;}
+}
+@include generateAnimation(fadeInUp,("webkit","moz","ms","o")){
+  0% {opacity: 0;#{prefixerAttr(transform, $current-prefix)}: translate3d(0, 50%, 0);}
+  100% {opacity: 1;#{prefixerAttr(transform, $current-prefix)}: none;}
+}
+@include generateAnimation(fadeInRight,("webkit","moz","ms","o")){
+  0% {opacity: 0;#{prefixerAttr(transform, $current-prefix)}: translate3d(50%, 0, 0);}
+  100% {opacity: 1;#{prefixerAttr(transform, $current-prefix)}: none;}
+}
+@include generateAnimation(fadeInLeft,("webkit","moz","ms","o")){
+  0% {opacity: 0;#{prefixerAttr(transform, $current-prefix)}: translate3d(-50%, 0, 0);}
+  100% {opacity: 1;#{prefixerAttr(transform, $current-prefix)}: none;}
+}
+@include generateAnimation(progressBar,("webkit","moz","ms","o")){
+  0% {width: 0}
+  100% {width: 100%}
+}
+
+.animated {
+  @include prefixer(animation-duration, 1s, ("webkit", "moz","ms","o"));
+  @include prefixer(animation-fill-mode, both, ("webkit", "moz","ms","o"));
+}

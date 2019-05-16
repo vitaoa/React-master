@@ -1,0 +1,52 @@
+
+.deposit-lot-list{padding-top: 112px;padding-bottom: 62px;margin: 0 -30px;
+  .item-top{padding-top: 55px;margin-bottom: 7px;font-size: 36px;color: #b18c3c;@include linear-gradient-webkittxt((#ffea97,#b18c3c));
+  }
+  .item-badge{font-size: 25px;
+    .badge-txt{color: #f5e7c2;text-transform: uppercase;text-shadow: 0px 29px 95px rgba(0, 0, 0, 0.07);
+      @include linear-gradient-webkittxt((#fce6b7,#fce6b7 50%,#a88655));}
+  }
+  .item-body{padding-top: 25px;padding-bottom: 13px;
+    /*line-height:24px;font-size: 60px;line-height:60px;margin-top: 7px;*/
+    //.txt-num{@include inline-block;position: relative;margin-bottom: 15px;text-shadow: 0px 3px 7.92px rgba(36, 49, 110, 0.19);
+    //  i{@include prefixer(transform,scale(.88),$prefixes);}
+    //}
+  }
+  div[class*="block-bg-"]{@include inline-block;position: relative;margin: 0 18px;
+    &.block-bg-b{
+      & + .block-bg-s{float: left;left: 8px;}
+    }
+  }
+  .block-bg-s{top:38px;
+    .item-top{font-size: 31px;padding-top:42px;}
+    .item-body{padding-top: 24px;}
+    .item-badge{font-size: 20px;}
+    [class*="block-bg-dec"]{display: none;}
+  }
+  [class*="block-bg-dec"]{position: absolute;}
+  .block-bg-dec1{top:-80px;right:-22px;}
+  .block-bg-dec2{bottom:-10px;left:-28px;}
+}
+
+@media(max-width:979px) {
+  .deposit-lot-list{padding-top: 1.16rem;padding-bottom: .44rem;margin: 0 -.2rem;
+    .item-top{padding-top: .46rem;margin-bottom: .07rem;font-size: .3rem;}
+    .item-badge{font-size: .24rem;
+      .badge-txt{text-shadow: 0 .29rem .95rem rgba(0, 0, 0, 0.07);}
+    }
+    .item-body{padding-top: .19rem;padding-bottom: .03rem;}
+    div[class*="block-bg-"]{margin: 0 .22rem;
+      &.block-bg-b{display: block;margin: 0 auto;
+        & + .block-bg-s{float: none;left: 0;}
+      }
+      &.block-bg-s{margin-top:.38rem;}
+    }
+    .block-bg-s{top:0;overflow: hidden;
+      .item-top{font-size: .3rem;padding-top:.39rem;}
+      .item-body{padding-top: .22rem;padding-bottom: .15rem;}
+      .item-badge{font-size: .22rem;}
+    }
+    .block-bg-dec1{top:-.62rem;right:-.19rem;}
+    .block-bg-dec2{bottom:-.08rem;left:-.21rem;}
+  }
+}

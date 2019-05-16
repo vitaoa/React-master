@@ -1,0 +1,71 @@
+
+.deposit-get-list{padding-top: 72px;padding-bottom: 30px;margin: 0 -90px;
+  li{@include inline-block;
+    &:first-child{
+      & + li{float: left;
+        .block-bg2-s{left: 44px;}
+      }
+    }
+  }
+  .item-top{padding-top: 65px;margin-bottom: 7px;font-size: 32px;color: #6c573e;
+  }
+  .item-badge{font-size: 27px;position: relative;
+    b{font-weight: normal;}
+    [class$="line"]{position: absolute;top:50%;left:50%;
+      &.block-bg2-sline{margin-left: -87px;margin-top: -3px;}
+      &.block-bg2-bline{margin-left: -110px;margin-top: -4px;}
+    }
+    .badge-txt{color: #d44d3e;}
+  }
+  .item-body{padding-bottom: 13px;font-size: 72px;color:#d44d3e;
+    .txt-num{@include inline-block;position: relative;margin-bottom: 15px;
+      i{/*@include prefixer(transform,scale(.4),$prefixes);*/font-size:26px;vertical-align: middle;}
+    }
+  }
+  div[class*="block-bg2-"]{@include inline-block;vertical-align: middle;position: relative;margin: 0 40px;}
+  .block-bg2-s{top:30px;
+    .item-top{font-size: 25px;padding-top:56px;}
+    .item-body{font-size: 56px;}
+    .item-badge{font-size: 22px;}
+  }
+}
+
+@media(max-width:979px) {
+  .deposit-get-list{padding-top: .5rem;padding-bottom:0;margin: 0;
+    li{/*@include inline-block;*/
+      &:first-child{
+        & + li{/*float: left;*/
+          .block-bg2-s{left: .1rem;}
+        }
+      }
+    }
+    .item-top{padding-top: .69rem;margin-bottom: .07rem;font-size: .31rem;
+    }
+    .item-badge{font-size: .27rem;/*position: relative;*/
+      //b{font-weight: normal;}
+      [class$="line"]{/*position: absolute;top:50%;left:50%;*/
+        &.block-bg2-sline{margin-left: -.8rem;margin-top: -.03rem;}
+        &.block-bg2-bline{margin-left: -1.1rem;margin-top: -.04rem;}
+      }
+      .badge-txt{color: #d44d3e;}
+    }
+    .item-body{padding-bottom: .13rem;font-size: .72rem;
+      .txt-num{/*@include inline-block;position: relative;*/margin-bottom: .15rem;
+        i{/*@include prefixer(transform,scale(.4),$prefixes);*/font-size:.26rem;/*vertical-align: middle;*/}
+      }
+    }
+    div[class*="block-bg2-"]{/*@include inline-block;vertical-align: middle;position: relative;*/margin: 0;
+      &.block-bg2-s{margin: 0 -.36rem;}
+    }
+    .block-bg2-s{top:.8rem;
+      .item-top{font-size: .24rem;padding-top:.5rem;margin-bottom: .02rem;}
+      .item-body{font-size: .52rem;
+        .txt-num{
+          i{font-size: .2rem;}
+        }
+      }
+      .item-badge{font-size: .23rem;}
+    }
+  }
+
+}

@@ -1,0 +1,25 @@
+/* images */
+.banner{@include background(100%,988px,"../images/banner.jpg",center top);background-color: #0f1922;}
+.part1-bg{@include background(100%,1068px,"../images/part1-bg.jpg",center top);background-color: #0c1319;}
+.part2-bg{@include background(100%,806px,"../images/part2-bg.jpg",center top);}
+.part3-bg{@include background(100%,825px,"../images/part3-bg.jpg",center top);}
+.part5-bg{@include background(100%,804px,"../images/part5-bg.jpg",center top);}
+.part6-bg{@include background(100%,auto,"../images/part6-bg.jpg",center top);}
+
+
+@media(min-width:980px) and (max-width:1279px){
+  //.data-chart{background-size: 94% auto;}
+}
+
+@media(max-width:979px) {
+  .banner{@include background-responsive(100%,22.52rem,"../images/banner-m.jpg",center bottom);background-color: #0f1922;
+    &.banner-app{@include background-responsive(100%,16.22rem,"../images/banner-app.jpg",center bottom);background-color: #0f1922;}
+  }
+  .part1-bg{@include background-responsive(100%,14.68rem,"../images/part1-bg-m.jpg",center top);background-size: auto 14.7rem;
+    &.part1-bg-app{@include background-responsive(100%,14.24rem,"../images/part1-bg-app.jpg",center top);background-size: auto 16.24rem;}
+  }
+  .part2-bg{@include background-responsive(100%,7.82rem,"../images/part2-bg-m.jpg",center top);}
+  .part3-bg{@include background-responsive(100%,11.56rem,"../images/part3-bg-m.jpg",center top);}
+  .part5-bg{@include background-responsive(100%,13.55rem,"../images/part5-bg-m.jpg",center top);}
+  .part6-bg{@include background-responsive(100%,16.77rem,"../images/part6-bg-m.jpg",center top);background-size: cover}
+}
