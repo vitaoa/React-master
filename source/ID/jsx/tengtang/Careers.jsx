@@ -58,7 +58,6 @@ const ListGroup1 = React.createClass({
 });
 
 function ListGroup2(props) {
-    console.log(props.props)
     return (
         <div className="list-group al-c">
             {props.props.map((post) =>
@@ -72,7 +71,7 @@ function ListGroup2(props) {
                         {post.panelbody.other ? <div dangerouslySetInnerHTML={{__html: post.panelbody.other}} className="p-other"></div>:''}
                         <div dangerouslySetInnerHTML={{__html: post.panelbody.description}} className="p-description"></div>
                         <div dangerouslySetInnerHTML={{__html: post.panelbody.requirement}} className="p-requirement"></div>
-                        <div dangerouslySetInnerHTML={{__html: post.panelbody.btn}} className="btn-group"></div>
+                        {post.panelbody.btn ? <div dangerouslySetInnerHTML={{__html: post.panelbody.btn}} className="btn-group"></div>:''}
                         {post.panelbody.p2 ? <div dangerouslySetInnerHTML={{__html: post.panelbody.p2}} className="p2"></div>:''}
                     </div>
                 </div>
@@ -106,7 +105,7 @@ const data2 = [
         '<li>Good communication skills both written and oral in English.</li>' +
         '<li>Good understanding of relevant regulatory policies and procedures</li>' +
         '</ul>',
-        btn:'<a href="javascript://" onclick="openLiveChat();" class="panel-btn btn-yellow online_service">Countact Us</a>'
+        p2:'<p>If you are interested in working with us, please send your CV to <span class="mail-txt">hr@hsb.co.id </a></p>',
     }},
     {id: 2, panelhead: 'Customer Service', panelbody: {
         description:'<p class="p1">Job Description</p>'+
@@ -139,7 +138,7 @@ const data2 = [
         '<li>Native in Bahasa, good communication skills both written and oral in English</li>' +
         '<li>Good understanding of relevant regulatory policies and procedures</li>'+
         '</ul>',
-        btn:'<a href="javascript://" onclick="openLiveChat();" class="panel-btn btn-yellow online_service">Countact Us</a>'
+        p2:'<p>If you are interested in working with us, please send your CV to <span class="mail-txt">hr@hsb.co.id </a></p>',
     }},
     {id: 3, panelhead: 'Business Development Assistant Manager', panelbody: {
         description:'<p class="p1">Job Description</p>'+
@@ -160,7 +159,7 @@ const data2 = [
         '<li>Able to operate Microsoft Office</li>' +
         '<li>SMU degree or equivalent</li>' +
         '</ul>',
-        btn:'<a href="javascript://" onclick="openLiveChat();" class="panel-btn btn-yellow online_service">Countact Us</a>'
+        p2:'<p>If you are interested in working with us, please send your CV to <span class="mail-txt">hr@hsb.co.id </a></p>',
     }},
     {id: 4, panelhead: 'Penerjemah Mandarin', panelbody: {
         description:'<p class="p1">Job Description</p>'+
@@ -177,9 +176,9 @@ const data2 = [
         '<li>Translate communication between local staff and overseas executives</li>' +
         '<li>Support upper management in day to day task</li>' +
         '</ul>',
-        btn:'<a href="javascript://" onclick="openLiveChat();" class="panel-btn btn-yellow online_service">Countact Us</a>'
+        p2:'<p>If you are interested in working with us, please send your CV to <span class="mail-txt">hr@hsb.co.id </a></p>',
     }},
-    {id: 5, panelhead: 'Public Relations', panelbody: {
+    {id: 5, panelhead: 'Public Relations officer', panelbody: {
         description:'<p class="p1">Qualification</p>'+
         '<ul>' +
         '<li>Female</li>' +
@@ -195,8 +194,7 @@ const data2 = [
         '<li>Basic salary</li>' +
         '<li>Incentive and Bonus</li>' +
         '</ul>',
-        p2:'<p>Interested candidates may send CV to buddyprakoso9@gmail.com</p>',
-        btn:'<a href="javascript://" onclick="openLiveChat();" class="panel-btn btn-yellow online_service">Countact Us</a>'
+        p2:'<p>Interested candidates may send CV to <span class="mail-txt">buddyprakoso9@gmail.com</span></p>'
     }}
 ];
 function Part3() {

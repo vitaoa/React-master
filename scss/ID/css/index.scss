@@ -4,8 +4,8 @@ $prefixes:('webkit','moz','ms','o');
 @import "../../mixins/library";
 @import "../../mixins/keyframes/keyframes";
 /* ============ Reset ============ */
-//@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
-//@import url(http://fonts.googleapis.com/css?family=Lato);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+@import url(http://fonts.googleapis.com/css?family=Lato);
 body { font-family: 'Open Sans', sans-serif;  font-size: 14px;color: #333; }
 *{  margin: 0;  padding: 0;  }
 li{  list-style-type: none;  }
@@ -232,7 +232,7 @@ a:active,a:focus { outline: none;}
       }
     }
   }
-  .btn{text-align: right;border-radius: 6px;@include size(540px,60px);line-height: 60px;font-size: 18px;@include box-sizing(content-box);@include inline-block;padding: 0 2%;
+  .btn{text-align: right;border-radius: 6px;@include size(540px,60px);line-height: 60px;font-size: 16px;@include box-sizing(content-box);@include inline-block;padding: 0 2%;
 
     span{font-size: 20px;color:#fff;}
     a{display: block;
@@ -243,7 +243,9 @@ a:active,a:focus { outline: none;}
     a{color:#f8d9be;}
     &:hover{background: #ed8b33;}
   }
-  .btn-blue{background: #436bdc;padding-right: 1%;
+  .btn-blue{background: #436bdc;/*padding-right: 1%;*/color:#84a3f9;
+    a{color:#84a3f9;}
+    .i-arrow-r{background-position:0px -24px;}
     &:hover{background: #4a71df;}
   }
   .a-link{@include size(124px,38px);margin-left:10px;line-height:38px;border-radius:6px;font-size: 15px;color:#fff;border:1px solid #678bf2;text-align: center;

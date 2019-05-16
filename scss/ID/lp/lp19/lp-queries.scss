@@ -1,0 +1,32 @@
+
+///*:::PRIMARY:::*//* Portrait tablet to landscape and desktop 
+//------------------------------------------------------*/
+
+@media(min-width:980px) and (max-width:1279px){
+    .w-part{width:950px;
+        &.plrc{width:950px;@include box-sizing(border-box);}
+    }
+    .deposit-lot-list{
+        div[class*="block-bg-"]{margin: 0 6px;}
+    }
+    .deposit-get-list{
+        div[class*="block-bg2-"]{margin: 0 30px;}
+    }
+    .part3-bg{background-size: cover;height:auto;}
+    .certificate-block ul{margin-right: 0;}
+    .certificate-block li:first-child{margin-left: 0;margin-right: 0;}
+    .certificate-block li + li{margin-left: 10px;}
+    .certificate-block li p{font-size: 10px;}
+    .certificate-block li img{width:120px;}
+    .icon-txt-group{margin: 0;
+        .icon-txt-item{margin:0 22px 88px;}
+    }
+    .banner_form_fixed.banner_bottom .form-listbox.getcode-listbox{margin-right: 26px;}
+}
+
+
+@media(min-width:1921px) {
+    .banner{
+        &.fixed-banner{width:1920px;left: 50%;margin-left: -960px;overflow: hidden;}
+    }
+}

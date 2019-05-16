@@ -1,0 +1,35 @@
+.pic-txt-block{padding: 42px;margin: 52px -42px 0;@include clearfix;font-size: 16px;color:#555;
+  .picture-person{float: left;margin-right: 48px;border-radius: $radius;}
+  .badge-txt-group{padding-bottom: 20px;padding-top: 8px;}
+}
+.txt-list{
+  li{margin-top: 5px;position: relative;line-height: 22px;
+    .i-disc{position: absolute;top:9px;left:-10px;}
+  }
+}
+
+.badge-txt-group{font-size: 20px;color:#fff;
+  .badge-txt-item{@include inline-block;position: relative;padding:0 15px 0 12px;line-height: 31px;height:31px;border-top-right-radius: $radius;border-bottom-right-radius: $radius;background: $c-default-bg;margin-left: 5px;
+    .i-badge-left{position: absolute;left:-20px;top:0;}
+    & + .badge-txt-item{margin-left: 35px;}
+  }
+}
+
+@media(max-width:979px) {
+  .pic-txt-block{padding: .3rem;font-size: .2rem;margin: .3rem 0 0;
+    .picture-person{float: none;margin-right: 0;border-radius: .04rem;}
+    .badge-txt-group{padding-bottom: .12rem;padding-top: .3rem;}
+  }
+  .txt-list{
+    li{margin-top: .15rem;line-height: .22rem;
+      .i-disc{top:.08rem;left:-.13rem;}
+    }
+  }
+
+  .badge-txt-group{font-size:.24rem;
+    .badge-txt-item{padding:0 .15rem 0 .12rem;line-height: .36rem;height:.36rem;border-top-right-radius: .04rem;border-bottom-right-radius: .04rem;margin-left: .05rem;
+      .i-badge-left{left:-.2rem;}
+      & + .badge-txt-item{margin-left: .35rem;}
+    }
+  }
+}

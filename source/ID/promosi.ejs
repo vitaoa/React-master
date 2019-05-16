@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
     @@include('./include/ftl/head.html', {
-    "title": "Careers | Hanson Forex",
+    "title": "Promosi | Hanson Forex",
     "keywords": false,
     "description": false,
     "abstract": false
@@ -16,19 +16,10 @@
 @@include('./include/noscript.html')
 @@include('./include/tags/header.html')
 <div id="wrapperContent"></div>
-
 <!-- footer begin -->
 @@include('./include/tags/footer.html')
 <!-- footer end -->
 </div>
-<script type="text/javascript">
-    $('body').on('click','.list-item-panel .panel-head',function () {
-        $(this).closest('.list-item-panel').toggleClass('current')
-    });
-    $('body').on('click','.page-banner .banner-title-sub',function () {
-        document.body.scrollTop = document.documentElement.scrollTop = $('.careers_part3bg')[0].offsetTop;
-    })
-</script>
 <script src="<%= reactOpts.babelStandaloneUrl %>"></script>
 <script src="<%= reactOpts.reactUrl %>"></script>
 <script src="<%= reactOpts.reactDomUrl %>"></script>

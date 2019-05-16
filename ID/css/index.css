@@ -1,5 +1,7 @@
 
 /*  ============ Reset ============  */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+@import url(http://fonts.googleapis.com/css?family=Lato);
 body{ font-family:'Open Sans', sans-serif;font-size:14px;color:#333; }
 *{ margin:0;padding:0; }
 li{ list-style-type:none; }
@@ -188,14 +190,16 @@ a:active,a:focus{ outline:none; }
 .opgroup-btns .link-group.group-two .btn{ width:45.6%;-webkit-transition:all 0.3s cubic-bezier(0.35, 0.21, 0.4, 1.13);-moz-transition:all 0.3s cubic-bezier(0.35, 0.21, 0.4, 1.13);-ms-transition:all 0.3s cubic-bezier(0.35, 0.21, 0.4, 1.13);-o-transition:all 0.3s cubic-bezier(0.35, 0.21, 0.4, 1.13);transition:all 0.3s cubic-bezier(0.35, 0.21, 0.4, 1.13); }
 .opgroup-btns .link-group.group-two .btn:hover [class*="i-btn-0"]{ opacity:0;width:0;margin-right:0; }
 .opgroup-btns .link-group.group-two .btn:hover .i-arrow-r{ opacity:0;width:0;margin-left:0; }
-.opgroup-btns .btn{ text-align:right;border-radius:6px;width:540px;height:60px;line-height:60px;font-size:18px;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;display:inline-block;vertical-align:top;*display:inline;*zoom:1;padding:0 2%; }
+.opgroup-btns .btn{ text-align:right;border-radius:6px;width:540px;height:60px;line-height:60px;font-size:16px;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;display:inline-block;vertical-align:top;*display:inline;*zoom:1;padding:0 2%; }
 .opgroup-btns .btn span{ font-size:20px;color:#fff; }
 .opgroup-btns .btn a{ display:block; }
 .opgroup-btns .btn a.a-link{ display:inline-block;vertical-align:top;*display:inline;*zoom:1;margin-top:11px;*margin-top:0; }
 .opgroup-btns .btn-yellow{ background:#e77f22;color:#f8d9be; }
 .opgroup-btns .btn-yellow a{ color:#f8d9be; }
 .opgroup-btns .btn-yellow:hover{ background:#ed8b33; }
-.opgroup-btns .btn-blue{ background:#436bdc;padding-right:1%; }
+.opgroup-btns .btn-blue{ background:#436bdc;color:#84a3f9; }
+.opgroup-btns .btn-blue a{ color:#84a3f9; }
+.opgroup-btns .btn-blue .i-arrow-r{ background-position:0px -24px; }
 .opgroup-btns .btn-blue:hover{ background:#4a71df; }
 .opgroup-btns .a-link{ width:124px;height:38px;margin-left:10px;line-height:38px;border-radius:6px;font-size:15px;color:#fff;border:1px solid #678bf2;text-align:center; }
 .opgroup-btns .a-link [class*="i-btn-"]{ margin-top:7px;*margin-top:-2px;margin-right:6px; }

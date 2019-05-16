@@ -346,8 +346,60 @@
   }
 }
 .page-titlebar{font-size: .4rem;
-  .titlebar-line{
+  .titlebar-line{font-size: .2rem;
     .title-line-b{@include size(.6rem,.03rem);margin-top: .15rem;}
   }
 }
 .careers_part3bg{background-size: 100% auto;background-position: center .8rem;}
+
+/*promosi*/
+.promosi-page{
+  .page-titlebar{padding: .85rem 0 .4rem;
+  }
+  .part1{padding-bottom: 1.32rem;
+    .container{width: 7.5rem;}
+  }
+  .part2-bg{padding-bottom: 1rem;}
+  .btn-group{
+    .btn{@include size(3rem,.68rem);line-height: .68rem;border-radius: .06rem;font-size: .26rem;
+      & + .btn{margin-left: .2rem;}
+    }
+  }
+  .advantage-comp{margin-top: .2rem;}
+}
+.i-hot-badge{font-size: .3rem;text-indent:.05rem;line-height: 1.4rem;}
+.part-pic-list{
+  .pic-item{
+    & + .pic-item{margin-top: .3rem;}
+    .i-hot-badge{bottom:-.3rem;right:-.3rem;}
+  }
+}
+.step-block{margin: 0 -.3rem;
+  .step-item{font-size: .16rem;margin: -.2rem;@include prefixer(transform,scale(.9),$prefixes);
+    [class*="block-tit"]{line-height: .5rem;font-size: .24rem;margin: -.25rem auto .38rem;}
+    .i-step-arrow{margin-top: -.42rem;margin-left: -.6rem;display: none;}
+    .item-txt{padding: .13rem .18rem;}
+  }
+  & + .btn-group{margin-top: .64rem;}
+}
+.advantage-comp{
+  [class*="-icons-bg"]{
+    li{font-size: .2rem;margin-bottom: .1rem;}
+    span{margin-top: .05rem;}
+  }
+}
+.promosi-icons-bg{padding-bottom: .3rem;background-size: 6rem auto;
+  li{top:0;
+    &:first-child{left:-.7rem;
+      & + li{left:.63rem;
+        & + li{left:-1.02rem;
+          & + li{left:1.02rem;
+            & + li{left:-.7rem;
+              & + li{left:.63rem;}
+            }
+          }
+        }
+      }
+    }
+  }
+}
