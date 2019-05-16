@@ -21,6 +21,9 @@
 @@include('./include/tags/footer.html')
 <!-- footer end -->
 </div>
-<script src="<%= rollupOps.url %>"></script>
+<script src="<%= reactOpts.babelStandaloneUrl %>"></script>
+<script src="<%= reactOpts.reactUrl %>"></script>
+<script src="<%= reactOpts.reactDomUrl %>"></script>
+<script src="<%= rollupOps.url %>" type="<%= reactOpts.type %>"></script>
 </body>
 </html>

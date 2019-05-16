@@ -26,7 +26,9 @@
         save_link.dispatchEvent(ev);
     }
     window.onload=function () {
-        export_raw(NAME, document.getElementById('_SAVEASIMAGE_TEMP_FRAME').contentWindow.document.getElementsByTagName('html')[0].outerHTML);
+        setTimeout(function(){
+            export_raw(NAME, document.getElementById('_SAVEASIMAGE_TEMP_FRAME').contentWindow.document.getElementsByTagName('html')[0].outerHTML);
+        },3000);
     }
 </script>
 </html>

@@ -21,7 +21,10 @@
 @@include('./include/tags/footer.html')
 <!-- footer end -->
 </div>
-<script src="<%= rollupOps.url %>"></script>
+<script src="<%= reactOpts.babelStandaloneUrl %>"></script>
+<script src="<%= reactOpts.reactUrl %>"></script>
+<script src="<%= reactOpts.reactDomUrl %>"></script>
+<script src="<%= rollupOps.url %>" type="<%= reactOpts.type %>"></script>
 <script>
     $('.list-item-panel .panel-head').click(function () {
        $(this).closest('.list-item-panel').toggleClass('current')
