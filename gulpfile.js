@@ -1,6 +1,8 @@
 
 var gulp = require('gulp');
 var rename = require('gulp-rename');
+const changed = require('gulp-changed');
+const debug = require('gulp-debug');
 
 /*css*/
 const sass = require('gulp-sass');
@@ -25,6 +27,10 @@ const tinypng_nokey = require('gulp-tinypng-nokey');   //压缩图片2 免费 �
 /*babel*/
 const gulpbabel = require("gulp-babel");
 let env = process.env.NODE_ENV;
+
+/*文件监控*/
+const gulpWatch = require('gulp-watch');
+
 //---------------------------------------参数声明----------------------------//
 const root_DIR = './';     // 项目根目录
 const source_DIR = 'source/';   // 源文件目录
@@ -50,29 +56,41 @@ let _url = {
 };
 
 const global =1;
-let FILENAME = 'promosi';//名称
+let FILENAME = 'partnership';//名称
 if(global){
     FILENAME = '**/*';
 }
+
 
 //---------------------------------------scss编译----------------------------//
 let scssLists = getFiles(root_DIR+SASS_DIR + CUR_PATH+FILENAME+'.*',[],'.scss');
 let cssLists= matchResult(scssLists,['sp-','-mw979.','/_'],[]);
 
 // base64
-gulp.task('picbase64:sass',function () {
-    return gulp.src(cssLists, {base: root_DIR+SASS_DIR})
-        .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
-        .pipe(gulp.dest(root_DIR))
-        .pipe(base64({
-            extensions: ['png','svg',/\.jpg#datauri$/i],
-            include:    ['/base64/'],
-            maxImageSize:100*1024, // bytes
-            debug: false
-        }))
-        .pipe(gulp.dest(root_DIR))
-        .pipe(cssFormat({tab:4,indent: 1, hasSpace: false}))
-        .pipe(gulp.dest(root_DIR));
+gulp.task('picbase64:sass',function (cb) {
+    glob.sync(root_DIR+SASS_DIR + CUR_PATH+'**/*.scss').filter(function (file) {
+        let endsWith = '.scss';
+        let match =false;
+        ['sp-','-mw979.','/_'].forEach(function (val) {
+            match=(file.indexOf(val)!=-1 || match)?true:false;
+        });
+        return !match && file.indexOf('css/')!=-1 && ((CUR_PATH.indexOf('app/')===-1 || CUR_PATH.indexOf('lp/')===-1) ? file.endsWith(endsWith) && file.indexOf('include/')===-1 && file.indexOf('app/')===-1 && file.indexOf('lp/')===-1:file.endsWith(endsWith) && file.indexOf('include/')===-1);
+    }).forEach(function (file,r) {
+        console.log("===========scss "+r+": "+file);
+        return gulp.src(file, {base: root_DIR+SASS_DIR})
+            .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
+            .pipe(gulp.dest(root_DIR))
+            .pipe(base64({
+                extensions: ['png','svg',/\.jpg#datauri$/i],
+                include:    ['/base64/'],
+                maxImageSize:100*1024, // bytes
+                debug: false
+            }))
+            .pipe(gulp.dest(root_DIR))
+            .pipe(cssFormat({tab:4,indent: 1, hasSpace: false}))
+            .pipe(gulp.dest(root_DIR));
+    })
+    cb();
 });
 //---------------------------------------scss编译----------------------------//
 
@@ -85,61 +103,63 @@ const _dateYear = _date.split('-')[0];
 const _dateMonth = _date.split('-')[1];
 const _dateDay = _date.split('-')[2];
 const cfg = require(root_DIR+source_DIR + 'datas/config.json');
-let ejsLists = getFiles(root_DIR+source_DIR + CUR_PATH+FILENAME+'.*',[],'.ejs');
-gulp.task('ejs',gulp.series('picbase64:sass',function(cb) {
-    for (var r = 0; r < ejsLists.length; r++) {
-        (function (r,file) {
-            console.log("===========ejs "+r+": "+file);
-            let _lpNAME;
-            if(file.indexOf('/lp/')!=-1){
-                _lpNAME = file.split('/lp/')[1].split('/')[0];
-            }
-            let reactOpts = {
-                reactUrl : _url.host+":"+_url.port+_url.path + 'node_modules/react/dist/react.js',
-                reactDomUrl : _url.host+":"+_url.port+_url.path + 'node_modules/react-dom/dist/react-dom.js',
-                babelStandaloneUrl : _url.host+":"+_url.port+_url.path + 'node_modules/@babel/standalone/babel.js',
-                type:"text/babel",
-                jsxUrl: CUR_PATH.replace('ID/','/') + 'dist/'+JSX_DIR+file.replace(root_DIR+ source_DIR + CUR_PATH,'').replace('.ejs','.jsx')
+gulp.task('ejs',function(cb) {
+    glob.sync(root_DIR+source_DIR + CUR_PATH+'**/*.ejs').filter(function (file) {
+        let endsWith = '.ejs';
+        return (CUR_PATH.indexOf('app/')===-1 || CUR_PATH.indexOf('lp/')===-1) ? file.endsWith(endsWith) && file.indexOf('include/')===-1 && file.indexOf('app/')===-1 && file.indexOf('lp/')===-1:file.endsWith(endsWith) && file.indexOf('include/')===-1;
+    }).forEach(function (file,r) {
+        console.log("===========ejs "+r+": "+file);
+        let _lpNAME;
+        if(file.indexOf('/lp/')!=-1){
+            _lpNAME = file.split('/lp/')[1].split('/')[0];
+        }
+        let reactOpts = {
+            reactUrl : _url.host+":"+_url.port+_url.path + 'node_modules/react/dist/react.js',
+            reactDomUrl : _url.host+":"+_url.port+_url.path + 'node_modules/react-dom/dist/react-dom.js',
+            babelStandaloneUrl : _url.host+":"+_url.port+_url.path + 'node_modules/@babel/standalone/babel.js',
+            type:"text/babel",
+            jsxUrl: JSX_DIR+file.replace(root_DIR+ source_DIR + CUR_PATH,'').replace('.ejs','.jsx')
+        };
+        let destDir = env ==='production'?(root_DIR+Download_DIR+CUR_PATH):(root_DIR+CUR_PATH+'dist/');
+        // console.log(destDir)
+        if(env ==='production'){//打包
+            reactOpts = {
+                reactUrl : _url.host+":"+_url.port+_url.path + 'node_modules/react/dist/react.min.js',
+                reactDomUrl : _url.host+":"+_url.port+_url.path + 'node_modules/react-dom/dist/react-dom.min.js',
+                babelStandaloneUrl : _url.host+":"+_url.port+_url.path + 'node_modules/@babel/standalone/babel.min.js',
+                type:"text/javascript",
+                jsxUrl: _url.host+":"+_url.port+_url.path + Download_DIR + CUR_PATH + 'js/'+file.replace(root_DIR+ source_DIR + CUR_PATH,'').replace('.ejs','.js')
             };
-            if(env ==='production'){//打包
-                reactOpts = {
-                    reactUrl : _url.host+":"+_url.port+_url.path + 'node_modules/react/dist/react.min.js',
-                    reactDomUrl : _url.host+":"+_url.port+_url.path + 'node_modules/react-dom/dist/react-dom.min.js',
-                    babelStandaloneUrl : _url.host+":"+_url.port+_url.path + 'node_modules/@babel/standalone/babel.min.js',
-                    type:"text/javascript",
-                    jsxUrl: _url.host+":"+_url.port+_url.path + Download_DIR + CUR_PATH + 'js/'+file.replace(root_DIR+ source_DIR + CUR_PATH,'').replace('.ejs','.js')
-                };
-            }
+        }
 
-            let name;
-            name = file.replace(root_DIR+source_DIR,'').split('/')[0];
-            let value;
-            if(cfg.hasOwnProperty(name)){//cfg 为 存放数据的配置文件
-                value = cfg[name];
-            } else {
-                value = {}
-            }
-            // console.log(value)
+        let name;
+        name = file.replace(root_DIR+source_DIR,'').split('/')[0];
+        let value;
+        if(cfg.hasOwnProperty(name)){//cfg 为 存放数据的配置文件
+            value = cfg[name];
+        } else {
+            value = {}
+        }
+        // console.log(value)
 
-            return gulp.src(file, {base: root_DIR+source_DIR})
-                .pipe(ejs({msg:value,dateYMD:{"year":_dateYear,"month":_dateMonth,"day":_dateDay},rollupOps:{"url":reactOpts.jsxUrl,"title":path.basename(file).split('.')[0]},reactOpts:reactOpts,lpNAME:_lpNAME}))
-                .pipe(rename({ extname: '.html' }))
-                .pipe(gulp.dest(root_DIR+Download_DIR))
-                .pipe(fileinclude({
-                    prefix: '@@',
-                    basepath: root_DIR+source_DIR+CUR_PATH,
-                    indent:true,
-                    context: {
-                        rootUrl:'/',
-                        timestamp:[new Date().getTime(),Math.random().toFixed(0)],
-                        arr: ['test1', 'test2']
-                    }
-                }))
-                .pipe(gulp.dest(root_DIR));
-        }(r,ejsLists[r]))
-    }
+        gulp.src(file, {base: root_DIR+source_DIR+CUR_PATH})
+            .pipe(ejs({msg:value,dateYMD:{"year":_dateYear,"month":_dateMonth,"day":_dateDay},rollupOps:{"url":reactOpts.jsxUrl,"title":path.basename(file).split('.')[0]},reactOpts:reactOpts,lpNAME:_lpNAME}))
+            .pipe(rename({ extname: '.html' }))
+            .pipe(gulp.dest(destDir))
+            .pipe(fileinclude({
+                prefix: '@@',
+                basepath: root_DIR+source_DIR+CUR_PATH,
+                indent:true,
+                context: {
+                    rootUrl:'/',
+                    timestamp:[new Date().getTime(),Math.random().toFixed(0)],
+                    arr: ['test1', 'test2']
+                }
+            }))
+            .pipe(gulp.dest(destDir));
+    });
     cb();
-}));
+});
 
 /*
  * 将react页面保存为静态html文件(task:saveAsHtml)
@@ -154,19 +174,21 @@ gulp.task("clean:downloadHtml", function(){
 var Temple_DIR = 'generateHtmlTemple/';   // ejs模板引擎目录
 var Temple_Name = 'temple.ejs'; // 指定ejs模板文件
 const speed = 3000;
+let _templeSrc;
 gulp.task('downloadHtml',gulp.series('clean:downloadHtml',function(cb) {
     let htmlLists = getFiles(root_DIR+Download_DIR + CUR_PATH+FILENAME+'.*',[],'.html');
-    console.log(htmlLists)
+    // console.log(htmlLists)
     for (var r = 0; r < htmlLists.length; r++) {
         (function (r,file) {
             setTimeout(function(){
                 //第二步:编译ejs下载模板
                 console.log("===========downloadHtml "+r+": "+file);
+                _templeSrc = _url.host+":"+_url.port+_url.path+Temple_DIR+Temple_Name.replace('.ejs','.html');
                 gulp.src(root_DIR+Temple_DIR+Temple_Name, {base: root_DIR+Temple_DIR})
-                    .pipe(ejs({templeOps:{"url":_url.host+":"+_url.port+_url.path+file.replace(root_DIR+Download_DIR,'').replace('.ejs','.html'),"title":path.basename(file)}}))
+                    .pipe(ejs({templeOps:{"url":_url.host+":"+_url.port+_url.path+file.replace(root_DIR,'').replace('.ejs','.html'),"title":path.basename(file)}}))
                     .pipe(rename({ extname: '.html' }))
                     .pipe(gulp.dest(root_DIR+Temple_DIR));
-                let _templeSrc = _url.host+":"+_url.port+_url.path+Temple_DIR+Temple_Name.replace('.ejs','.html');
+
                 //第三步:通过打开浏览器下载html文件
                 c.exec('start firefox '+_templeSrc);
             },r*speed);
@@ -211,6 +233,8 @@ gulp.task('downloadHtml',gulp.series('clean:downloadHtml',function(cb) {
                                             "brace_style": "collapse",
                                             "end_with_newline": false
                                         }))
+                                        .pipe(changed(root_DIR +CUR_PATH, {hasChanged: changed.compareSha1Digest}))
+                                        .pipe(debug({title: '编译:'}))
                                         .pipe(gulp.dest(root_DIR+CUR_PATH));
                                 }
                             }) ;
@@ -227,7 +251,7 @@ gulp.task('downloadHtml',gulp.series('clean:downloadHtml',function(cb) {
     setTimeout(function () {
         console.log('close  浏览器')
         c.exec('taskkill /IM firefox.exe');
-    },(htmlLists.length+5)*speed);
+    },(htmlLists.length+10)*speed);
     cb();
 }));
 
@@ -388,26 +412,34 @@ gulp.task('publish:tinypng', function() {
 let jsxLists = getFiles(root_DIR+source_DIR + CUR_PATH+JSX_DIR+FILENAME+'.*',[],'.jsx');
 gulp.task("babel:js",function(cb){
     env = 'production';
-    return gulp.src(jsxLists,{base:root_DIR +source_DIR+ CUR_PATH+JSX_DIR})
-        .pipe(gulpbabel({
-            presets: [
-                ["@babel/preset-react"],
-                // ["@babel/env",
-                //     {
-                //         "loose": true,
-                //         "modules":false,
-                //         // // "debug":true,
-                //         // "targets": {
-                //         //     // "chrome": "58",
-                //         //     "ie": "7",
-                //         //     "node": "current"
-                //         // },
-                //     }
-                // ]
-            ],
-            // "exclude":[DIST_DIR + "js/lib/*.js"]
-        }))
-        .pipe(gulp.dest(root_DIR +Download_DIR + CUR_PATH+ 'js/'));
+    glob.sync(root_DIR+source_DIR + CUR_PATH+JSX_DIR+'**/*.*').filter(function (file) {
+        let endsWith = '.jsx';
+        return (CUR_PATH.indexOf('app/')===-1 || CUR_PATH.indexOf('lp/')===-1) ? file.endsWith(endsWith) && file.indexOf('include/')===-1 && file.indexOf('app/')===-1 && file.indexOf('lp/')===-1:file.endsWith(endsWith) && file.indexOf('include/')===-1;
+    }).forEach(function (file,r) {
+        console.log("===========babel:js "+r+": "+file);
+        return gulp.src(file,{base:root_DIR +source_DIR+ CUR_PATH+JSX_DIR})
+            .pipe(gulpbabel({
+                presets: [
+                    ["@babel/preset-react"],
+                    // ["@babel/env",
+                    //     {
+                    //         "loose": true,
+                    //         "modules":false,
+                    //         // // "debug":true,
+                    //         // "targets": {
+                    //         //     // "chrome": "58",
+                    //         //     "ie": "7",
+                    //         //     "node": "current"
+                    //         // },
+                    //     }
+                    // ]
+                ],
+                // "exclude":[DIST_DIR + "js/lib/*.js"]
+            }))
+            .pipe(changed(root_DIR +Download_DIR + CUR_PATH+ 'js/', {hasChanged: changed.compareSha1Digest}))
+            .pipe(debug({title: '编译:'}))
+            .pipe(gulp.dest(root_DIR +Download_DIR + CUR_PATH+ 'js/'));
+    })
     cb();
 })
 
@@ -416,32 +448,35 @@ gulp.task("babel:js",function(cb){
 //---------------------------------------清除----------------------------//
 // 清除生成的文件
 gulp.task("clean:dist", function(){
-    return gulp.src([root_DIR + Download_DIR,root_DIR+CUR_PATH+'**/dist/'])
+    return gulp.src([root_DIR+CUR_PATH+'**/dist/'])
         .pipe(clean({
             options:{force:true}
         }));
 });
-gulp.task("clean:package", function(){
-    return gulp.src(root_DIR + CUR_PATH + "**/*.{html,css}")
-        .pipe(clean({
-            options:{force:true}
-        }));
-});
-gulp.task("clean",gulp.series('clean:dist','clean:package', function(cb){
+gulp.task("clean",gulp.series('clean:dist', function(cb){
     cb();
     console.info('清除完成');
 }));
 //---------------------------------------清除----------------------------//
 
 //---------------------------------------开发(没有处理react页面)----------------------------//
-gulp.task('jsx:copy',function () {
-    return gulp.src(jsxLists, {base: root_DIR+source_DIR+CUR_PATH})
-        .pipe(gulp.dest(root_DIR+CUR_PATH+'dist/'))
+gulp.task('jsx:copy',function (cb) {
+    glob.sync(root_DIR+source_DIR + CUR_PATH+JSX_DIR+'**/*.*').filter(function (file) {
+        let endsWith = '.jsx';
+        return (CUR_PATH.indexOf('app/')===-1 || CUR_PATH.indexOf('lp/')===-1) ? file.endsWith(endsWith) && file.indexOf('include/')===-1 && file.indexOf('app/')===-1 && file.indexOf('lp/')===-1:file.endsWith(endsWith) && file.indexOf('include/')===-1;
+    }).forEach(function (file,r) {
+        console.log("===========jsx:copy "+r+": "+file);
+        return gulp.src(file, {base: root_DIR+source_DIR+CUR_PATH})
+            .pipe(changed(root_DIR+CUR_PATH+'dist/', {hasChanged: changed.compareSha1Digest}))
+            .pipe(debug({title: '编译:'}))
+            .pipe(gulp.dest(root_DIR+CUR_PATH+'dist/'))
+    });
+    cb();
 });
 gulp.task('dev',gulp.series('jsx:copy','ejs','picbase64:sass',function () {
-    gulp.watch(jsxLists, gulp.series('jsx:copy'));
-    gulp.watch(ejsLists, gulp.series('ejs'));
-    gulp.watch(scssLists, gulp.series('picbase64:sass'));
+    gulpWatch(root_DIR+source_DIR + CUR_PATH+JSX_DIR+'**/*.jsx', gulp.series('jsx:copy'));
+    gulpWatch(root_DIR+source_DIR + CUR_PATH+'**/*.ejs', gulp.series('ejs'));
+    gulpWatch(root_DIR+SASS_DIR + CUR_PATH+'**/*.scss', gulp.series('picbase64:sass'));
 }));
 //---------------------------------------开发----------------------------//
 
@@ -488,9 +523,9 @@ function matchResult(lists,matchLists,pushObj) {
 }
 gulp.task('funTest',function (cb) {
     let ejsLists = getFiles(root_DIR+source_DIR + CUR_PATH+FILENAME+'.*',[],'.ejs');
-    let jsxLists = getFiles(root_DIR+source_DIR + CUR_PATH+JSX_DIR+FILENAME+'.*',[],'.jsx');
-    let htmlLists = getFiles(root_DIR+Download_DIR + CUR_PATH+FILENAME+'.*',[],'.html');
-    let jsLists = getFiles(root_DIR+Download_DIR + CUR_PATH+'js/'+FILENAME+'.*',[],'.js');
+    // let jsxLists = getFiles(root_DIR+source_DIR + CUR_PATH+JSX_DIR+FILENAME+'.*',[],'.jsx');
+    // let htmlLists = getFiles(root_DIR+Download_DIR + CUR_PATH+FILENAME+'.*',[],'.html');
+    // let jsLists = getFiles(root_DIR+Download_DIR + CUR_PATH+'js/'+FILENAME+'.*',[],'.js');
 
     cb();
 });

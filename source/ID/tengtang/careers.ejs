@@ -21,6 +21,11 @@
 @@include('./include/tags/footer.html')
 <!-- footer end -->
 </div>
+<script src="<%= reactOpts.babelStandaloneUrl %>"></script>
+<script src="<%= reactOpts.reactUrl %>"></script>
+<script src="<%= reactOpts.reactDomUrl %>"></script>
+<script src="<%= rollupOps.url %>" type="<%= reactOpts.type %>"></script>
+
 <script type="text/javascript">
     $('body').on('click','.list-item-panel .panel-head',function () {
         $(this).closest('.list-item-panel').toggleClass('current')
@@ -29,9 +34,5 @@
         document.body.scrollTop = document.documentElement.scrollTop = $('.careers_part3bg')[0].offsetTop;
     })
 </script>
-<script src="<%= reactOpts.babelStandaloneUrl %>"></script>
-<script src="<%= reactOpts.reactUrl %>"></script>
-<script src="<%= reactOpts.reactDomUrl %>"></script>
-<script src="<%= rollupOps.url %>" type="<%= reactOpts.type %>"></script>
 </body>
 </html>
