@@ -2,9 +2,9 @@
 <!-- --- PC header --- -->
 <div id="site-header">
     <div class="container">
-        <div id="site-logo"><a href="@@if(rootUrl){@@rootUrl}"><img src="@@if(rootUrl){@@rootUrl}public/images/logo.png" alt=""></a></div>
+        <div id="site-logo"><a href="@@if(rootUrl){@@rootUrl}"><img src="/public/images/logo.png" alt=""></a></div>
         <div id="globalnav">
-            <div class="visible-sm visible-xs btn-mobile-menu"><a href="#"><img src="@@if(rootUrl){@@rootUrl}public/images/btn-mobile-nav.png" alt=""></a></div>
+            <div class="visible-sm visible-xs btn-mobile-menu"><a href="#"><img src="/public/images/btn-mobile-nav.png" alt=""></a></div>
             <ul class="hidden-sm hidden-xs globalnav">
                 <li><a href="https://ui.hsb.co.id/?utm_source=gw_top_open#/login/RVf" target="_blank" class="highlight" rel="nofollow">Buka Akun Live</a></li>
                 <li><a href="https://ui.hsb.co.id/?utm_source=gw_top_register#/register/RVf" target="_blank" class="highlight" rel="nofollow">Buka Akun Demo</a></li>
@@ -21,7 +21,7 @@
 
                 @@if (context.Products) {
                 <li>
-                    <a href="/trading-produk.html">Produk</a>
+                    <a href="@@if(rootUrl){@@rootUrl}trading-produk.html">Produk</a>
                     <div class="submenu submenu-products">
                         <div class="container">
                             <div class="f-pl">

@@ -30,12 +30,14 @@ let env = process.env.NODE_ENV;
 
 /*文件监控*/
 const gulpWatch = require('gulp-watch');
+const gulpGitStatus = require('gulp-git-status');
 
 //---------------------------------------参数声明----------------------------//
 const root_DIR = './';     // 项目根目录
 const source_DIR = 'source/';   // 源文件目录
 const Download_DIR = 'dist/';   // 文件下载保存目录
 const SASS_DIR =   'scss/'; // 样式预处理文件目录
+const Download_Temple = 'download/';//页面下载时模板引用文件目录
 
 // 具体项目文件目录
 //var CUR_PATH = 'ID/app/';
@@ -118,17 +120,15 @@ gulp.task('ejs',function(cb) {
             reactDomUrl : _url.host+":"+_url.port+_url.path + 'node_modules/react-dom/dist/react-dom.js',
             babelStandaloneUrl : _url.host+":"+_url.port+_url.path + 'node_modules/@babel/standalone/babel.js',
             type:"text/babel",
-            jsxUrl: JSX_DIR+file.replace(root_DIR+ source_DIR + CUR_PATH,'').replace('.ejs','.jsx')
+            jsxUrl: CUR_PATH.replace('ID/','/')+'dist/'+JSX_DIR+file.replace(root_DIR+ source_DIR + CUR_PATH,'').replace('.ejs','.jsx')
         };
-        let destDir = env ==='production'?(root_DIR+Download_DIR+CUR_PATH):(root_DIR+CUR_PATH+'dist/');
-        // console.log(destDir)
         if(env ==='production'){//打包
             reactOpts = {
                 reactUrl : _url.host+":"+_url.port+_url.path + 'node_modules/react/dist/react.min.js',
                 reactDomUrl : _url.host+":"+_url.port+_url.path + 'node_modules/react-dom/dist/react-dom.min.js',
                 babelStandaloneUrl : _url.host+":"+_url.port+_url.path + 'node_modules/@babel/standalone/babel.min.js',
                 type:"text/javascript",
-                jsxUrl: _url.host+":"+_url.port+_url.path + Download_DIR + CUR_PATH + 'js/'+file.replace(root_DIR+ source_DIR + CUR_PATH,'').replace('.ejs','.js')
+                jsxUrl: _url.host+":"+_url.port+_url.path+CUR_PATH+Download_Temple+file.replace(root_DIR+ source_DIR + CUR_PATH,'').replace('.ejs','.js')
             };
         }
 
@@ -142,7 +142,14 @@ gulp.task('ejs',function(cb) {
         }
         // console.log(value)
 
+        let destDir = env ==='production'?(root_DIR+CUR_PATH+Download_Temple):(root_DIR+CUR_PATH+'dist/');
+        let rootUrl = env ==='production'?'/':'/dist/';
         gulp.src(file, {base: root_DIR+source_DIR+CUR_PATH})
+            .pipe(gulpGitStatus({
+                excludeStatus: 'unchanged'//["modified", "unchanged", "untracked"]
+            }))
+            .pipe(changed(destDir, {hasChanged: changed.compareSha1Digest}))
+            .pipe(debug({title: '编译:'}))
             .pipe(ejs({msg:value,dateYMD:{"year":_dateYear,"month":_dateMonth,"day":_dateDay},rollupOps:{"url":reactOpts.jsxUrl,"title":path.basename(file).split('.')[0]},reactOpts:reactOpts,lpNAME:_lpNAME}))
             .pipe(rename({ extname: '.html' }))
             .pipe(gulp.dest(destDir))
@@ -151,7 +158,7 @@ gulp.task('ejs',function(cb) {
                 basepath: root_DIR+source_DIR+CUR_PATH,
                 indent:true,
                 context: {
-                    rootUrl:'/',
+                    rootUrl:rootUrl,
                     timestamp:[new Date().getTime(),Math.random().toFixed(0)],
                     arr: ['test1', 'test2']
                 }
@@ -176,82 +183,85 @@ var Temple_Name = 'temple.ejs'; // 指定ejs模板文件
 const speed = 3000;
 let _templeSrc;
 gulp.task('downloadHtml',gulp.series('clean:downloadHtml',function(cb) {
-    let htmlLists = getFiles(root_DIR+Download_DIR + CUR_PATH+FILENAME+'.*',[],'.html');
-    // console.log(htmlLists)
-    for (var r = 0; r < htmlLists.length; r++) {
-        (function (r,file) {
-            setTimeout(function(){
-                //第二步:编译ejs下载模板
-                console.log("===========downloadHtml "+r+": "+file);
-                _templeSrc = _url.host+":"+_url.port+_url.path+Temple_DIR+Temple_Name.replace('.ejs','.html');
-                gulp.src(root_DIR+Temple_DIR+Temple_Name, {base: root_DIR+Temple_DIR})
-                    .pipe(ejs({templeOps:{"url":_url.host+":"+_url.port+_url.path+file.replace(root_DIR,'').replace('.ejs','.html'),"title":path.basename(file)}}))
-                    .pipe(rename({ extname: '.html' }))
-                    .pipe(gulp.dest(root_DIR+Temple_DIR));
+    glob.sync(root_DIR+ CUR_PATH+Download_Temple+'**/*.html').filter(function (file) {
+        let endsWith = '.html';
+        return (CUR_PATH.indexOf('app/')===-1 || CUR_PATH.indexOf('lp/')===-1) ? file.endsWith(endsWith) && file.indexOf('include/')===-1 && file.indexOf('app/')===-1 && file.indexOf('lp/')===-1:file.endsWith(endsWith) && file.indexOf('include/')===-1;
+    }).forEach(function (file,r,n) {
+        setTimeout(function(){
+            //第二步:编译ejs下载模板
+            console.log(n.length+"===========downloadHtml "+r+": "+file);
+            _templeSrc = _url.host+":"+_url.port+_url.path+Temple_DIR+Temple_Name.replace('.ejs','.html');
+            return gulp.src(root_DIR+Temple_DIR+Temple_Name, {base: root_DIR+Temple_DIR})
+                .pipe(ejs({templeOps:{"url":_url.host+":"+_url.port+_url.path+file.replace(root_DIR,'').replace('.ejs','.html'),"title":path.basename(file)}}))
+                .pipe(rename({ extname: '.html' }))
+                .pipe(gulp.dest(root_DIR+Temple_DIR));
 
-                //第三步:通过打开浏览器下载html文件
-                c.exec('start firefox '+_templeSrc);
-            },r*speed);
-            //第四步:html文件另存到项目打包文件并格式化
-            setTimeout(function () {
-                var _savePage = path.basename(file);
-                var _curHtml = file.replace(root_DIR+Download_DIR+CUR_PATH,'');
-                http.get(_url.host+":"+_url.savePort+"/"+_savePage,function(res){  //通过get方法获取对应地址中的页面信息
-                    var chunks = [];
-                    var size = 0;
-                    //读取下载后的html文件，访问路径http://172.30.10.52:1111（_url.host+":"+_url.savePort）
-                    console.log("===========saveAsHtml "+r+": "+_url.host+":"+_url.savePort+"/"+_savePage)
-                    res.on('data',function(chunk){   //监听事件 传输
-                        chunks.push(chunk);
-                        size += chunk.length;
-                    });
-                    res.on('end',function(){  //数据传输完
-                        var data = Buffer.concat(chunks,size);
-                        var html = "<!doctype html>\n\r"+data.toString();
-
-                        // 将抓取的内容保存到本地文件中
-                        let dirpath = root_DIR+CUR_PATH;
-                        let srciptReg = new RegExp('<script[^>]*:[^>]*' +_url.port +'[^>]*><\/script>','g');
-                        let txt = html.replace(srciptReg,'').replace(/( data-reactroot="")/g,'').replace(/(<!--[\s\S]*?-->)/g,'');
-                        // console.log(txt)
-                        mkdirs(dirpath,function () {
-                            fs.writeFile(dirpath+file.replace(root_DIR+Download_DIR+CUR_PATH,''),txt,function (err) {
-                                if (err){
-                                    console.log("写入错误")
-                                    console.log(err)
-                                    return false;
-                                }else{
-                                    console.log("写入成功页面 "+r+": "+dirpath+_curHtml);
-                                    //html文件格式化
-                                    return gulp.src(dirpath+_curHtml,{base:dirpath})
-                                        .pipe(htmlbeautify({
-                                            "indent_size": 4,
-                                            "eol": "\n",
-                                            "indent_level": 0,
-                                            "indent_with_tabs": false,
-                                            "preserve_newlines": false,
-                                            "brace_style": "collapse",
-                                            "end_with_newline": false
-                                        }))
-                                        .pipe(changed(root_DIR +CUR_PATH, {hasChanged: changed.compareSha1Digest}))
-                                        .pipe(debug({title: '编译:'}))
-                                        .pipe(gulp.dest(root_DIR+CUR_PATH));
-                                }
-                            }) ;
-                        });
-
-                    });
-                }).on('error', function(err) {
-                    console.log('错误信息：' + err)
+            //第三步:通过打开浏览器下载html文件
+            c.exec('start firefox '+_templeSrc);
+        },r*speed);
+        //第四步:html文件另存到项目打包文件并格式化
+        setTimeout(function () {
+            var _savePage = path.basename(file);
+            var _curHtml = file.replace(root_DIR+ CUR_PATH+Download_Temple,'');
+            http.get(_url.host+":"+_url.savePort+"/"+_savePage,function(res){  //通过get方法获取对应地址中的页面信息
+                var chunks = [];
+                var size = 0;
+                //读取下载后的html文件，访问路径http://172.30.10.52:1111（_url.host+":"+_url.savePort）
+                console.log(n.length+"===========saveAsHtml "+r+": "+_url.host+":"+_url.savePort+"/"+_savePage)
+                res.on('data',function(chunk){   //监听事件 传输
+                    chunks.push(chunk);
+                    size += chunk.length;
                 });
-            },(r+5)*speed);
-        }(r,htmlLists[r]))
-    }
-    //第五步:关闭浏览器
-    setTimeout(function () {
-        console.log('close  浏览器')
-        c.exec('taskkill /IM firefox.exe');
-    },(htmlLists.length+10)*speed);
+                res.on('end',function(){  //数据传输完
+                    var data = Buffer.concat(chunks,size);
+                    var html = "<!doctype html>\n\r"+data.toString();
+
+                    // 将抓取的内容保存到本地文件中
+                    let dirpath = root_DIR+CUR_PATH;
+                    let srciptReg = new RegExp('<script[^>]*:[^>]*' +_url.port +'[^>]*><\/script>','g');
+                    let txt = html.replace(srciptReg,'').replace(/( data-reactroot="")/g,'').replace(/(<!--[\s\S]*?-->)/g,'');
+                    // console.log(txt)
+                    console.log(file);
+                    mkdirs(dirpath,function () {
+                        fs.writeFile(dirpath+_curHtml,txt,function (err) {
+                            if (err){
+                                console.log("写入错误")
+                                console.log(err)
+                                return false;
+                            }else{
+                                console.log("写入成功页面 "+r+": "+dirpath+_curHtml);
+                                //html文件格式化
+                                return gulp.src(dirpath+_curHtml,{base:dirpath})
+                                    .pipe(htmlbeautify({
+                                        "indent_size": 4,
+                                        "eol": "\n",
+                                        "indent_level": 0,
+                                        "indent_with_tabs": false,
+                                        "preserve_newlines": false,
+                                        "brace_style": "collapse",
+                                        "end_with_newline": false
+                                    }))
+                                    .pipe(changed(root_DIR +CUR_PATH, {hasChanged: changed.compareSha1Digest}))
+                                    .pipe(debug({title: '编译:'}))
+                                    .pipe(gulp.dest(root_DIR+CUR_PATH));
+                            }
+                        }) ;
+                    });
+
+                });
+            }).on('error', function(err) {
+                console.log('错误信息：' + err)
+            });
+        },(r+5)*speed);
+
+        //第五步:关闭浏览器
+        if(n.length>0 && r == n.length-1){
+            setTimeout(function () {
+                console.log('close  浏览器')
+                c.exec('taskkill /IM firefox.exe');
+            },(n.length+10)*speed);
+        }
+    });
     cb();
 }));
 
@@ -408,43 +418,6 @@ gulp.task('publish:tinypng', function() {
 });
 //---------------------------------------img sprites----------------------------//
 
-//---------------------------------------jsx编译----------------------------//
-let jsxLists = getFiles(root_DIR+source_DIR + CUR_PATH+JSX_DIR+FILENAME+'.*',[],'.jsx');
-gulp.task("babel:js",function(cb){
-    env = 'production';
-    glob.sync(root_DIR+source_DIR + CUR_PATH+JSX_DIR+'**/*.*').filter(function (file) {
-        let endsWith = '.jsx';
-        return (CUR_PATH.indexOf('app/')===-1 || CUR_PATH.indexOf('lp/')===-1) ? file.endsWith(endsWith) && file.indexOf('include/')===-1 && file.indexOf('app/')===-1 && file.indexOf('lp/')===-1:file.endsWith(endsWith) && file.indexOf('include/')===-1;
-    }).forEach(function (file,r) {
-        console.log("===========babel:js "+r+": "+file);
-        return gulp.src(file,{base:root_DIR +source_DIR+ CUR_PATH+JSX_DIR})
-            .pipe(gulpbabel({
-                presets: [
-                    ["@babel/preset-react"],
-                    // ["@babel/env",
-                    //     {
-                    //         "loose": true,
-                    //         "modules":false,
-                    //         // // "debug":true,
-                    //         // "targets": {
-                    //         //     // "chrome": "58",
-                    //         //     "ie": "7",
-                    //         //     "node": "current"
-                    //         // },
-                    //     }
-                    // ]
-                ],
-                // "exclude":[DIST_DIR + "js/lib/*.js"]
-            }))
-            .pipe(changed(root_DIR +Download_DIR + CUR_PATH+ 'js/', {hasChanged: changed.compareSha1Digest}))
-            .pipe(debug({title: '编译:'}))
-            .pipe(gulp.dest(root_DIR +Download_DIR + CUR_PATH+ 'js/'));
-    })
-    cb();
-})
-
-//---------------------------------------jsx编译----------------------------//
-
 //---------------------------------------清除----------------------------//
 // 清除生成的文件
 gulp.task("clean:dist", function(){
@@ -481,7 +454,33 @@ gulp.task('dev',gulp.series('jsx:copy','ejs','picbase64:sass',function () {
 //---------------------------------------开发----------------------------//
 
 //---------------------------------------打包(处理过react页面)----------------------------//
-gulp.task('package',gulp.series('babel:js','ejs','picbase64:sass','downloadHtml',function (cb) {
+gulp.task('modified:clean',function (cb) {
+    env = 'production';
+    gulp.src(root_DIR+CUR_PATH+Download_Temple+'**/*.*')
+        .pipe(clean({
+            options:{force:true}
+        }));
+    cb();
+});
+gulp.task('modified:jsx', (cb) => {
+    gulp.src([root_DIR+source_DIR+CUR_PATH+'**/*.jsx','!'+root_DIR+source_DIR + CUR_PATH+'include/**/*.*','!'+root_DIR+source_DIR + CUR_PATH+'app/**/*.*'], {base: root_DIR+source_DIR+CUR_PATH})
+        .pipe(gulpGitStatus({
+            excludeStatus: 'unchanged'//["modified", "unchanged", "untracked"]
+        }))
+        .pipe(changed(root_DIR+CUR_PATH+Download_Temple, {hasChanged: changed.compareSha1Digest}))
+        .pipe(debug({title: '编译:'}))
+        .pipe(gulpbabel({
+            presets: [
+                ["@babel/preset-react"],
+            ],
+        }))
+        .pipe(gulp.dest(root_DIR+CUR_PATH+Download_Temple))
+    cb();
+});
+gulp.task('modified:files',gulp.series('modified:clean','modified:jsx','ejs',function (cb) {
+    cb();
+}))
+gulp.task('package',gulp.series('modified:files','picbase64:sass','downloadHtml',function (cb) {
     cb();
     console.info('打包完成');
 }));

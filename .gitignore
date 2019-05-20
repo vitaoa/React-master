@@ -3,6 +3,7 @@
 /node_modules
 dist
 tinypng
+download
 
 sp-*.scss
 # sp-*.png
