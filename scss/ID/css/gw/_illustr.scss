@@ -1,0 +1,17 @@
+
+/*illustr*/
+.illustr-group{display: block;margin: 0 auto;
+  i{@include inline-block;}
+  &.illustr-mac{position: relative;margin-top: 139px;margin-bottom:63px;left: -55px;
+    .illustr-phone{position: absolute;top:-42px;right:-26px;}
+  }
+}
+
+
+@media(max-width:1023px) {
+  .illustr-group{
+    &.illustr-mac{margin-top: 1.3rem;margin-bottom:63px;left: -.4rem;
+      .illustr-phone{top:-.31rem;right:-.2rem;}
+    }
+  }
+}

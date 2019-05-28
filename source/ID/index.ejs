@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+<head>
+    @@include('./include/ftl/head.html', {
+    "title": "Investasi Dan Trading Forex, Emas, Saham, BBM | Hanson Forex",
+    "keywords": "forex trading",
+    "description": "Hanson Forex adalah broker forex terpercaya di Indonesia, dimana Hanson menawarkan forex, emas, perak, minyak dan saham untuk ditradingkan. Hanson juga teregulasi oleh BAPPEBTI dan juga anggota dari ICDX dan ICH.  Buka akun di Hanson Forex dan dapatkan semua keuntungannya.",
+    "abstract": "GWFX, Goldenway, forex, forex factory, foreign exchange, forex trading, trading, currency exchange rates, iforex, free forex signal, forex rates, foreign exchange rates, currency exchange rate, stock trading online, day trading, easy forex, foreign exchange rate, metatrader, online trading, forex rate, stock trading, forex news, commodity trading, metatrader 4, online forex trading, currency trading, forex bank, forex forum, online stock trading, trading online, forex exchange, best foreign exchange rates, foreign exchange market, trading forex, forex converter, managed forex trading, forex signals, forex exchange rate, forex trading strategies, forex broker, online brokers, forex market, fx trading, forex charts, cfd trading, forex brokers"
+    })
+    <link rel='canonical' href='https://www.hsb.co.id' />
+    <meta name="author" content="<%= dateYMD.year %>.<%= dateYMD.month %> Designed by Hero; Coded by Vita">
+    @@include('./include/tags/header_css.html')
+    <link rel="stylesheet" type="text/css" href="/css/gw.css" />
+    <link rel="stylesheet" type="text/css" href="/css/slick.css">
+</head>
+
+<body>
+<h1 class="visuallyhidden">Hanson Forex</h1>
+@@include('./include/noscript.html')
+@@include('./include/tags/header.html')
+<div id="wrapperContent"></div>
+<!-- footer begin -->
+@@include('./include/tags/footer.html')
+<!-- footer end -->
+</div>
+<script src="<%= reactOpts.babelStandaloneUrl %>"></script>
+<script src="<%= reactOpts.reactUrl %>"></script>
+<script src="<%= reactOpts.reactDomUrl %>"></script>
+<script src="<%= rollupOps.url %>" type="<%= reactOpts.type %>"></script>
+
+
+<script src="/js/slick.js"></script>
+<script type="text/javascript">
+    var $GA_NAME = "index_gw";
+
+    $(function () {
+        $('.slider-banner').slick({
+            dots: true,
+            infinite: true,
+            speed: 500,
+            arrows:false,
+            fade: true,
+            cssEase: "linear",
+//                responsive: [
+//                    {
+//                        breakpoint: 1024,
+//                        settings: {
+//                            slidesToShow: 3,
+//                            slidesToScroll: 3,
+//                            infinite: true,
+//                            dots: true
+//                        }
+//                    },
+//                    {
+//                        breakpoint: 600,
+//                        settings: {
+//                            slidesToShow: 2,
+//                            slidesToScroll: 2
+//                        }
+//                    },
+//                    {
+//                        breakpoint: 480,
+//                        settings: {
+//                            slidesToShow: 1,
+//                            slidesToScroll: 1
+//                        }
+//                    }
+//                ]
+        });
+        $('body').on('click','.tab-nav .title',function () {
+            var _index = $(this).index();
+            $(this).addClass('active').siblings('.title').removeClass('active');
+            $(this).parent().find('.title-line-b').css({'left':$(this)[0].offsetLeft+'px'});
+            $(this).closest('.tab-group').find('.tab-panel').eq(_index).addClass('active').siblings('.tab-panel').removeClass('active');
+        });
+
+        $('.sliderLeftRight').each(function () {
+            $(this).sliderAroundLeftRight({
+                wrapper: '.slider-items ul',
+                speed: 3000,
+                loop: false,
+                hover:false,
+                prev: '.btn-prev',
+                next: '.btn-next'
+            });
+        });
+    });
+    $.fn.extend({
+        sliderAroundLeftRight: function(options) {
+            options = $.extend({}, options || {});
+            var _this = $(this);
+            var slider = _this.find(options.wrapper);
+            var slideprev = _this.find(options.prev);
+            var slidenext = _this.find(options.next);
+            var timeInterval = options.speed;
+            var scrollTimer;
+            var _liWidthFirst = _this.find("li:first").outerWidth(true);
+            var _liWidthLast = _this.find("li:last").outerWidth(true);
+
+            if(_this.width() >= _liWidthFirst*_this.find("li").length){
+                return false;
+            }
+
+            if(options.hover){
+                slider.hover(function() {
+                    clearInterval(scrollTimer);
+                }, function() {
+                    if (options.loop) {
+                        scrollTimer = setInterval(function() {
+                            scrollList();
+                        }, timeInterval);
+                    }
+                });
+            }
+            slideprev.click(function() {
+                clearInterval(scrollTimer);
+                slider.stop(true).animate({
+                    "left": _liWidthLast
+                }, 500, function() {
+                    slider.css({
+                        "left": '0px'
+                    }).find("li:last").prependTo(slider);
+                    if (options.loop) {
+                        scrollTimer = setInterval(function() {
+                            scrollList();
+                        }, timeInterval);
+                    }
+                });
+            });
+            slidenext.click(function() {
+                clearInterval(scrollTimer);
+                slider.stop(true).animate({
+                    "left": -_liWidthFirst + "px"
+                }, 500, function() {
+                    slider.css({
+                        "left": "0px"
+                    }).find("li:first").appendTo(slider);
+                    if (options.loop) {
+                        scrollTimer = setInterval(function() {
+                            scrollList();
+                        }, timeInterval);
+                    }
+                })
+            });
+            slidenext.hover(function() {
+                $(this).addClass('hover')
+            }, function() {
+                $(this).removeClass('hover')
+            });
+            slideprev.hover(function() {
+                $(this).addClass('hover')
+            }, function() {
+                $(this).removeClass('hover')
+            });
+
+            function scrollList() {
+                slider.stop(true).animate({
+                    "left": -_liWidthFirst + "px"
+                }, 500, function() {
+                    slider.css({
+                        "left": "0px"
+                    }).find("li:first").appendTo(slider);
+                })
+            }
+            if (options.loop) {
+                slider.trigger("mouseout");
+            }
+        }
+    })
+</script>
+</body>
+</html>

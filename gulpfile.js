@@ -189,9 +189,9 @@ gulp.task('downloadHtml',gulp.series('clean:downloadHtml',function(cb) {
     }).forEach(function (file,r,n) {
         setTimeout(function(){
             //第二步:编译ejs下载模板
-            console.log(n.length+"===========downloadHtml "+r+": "+file);
+            console.log("downloadHtml ============ total:"+(n.length+1)+"，number "+r+":"+file);
             _templeSrc = _url.host+":"+_url.port+_url.path+Temple_DIR+Temple_Name.replace('.ejs','.html');
-            return gulp.src(root_DIR+Temple_DIR+Temple_Name, {base: root_DIR+Temple_DIR})
+            gulp.src(root_DIR+Temple_DIR+Temple_Name, {base: root_DIR+Temple_DIR})
                 .pipe(ejs({templeOps:{"url":_url.host+":"+_url.port+_url.path+file.replace(root_DIR,'').replace('.ejs','.html'),"title":path.basename(file)}}))
                 .pipe(rename({ extname: '.html' }))
                 .pipe(gulp.dest(root_DIR+Temple_DIR));
@@ -284,6 +284,9 @@ gulp.task('sprites:more',function(cb){
         let basename = path.basename(dirs[i]);
         let prefix = '.png';
         let spriteData = gulp.src(root_DIR+source_DIR + CUR_PATH + `images/slice/${baseDir}/${basename}/*.{png,jpg,gif,jpeg}`)//需要合并的图片地址
+            .pipe(gulpGitStatus({
+                excludeStatus: 'unchanged'
+            }))
             .pipe(spritesmith({
                 cssOpts: {
                     cssSelector: function(item) {
@@ -409,12 +412,15 @@ gulp.task('sprites:more',function(cb){
     }
     cb();
 });
-gulp.task('publish:tinypng', function() {
+gulp.task('publish:tinypng', function(cb) {
     gulp.src(root_DIR+source_DIR + CUR_PATH + 'images/tinypng/*.{png,jpg,gif,jpeg}')
+        .pipe(changed(root_DIR+CUR_PATH + "images", {hasChanged: changed.compareSha1Digest}))
+        .pipe(debug({title: '编译:'}))
         .pipe(tinypng_nokey()).on('error', function(err) {
-        console.error(err.message);
-    })
+            console.error(err.message);
+        })
         .pipe(gulp.dest(root_DIR+CUR_PATH + "images"));
+    cb()
 });
 //---------------------------------------img sprites----------------------------//
 
@@ -448,7 +454,7 @@ gulp.task('jsx:copy',function (cb) {
 });
 gulp.task('dev',gulp.series('jsx:copy','ejs','picbase64:sass',function () {
     gulpWatch(root_DIR+source_DIR + CUR_PATH+JSX_DIR+'**/*.jsx', gulp.series('jsx:copy'));
-    gulpWatch(root_DIR+source_DIR + CUR_PATH+'**/*.ejs', gulp.series('ejs'));
+    gulpWatch(root_DIR+source_DIR + CUR_PATH+'**/*.{ejs,html}', gulp.series('ejs'));
     gulpWatch(root_DIR+SASS_DIR + CUR_PATH+'**/*.scss', gulp.series('picbase64:sass'));
 }));
 //---------------------------------------开发----------------------------//
@@ -463,7 +469,7 @@ gulp.task('modified:clean',function (cb) {
     cb();
 });
 gulp.task('modified:jsx', (cb) => {
-    gulp.src([root_DIR+source_DIR+CUR_PATH+'**/*.jsx','!'+root_DIR+source_DIR + CUR_PATH+'include/**/*.*','!'+root_DIR+source_DIR + CUR_PATH+'app/**/*.*'], {base: root_DIR+source_DIR+CUR_PATH})
+    gulp.src([root_DIR+source_DIR+CUR_PATH+'**/*.jsx','!'+root_DIR+source_DIR + CUR_PATH+'include/**/*.*','!'+root_DIR+source_DIR + CUR_PATH+'app/**/*.*'], {base: root_DIR+source_DIR+CUR_PATH+JSX_DIR})
         .pipe(gulpGitStatus({
             excludeStatus: 'unchanged'//["modified", "unchanged", "untracked"]
         }))

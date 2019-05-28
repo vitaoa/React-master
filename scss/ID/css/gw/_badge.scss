@@ -1,0 +1,24 @@
+
+/*badge*/
+.badge-group{line-height: 1;font-size: 0;
+  .badge-item{@include inline-block;font-size: 12px;padding: 0 6px;
+    & + .badge-item{margin-left: 7px;}
+  }
+
+  &.slider-badge{margin-bottom: 10px;
+    .badge-item{border-radius: 2px;border:1px solid #fff;line-height: 16px;color:#fff;}
+  }
+}
+
+
+@media(max-width:1023px) {
+  .badge-group{
+    .badge-item{font-size: .16rem;padding: 0 .06rem;
+      & + .badge-item{margin-left: .08rem;}
+    }
+
+    &.slider-badge{margin-bottom: 10px;
+      .badge-item{border-radius: .02rem;line-height: .22rem;}
+    }
+  }
+}
