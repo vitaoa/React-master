@@ -1,0 +1,14 @@
+
+/*tab*/
+.tab-group{
+  i{@include inline-block;}
+  .tab-nav{line-height: 1;
+  }
+  .tab-panel{visibility: hidden;height: 0;
+    &.active{visibility: visible;height: auto;}
+  }
+}
+
+@media(max-width:1023px) {
+
+}

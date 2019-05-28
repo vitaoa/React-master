@@ -3,7 +3,6 @@
 /node_modules
 dist
 tinypng
-download
 
 sp-*.scss
 # sp-*.png
@@ -26,3 +25,5 @@ sp-*.scss
 .font-spider
 *.bat
 /generateHtmlTemple/**/*.html
+/ID/download/**/*.html
+/ID/download/**/*.js

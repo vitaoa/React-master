@@ -110,6 +110,23 @@
          document.body.scrollTop = document.documentElement.scrollTop = y;
      }
 
+     /*tip-bar*/
+     var tipBarHtml = '<a href="javascript:;" class="a-close" onclick=\'closeTipBar(this);dataLayer.push({"event":"close Download App Gratis","gtm.elementTarget": $GA_NAME,"gtm.element": "float_top"})\'><i class="tip-btn-close"></i></a>'+
+         '<a href="javascript:;" target="_blank" class="a-download" onclick=\'downloadAppyn100(this);dataLayer.push({"event":"Download App Gratis","gtm.elementTarget": $GA_NAME,"gtm.element": "float_top"})\'>'+
+         '<i class="tip-bar-logo"></i>'+
+         '<span class="s1">Download App Gratis</span>'+
+         '<span class="s2">Trading bersama hanson Forex</span>'+
+         '<span class="s2">Gratis - Tersedia di App Store</span>'+
+         '<i class="tip-bar-linkarrow"></i>'+
+         '</a>';
+     var _wrapBox = createEl('div','tip-bar mobile');
+     _wrapBox.innerHTML = tipBarHtml;
+     if (window.sessionStorage.getItem("TipBar")){
+         $('.tip-bar').remove();
+     }else{
+         $('body').prepend(_wrapBox);
+     }
+
     /* COMMON - topnav hover */
     $('#mainnav').delegate('ul li', 'mouseenter', function(){
       if( $(this).find('.submenu').exist() ){
@@ -128,13 +145,25 @@
     	/* COMMON - mobile menu */
 	$('ul.mobile-menu').delegate('li a.btn-open-submenu', 'click', function(e){
 		e.preventDefault();
+
+        var _class = this.className;
+        var _classArr = _class.split(' ');
+        var _regClass = _class;
+        _classArr.forEach(function (e,i) {
+            if(e.indexOf('i-mobilemenu-arrow')!=-1){
+                _regClass = e;
+            }
+        });
+
 		if( $(this).hasClass('open') ){
+            this.className=this.className.replace(_regClass,'i-mobilemenu-arrow');
 			$(this).parent().find('ul.mobile-submenu').slideToggle();
 			$(this).removeClass('open');
 		}else{
 			$('a.btn-open-submenu.open').parent().find('ul.mobile-submenu').slideToggle();
 			$(this).parent().find('ul.mobile-submenu').slideToggle();
-			$('ul.mobile-menu li').find('a.btn-open-submenu.open').removeClass('open');
+			$('ul.mobile-menu li').find('a.btn-open-submenu.open').removeClass('open i-mobilemenu-arrowd').addClass('i-mobilemenu-arrow');
+            this.className=this.className.replace(_regClass,_regClass+'d');
 			$(this).addClass('open');
 		}
 	});
@@ -149,7 +178,7 @@
 	$(window).resize(closeMobileMenu);
 
 	function mobileMenu(){
-		if( $('#page').hasClass('mmopen') ){
+		if( $('body').hasClass('mmopen') ){
 			closeMobileMenu();
 		}else{
 			openMobileMenu();
@@ -160,9 +189,7 @@
 		var winWidth = $(window).width();
 
 		disableMobileNavBtn();
-		$('#page').css({'position':'fixed', 'width':winWidth+'px'});
 		$('body').addClass('mmopen');
-		$('#page').addClass('mmopen');
 		$('#mobile-menu').addClass('mmopen');
 		$('#page').append('<div class="mmblocker"></div>');
 		setTimeout(activateMobileNavBtn,800);
@@ -171,14 +198,13 @@
 	}
 
 	function closeMobileMenu(){
-		if( $('#page').hasClass('mmopen') ){
+		if( $('body').hasClass('mmopen') ){
 			disableMobileNavBtn();
 			$('body').removeClass('mmopen');
-			$('#page').removeClass('mmopen');
 			$('#mobile-menu').removeClass('mmopen');
 			$('.mmblocker').remove();
 			setTimeout(function(){
-				$('#page').css({'position':'', 'width':''});
+				$('body').css({'position':'', 'width':''});
 				activateMobileNavBtn();
 			},800);
 		}
@@ -246,3 +272,28 @@
      return el;
  }
 
+
+ //判断Android和ios
+ function mobileType(){
+     var type = 'pc';
+     var ua = navigator.userAgent;
+     if(ua.match(/Android/i) != null){
+         type = 'android';
+     }else if(ua.match(/iPhone|iPad/i) != null){
+         type =  'ios';
+     }
+     return type;
+ }
+ function downloadAppyn100(_obj) {
+     var mType = mobileType();
+     if(mType == 'android'){
+         $(_obj).attr("href","https://www.hsb.co.id/apk/hansonApp_yn100_prd_release.apk");
+     }else if(mType == 'ios'){
+         $(_obj).attr("href","https://itunes.apple.com/id/app/hanson-forex-trader/id1403262751");
+     }
+     closeTipBar(_obj);
+ }
+ function closeTipBar(o) {
+     $(o).closest('.tip-bar').length>0 && $(o).closest('.tip-bar').remove();
+     window.sessionStorage.setItem("TipBar",1)
+ }

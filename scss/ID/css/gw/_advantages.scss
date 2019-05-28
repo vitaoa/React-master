@@ -1,0 +1,59 @@
+
+/*advantages*/
+.advantages-comp{padding-top: 90px;
+  [class*="-icons-bg"]{@include clearfix;
+    li{position: relative;width: 50%;float: left;font-size: 18px;margin-bottom: 51px;color:#444;text-align: center;}
+    i{@include inline-block;}
+    span{display: block;line-height: 1.3;margin-top: 5px;}
+  }
+}
+.citra-icons-bg{background: url(/images/citra-icons-bg.png) no-repeat center top;height:638px;
+  li{top:26px;
+    &:first-child{left:-106px;
+      & + li{left:96px;
+        & + li{left:-106px;
+          & + li{left:96px;
+          }
+        }
+      }
+    }
+  }
+}
+.index-page{
+  .advantages-comp{
+    [class*="-icons-bg"]{
+      li{font-size: 20px;font-weight: bold;margin-bottom: 118px;}
+      span{margin-top: 9px;}
+    }
+  }
+}
+
+
+@media(max-width:1023px) {
+  .advantages-comp{padding-top: .63rem;
+    [class*="-icons-bg"]{
+      li{font-size: .18rem;margin-bottom: .51rem;}
+      span{line-height: 1.3;margin-top: .05rem;}
+    }
+  }
+  .citra-icons-bg{background-image: url(/images/citra-icons-bgm.png);height:5.66rem;background-size: auto 5.67rem;
+    li{top:.18rem;
+      &:first-child{left:-.86rem;
+        & + li{left:.86rem;
+          & + li{left:-.86rem;
+            & + li{left:.86rem;
+            }
+          }
+        }
+      }
+    }
+  }
+  .index-page{
+    .advantages-comp{
+      [class*="-icons-bg"]{
+        li{font-size: .2rem;margin-bottom: 1.18rem;}
+        span{margin-top: .09rem;}
+      }
+    }
+  }
+}

@@ -1,73 +1,44 @@
 <div class="space-h"></div>
 <!-- --- PC header --- -->
-<div id="site-header">
-    <div class="container">
-        <div id="site-logo"><a href="@@if(rootUrl){@@rootUrl}"><img src="/public/images/logo.png" alt=""></a></div>
-        <div id="globalnav">
-            <div class="visible-sm visible-xs btn-mobile-menu"><a href="#"><img src="/public/images/btn-mobile-nav.png" alt=""></a></div>
-            <ul class="hidden-sm hidden-xs globalnav">
-                <li><a href="https://ui.hsb.co.id/?utm_source=gw_top_open#/login/RVf" target="_blank" class="highlight" rel="nofollow">Buka Akun Live</a></li>
-                <li><a href="https://ui.hsb.co.id/?utm_source=gw_top_register#/register/RVf" target="_blank" class="highlight" rel="nofollow">Buka Akun Demo</a></li>
-            </ul>
+<div class="header">
+    <div class="w-part">
+        <div class="site-logo"><a href="@@if(rootUrl){@@rootUrl}"><i class="head-logo"></i></a></div>
+        <div class="head-btn">
+            <div class="btn-mobile-menu"><a href="#"><i class="head-menu-m"></i></a></div>
+            <div class="globalnav">
+                <a href="https://ui.hsb.co.id/?utm_source=gw_top_open#/login/RVf" target="_blank" class="highlight btn-yellow" rel="nofollow"><i class="head-icon1"></i>Buka Akun Live</a>
+                <a href="https://ui.hsb.co.id/?utm_source=gw_top_register#/register/RVf" target="_blank" class="highlight btn-yellow-default" rel="nofollow"><i class="head-icon2"></i>Buka Akun Demo</a>
+            </div>
         </div>
-        <!--<div id="mobilenav" class="dn">-->
-            <!--<ul>-->
-                <!--<li><a href="https://ui.hsb.co.id/#/login/RVf">Akun Live</a></li>-->
-                <!--<li><a href="https://ui.hsb.co.id/#/register/RVf">Akun Demo</a></li>-->
-            <!--</ul>-->
-        <!--</div>-->
-        <div id="mainnav" class="">
+        <div class="head-menu">
             <ul>
-
-                @@if (context.Products) {
+                @@if (context.Siapa) {
                 <li>
-                    <a href="@@if(rootUrl){@@rootUrl}trading-produk.html">Produk</a>
+                    <span>Siapa Kami</span>
                     <div class="submenu submenu-products">
-                        <div class="container">
-                            <div class="f-pl">
-                                @@for (var i = 0; i < (context.Products.length); i++) {
-                                <div class="submenu-item"><a href="@@if(rootUrl){@@rootUrl}`+context.Products[i].url+`">`+context.Products[i].text+`</a></div>
+                                @@for (var i = 0; i < (context.Siapa.length); i++) {
+                                <div class="submenu-item"><a href="@@if(rootUrl){@@rootUrl}`+context.Siapa[i].url+`">`+context.Siapa[i].text+`</a></div>
                                 }
-                            </div>
-                        </div>
                     </div>
                 </li>
                 }
-                @@if (context.Deposit) {
+                @@if (context.Products) {
                 <li>
-                    <a href="@@if(rootUrl){@@rootUrl}deposito-withdraw.html">Deposit/Withdraw</a>
-                </li>
-                }
-                @@if (context.Partnership) {
-                <li>
-                    <a href="@@if(rootUrl){@@rootUrl}partnership.html">Partnership</a>
+                    <span>Produk</span>
+                    <div class="submenu submenu-products">
+                                @@for (var i = 0; i < (context.Products.length); i++) {
+                                <div class="submenu-item"><a href="@@if(rootUrl){@@rootUrl}`+context.Products[i].url+`">`+context.Products[i].text+`</a></div>
+                                }
+                    </div>
                 </li>
                 }
                 @@if (context.Market) {
                 <li>
                     <span>Market Insight</span>
                     <div class="submenu submenu-products">
-                        <div class="container">
-                            <div class="f-pl">
                                 @@for (var i = 0; i < (context.Market.length); i++) {
                                 <div class="submenu-item"><a href="@@if(rootUrl){@@rootUrl}`+context.Market[i].url+`">`+context.Market[i].text+`</a></div>
                                 }
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                }
-                @@if (context.Edukasi) {
-                <li>
-                    <span>Edukasi</span>
-                    <div class="submenu submenu-products">
-                        <div class="container">
-                            <div class="f-pl">
-                                @@for (var i = 0; i < (context.Edukasi.length); i++) {
-                                <div class="submenu-item"><a href="@@if(rootUrl){@@rootUrl}`+context.Edukasi[i].url+`">`+context.Edukasi[i].text+`</a></div>
-                                }
-                            </div>
-                        </div>
                     </div>
                 </li>
                 }
@@ -75,30 +46,24 @@
                 <li>
                     <a href="@@if(rootUrl){@@rootUrl}promosi.html">Promosi</a>
                 </li>
-                <!--<li>-->
-                    <!--<span>Promosi</span>-->
-                    <!--<div class="submenu submenu-products">-->
-                        <!--<div class="container">-->
-                            <!--<div class="f-pl">-->
-                                <!--@@for (var i = 0; i < (context.Promosi.length); i++) {-->
-                                <!--<div class="submenu-item"><a href="`+context.Promosi[i].url+`">`+context.Promosi[i].text+`</a></div>-->
-                                <!--}-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</li>-->
                 }
-                @@if (context.Siapa) {
+                @@if (context.Edukasi) {
                 <li>
-                    <span>Siapa Kami</span>
+                    <span>Edukasi</span>
                     <div class="submenu submenu-products">
-                        <div class="container">
-                            <div class="f-pl">
-                                @@for (var i = 0; i < (context.Siapa.length); i++) {
-                                <div class="submenu-item"><a href="@@if(rootUrl){@@rootUrl}`+context.Siapa[i].url+`">`+context.Siapa[i].text+`</a></div>
+                                @@for (var i = 0; i < (context.Edukasi.length); i++) {
+                                <div class="submenu-item"><a href="@@if(rootUrl){@@rootUrl}`+context.Edukasi[i].url+`">`+context.Edukasi[i].text+`</a></div>
                                 }
-                            </div>
-                        </div>
+                    </div>
+                </li>
+                }
+                @@if (context.Contact) {
+                <li>
+                    <span>Contact</span>
+                    <div class="submenu submenu-products">
+                                @@for (var i = 0; i < (context.Contact.length); i++) {
+                                <div class="submenu-item"><a href="@@if(rootUrl){@@rootUrl}`+context.Contact[i].url+`">`+context.Contact[i].text+`</a></div>
+                                }
                     </div>
                 </li>
                 }

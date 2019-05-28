@@ -5,10 +5,21 @@
 <!-- --- mobile menu --- -->
 <nav id="mobile-menu">
     <ul class="mobile-menu">
+        @@if (context.Siapa){
+        <li>
+            <a class="btn-mobilemenu" href="javascript:void(0)">Siapa Kami</a>
+            <a class="i-mobilemenu-arrow btn-open-submenu" href="javascript:;"></a>
+            <ul class="mobile-submenu">
+                @@for (var i = 0; i < (context.Siapa.length); i++) {
+                <li><a href="@@if(rootUrl){@@rootUrl}`+context.Siapa[i].url+`">`+context.Siapa[i].text+`</a></li>
+                }
+            </ul>
+        </li>
+        }
         @@if (context.Products){
         <li>
             <a class="btn-mobilemenu" href="javascript:void(0)">Produk</a>
-            <a class="btn-mobilemenu-arrow btn-open-submenu" href="javascript:;"></a>
+            <a class="i-mobilemenu-arrow btn-open-submenu" href="javascript:;"></a>
             <ul class="mobile-submenu">
                 @@for (var i = 0; i < (context.Products.length); i++) {
                 <li><a href="@@if(rootUrl){@@rootUrl}`+context.Products[i].url+`">`+context.Products[i].text+`</a></li>
@@ -16,22 +27,10 @@
             </ul>
         </li>
         }
-        @@if (context.Deposit){
-        <li>
-            <a href="@@if(rootUrl){@@rootUrl}deposit/deposit-withdraw.html?#utm_source=gw_deposit_withdraw" class="btn-mobilemenu">Deposit/Withdraw</a>
-            <a class="btn-mobilemenu-arrow btn-open-submenu" href="@@if(rootUrl){@@rootUrl}deposit/deposit-withdraw.html?#utm_source=gw_deposit_withdraw"></a>
-        </li>
-        }
-        @@if (context.Partnership){
-        <li>
-            <a href="@@if(rootUrl){@@rootUrl}partnership/partnership.html?#utm_source=gw_partnership" class="btn-mobilemenu">Partnership</a>
-            <a class="btn-mobilemenu-arrow btn-open-submenu" href="@@if(rootUrl){@@rootUrl}partnership/partnership.html?#utm_source=gw_partnership"></a>
-        </li>
-        }
         @@if (context.Market){
         <li>
             <a class="btn-mobilemenu" href="javascript:void(0)">Market Insight</a>
-            <a class="btn-mobilemenu-arrow btn-open-submenu" href="javascript:;"></a>
+            <a class="i-mobilemenu-arrow btn-open-submenu" href="javascript:;"></a>
             <ul class="mobile-submenu">
                 @@for (var i = 0; i < (context.Market.length); i++) {
                 <li><a href="@@if(rootUrl){@@rootUrl}`+context.Market[i].url+`">`+context.Market[i].text+`</a></li>
@@ -39,10 +38,16 @@
             </ul>
         </li>
         }
+        @@if (context.Promosi){
+        <li>
+            <a href="@@if(rootUrl){@@rootUrl}promosi.html" class="btn-mobilemenu">Promosi</a>
+            <a class="i-mobilemenu-arrow" href="@@if(rootUrl){@@rootUrl}promosi.html"></a>
+        </li>
+        }
         @@if (context.Edukasi){
         <li>
             <a class="btn-mobilemenu" href="javascript:void(0)">Edukasi</a>
-            <a class="btn-mobilemenu-arrow btn-open-submenu" href="javascript:;"></a>
+            <a class="i-mobilemenu-arrow btn-open-submenu" href="javascript:;"></a>
             <ul class="mobile-submenu">
                 @@for (var i = 0; i < (context.Edukasi.length); i++) {
                 <li><a href="@@if(rootUrl){@@rootUrl}`+context.Edukasi[i].url+`">`+context.Edukasi[i].text+`</a></li>
@@ -51,27 +56,22 @@
 
         </li>
         }
-        @@if (context.Promosi){
+        @@if (context.Contact) {
         <li>
-            <a href="@@if(rootUrl){@@rootUrl}lp1_plvz_201807.html?#utm_source=gw_Promosi" class="btn-mobilemenu">Promosi</a>
-            <a class="btn-mobilemenu-arrow" href="@@if(rootUrl){@@rootUrl}lp1_plvz_201807.html?#utm_source=gw_Promosi"></a>
-        </li>
-        }
-        @@if (context.Siapa){
-        <li>
-            <a class="btn-mobilemenu" href="javascript:void(0)">Siapa Kami</a>
-            <a class="btn-mobilemenu-arrow btn-open-submenu" href="javascript:;"></a>
+            <a class="btn-mobilemenu" href="javascript:void(0)">Contact</a>
+            <a class="i-mobilemenu-arrow btn-open-submenu" href="javascript:;"></a>
             <ul class="mobile-submenu">
-                @@for (var i = 0; i < (context.Siapa.length); i++) {
-                <li><a href="@@if(rootUrl){@@rootUrl}`+context.Siapa[i].url+`">`+context.Siapa[i].text+`</a></li>
+                @@for (var i = 0; i < (context.Contact.length); i++) {
+                <li><a href="@@if(rootUrl){@@rootUrl}`+context.Contact[i].url+`">`+context.Contact[i].text+`</a></li>
                 }
             </ul>
         </li>
         }
-
     </ul>
-    @@include('./include/tags/btn-group-index.html',{
-    "utm_source1":"gw_mobilemenu_register",
-    "utm_source2":"gw_mobilemenu_open"
-    })
+    <div class="opgroup-btns">
+        @@include('./include/tags/btn-group-index.html',{
+        "utm_source1":"gw_mobilemenu_open",
+        "utm_source2":"gw_mobilemenu_register"
+        })
+    </div>
 </nav>

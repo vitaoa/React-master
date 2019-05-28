@@ -1,0 +1,63 @@
+
+/*btn-gw*/
+.btn-yellow-default{border-color: $c-yellow-default;color:$c-yellow-default;}
+.btn-yellow{background: $c-yellow-default;
+  a{color:#ffb39a;}
+}
+.btn-blue{background: $c-blue-default;
+  a{color:#5f7fab;}
+}
+.btn-group{
+  .btn-yellow-default{border-color: $c-yellow-default;color:$c-yellow-default;}
+  .btn-yellow{background: $c-yellow-default;
+    a{color:#ffb39a;}
+  }
+  .btn-blue{background: $c-blue-default;
+    a{color:#5f7fab;}
+  }
+  .btn-gw{@include inline-block;@include size(auto,46px);line-height:46px;font-size: 20px;text-align: center;border-width: 2px;border-style: solid;border-radius: 4px;
+    @include prefixer(transition,all .3s ease,$prefixes);
+    &:hover{padding-left: 10px;padding-right: 10px;}
+  }
+}
+.index-page{
+  .btn-group{
+    .btn-gw{@include size(138px,46px);line-height:46px;}
+  }
+}
+
+
+.opgroup-btns{text-align: center;color:#fff;
+  [class*="i-"]{@include inline-block;margin-top: 17px;margin-right: 15px;@include prefixer(transition, all .3s cubic-bezier(0.35, 0.21, 0.4, 1.13), ("webkit", "moz","ms","o"));
+    &[class*="i-arrow-r"]{margin-top: 23px;*margin-top:7px;margin-right: 0;margin-left: 10px;}
+  }
+  .link-group{@include clearfix;/*background-color: #fff;border-radius:4px;*/padding: 32px 11px;
+    &.opgroup-btns-bg{background-image: url(/images/opgroup-btns-bg.png);background-repeat: no-repeat;background-position: center center;background-size: 100% 100%;}
+    &.group-two{
+      .btn{width:43.5%;margin: 0 0.76%;@include prefixer(transition, all .3s cubic-bezier(0.35, 0.21, 0.4, 1.13), ("webkit", "moz","ms","o"));
+        &:hover{
+          [class*="i-btn-0"]{opacity: 0;width:0;margin-right: 0;}
+          [class*="i-arrow-r"]{opacity: 0;width:0;margin-left: 0;}
+        }
+      }
+    }
+  }
+  .btn{text-align: right;border-radius: 4px;@include size(540px,64px);line-height: 64px;font-size: 16px;@include box-sizing(content-box);@include inline-block;padding: 0 2%;
+    span{font-size: 20px;color:#fff;}
+    a{display: block;
+    }
+  }
+}
+
+@media(max-width:1023px) {
+  .btn-group{
+    .btn-gw{@include size(auto,.66rem);line-height:.66rem;font-size: .28rem;border-width: .02rem;border-radius: .04rem;
+      &:hover{padding-left: 0;padding-right: 0;}
+    }
+  }
+  .index-page{
+    .btn-group{
+      .btn-gw{@include size(1.76rem,.66rem);line-height:.66rem;}
+    }
+  }
+}
