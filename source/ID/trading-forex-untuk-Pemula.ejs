@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="id">
+<head>
+    @@include('./include/ftl/head.html', {
+    "title": "trading forex untuk Pemula",
+    "keywords": false,
+    "description": false,
+    "abstract": false
+    })
+    <meta name="author" content="<%= dateYMD.year %>.<%= dateYMD.month %> Designed by Hero; Coded by Vita">
+    @@include('./include/tags/header_css.html')
+    <link rel="stylesheet" type="text/css" href="/css/trade.css" />
+</head>
+
+<body>
+@@include('./include/noscript.html')
+@@include('./include/tags/header.html')
+
+<div class="wrapper trade-page">
+    <div id="breadCrumb"></div>
+    <div class="container">
+        <div id="wrapperContent"></div>
+        <div class="side-right">
+            <%- include('./include/views/formLogin',{
+            "title":"Informasi Registrasi",
+            "ponsel":{
+            "title":"Nomor ponsel",
+            "placeholder":"Nomor ponsel"
+            },
+            "kode":{
+            "title":"kode",
+            "placeholder":"Masukkan kode",
+            "value":"Dapatkan kode"
+            },
+            "mail":{
+            "title":"E-mail",
+            "placeholder":"E-mail",
+            },
+            "katasandi":{
+            "title":"kata sandi",
+            "placeholder":"6 digit kata sandi ",
+            },
+            "submit":"Register Sekarang"
+            }); %>
+        </div>
+    </div>
+</div>
+<!-- footer begin -->
+@@include('./include/tags/footer.html')
+<!-- footer end -->
+</div>
+
+<%- include('./include/views/formLoginPop',{
+"msg":{
+    "title":"Akun Demo berhasil!",
+    "txt":"Komisi trading serendah $1",
+    "apk":"http://www.hsb.co.id/apk/hansonApp_yn12_prd_release.apk",
+    "event1":true
+}
+}) %>
+<script src="<%= reactOpts.babelStandaloneUrl %>"></script>
+<script src="<%= reactOpts.reactUrl %>"></script>
+<script src="<%= reactOpts.reactDomUrl %>"></script>
+<script src="<%= rollupOps.url %>" type="<%= reactOpts.type %>"></script>
+<script type="text/javascript" src="/public/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/public/js/common.js"></script>
+<script type="text/javascript" src="/public/en/js/utils.js"></script>
+<script type="text/javascript" src="/lp/lp10/js/md5.js" charset="utf-8"></script>
+<script type="text/javascript" src="/lp/lp10/js/register.js" charset="utf-8"></script>
+<script>
+    var $GA_NAME = "trading_forex_untuk_Pemula";
+    var loginurl="https://ui.hsb.co.id/"+getRequestParam('utm_source')+"#/login/RVf";
+    $('.mobile').is(':visible')? $('.registerResultPopup .computer').hide():$('.registerResultPopup .mobile').hide();
+    function toLogin() {
+        window.open(loginurl.replace(/&amp;/g,'&'));
+    }
+</script>
+</body>
+</html>

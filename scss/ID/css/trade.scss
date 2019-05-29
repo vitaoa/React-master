@@ -1,0 +1,190 @@
+@charset "utf-8";
+$support_for_ie: true;
+$prefixes:('webkit','moz','ms','o');
+$normalized_font_family: PingFang SC,Arial, Helvetica, sans-serif;
+@import "../../mixins/library";
+@import "../../mixins/keyframes/keyframes";
+
+/* ============ Reset ============ */
+@import "../../normalize";
+body {font-size: 14px;color: #333;line-height: 1.4;}
+
+.al-c{text-align:center}
+.al-r{text-align:right}
+.fl{float:left}
+.fr{float:right}
+
+
+$c-yellow-default:#f15623;
+$c-blue-default:#0f3569;
+.btn-yellow-default{border-color: $c-yellow-default;color:$c-yellow-default;}
+.btn-yellow{background: $c-yellow-default;
+  a{color:#ffb39a;}
+}
+.btn-blue{background: $c-blue-default;
+  a{color:#5f7fab;}
+}
+.trade-page{@include clearfix;background:#e7e7e7 url(/images/trade/trade-page.jpg) repeat-y center top;padding-bottom: 50px;
+  .plrc{padding-left: 32px;padding-right: 32px;}
+  .side-main{width:810px;float: left;background: #fff;padding-bottom:8px;}
+  .side-right{width:300px;float: right;background: #fff;padding-bottom: 25px;
+    .form-box{box-shadow: none;background: none;border-radius: 0;width: auto;height: auto;}
+    .account-form{padding: 0 20px;}
+    .form-listbox{margin-top: 10px;
+      .input-label{color:#555;text-transform: none;font-size: 14px;margin-bottom: 6px;}
+      .input-txt{width: 234px;padding:8px 12px;}
+      .input-readonly{padding:8px 12px;}
+      .input-txt-code{width:107px;}
+      .get-code{line-height: 42px;height: 42px;border:1px solid #f25623;background: #ffe9e2;color: #f25623;border-radius: 0;margin: 0;bottom: -1px;font-size: 14px;text-transform: none;width:127px;}
+      .input-box{border-color:#e5e5e5;border-radius: 0;background: #fff;}
+      .result-msg{width:100%;font-size: 9px;}
+    }
+    .form-title{padding-top: 15px;font-size: 24px;text-align: left;
+      span{display: block;color: #a6a6a6;font-size: 14px;}
+    }
+    .submit-btn{margin-top: 20px;border-radius: 4px;}
+  }
+  .p-tit1{font-size: 35px;padding-top: 24px;
+    & + .p-txt1{padding-top: 15px;}
+  }
+  .p-tit2{font-size: 16px;font-weight: bold;}
+  .p-txt1{font-size: 14px;padding-top: 22px;color: #555;
+    & + .p-tit2{margin-top: 40px;}
+  }
+  .p-txt-badge{@include inline-block;color:#f25623;font-size: 16px;border:1px solid #ffc3b0;line-height: 37px;height:37px;padding: 0 14px;border-radius: 4px;margin-top:28px;background: #ffe9e2;}
+  .illstr-txt-block{font-size: 14px;@include clearfix;padding-top: 35px;padding-bottom: 7px;
+    li{float: left;width:33.3%;border:1px solid #e5e5e5;border-left: none;height:438px;margin-left: -1px;
+      &:first-child{border-left:1px solid #e5e5e5;margin-left: -2px;}
+    }
+    .illstr-item{
+      [class*="illstr"]{display: block;margin: 0 auto 30px;}
+    }
+    .item-tit{text-align: center;font-size: 20px;padding-top: 23px;padding-bottom: 26px;}
+    p{padding: 0 21px;}
+  }
+  .pic-list{padding: 26px 0 46px;white-space: nowrap;
+    img{@include inline-block;
+      & + img{margin-left: 26px;}
+    }
+  }
+  .opgroup-btns{text-align: center;color:#fff;
+    [class*="i-"]{@include inline-block;margin-top: 17px;margin-right: 15px;@include prefixer(transition, all .3s cubic-bezier(0.35, 0.21, 0.4, 1.13), ("webkit", "moz","ms","o"));
+      &[class*="i-arrow-r"]{margin-top: 23px;*margin-top:7px;margin-right: 0;margin-left: 10px;}
+    }
+    .link-group{@include clearfix;/*background-color: #fff;border-radius:4px;*/padding: 32px 11px;
+      &.opgroup-btns-bg{background-image: url(/images/opgroup-btns-bg.png);background-repeat: no-repeat;background-position: center center;background-size: 100% 100%;}
+      &.group-two{
+        .btn{width:43.5%;margin: 0 0.76%;@include prefixer(transition, all .3s cubic-bezier(0.35, 0.21, 0.4, 1.13), ("webkit", "moz","ms","o"));
+          &:hover{
+            [class*="i-btn-0"]{opacity: 0;width:0;margin-right: 0;}
+            [class*="i-arrow-r"]{opacity: 0;width:0;margin-left: 0;}
+          }
+        }
+      }
+    }
+    .btn{text-align: right;border-radius: 4px;@include size(540px,64px);line-height: 64px;font-size: 16px;@include box-sizing(content-box);@include inline-block;padding: 0 2%;
+      span{font-size: 20px;color:#fff;}
+      a{display: block;
+      }
+    }
+  }
+  .opgroup-btns{padding-top:4px;
+    .link-group.group-two{
+      .btn{width:260px;height:60px;line-height: 60px;padding: 0 20px;margin: 0 15px;}
+    }
+  }
+}
+.breadcrumb{font-size: 14px;color:#555;line-height: 1;padding: 13px 0;
+  a{color:#a6a6a6;
+    i{margin: 0 1em;}
+  }
+  i{font-style: normal;}
+}
+
+// variables
+$active-c:#ff3434;
+@import "../lp/lp19/components/login";
+
+//******* sprites
+//----------------------------
+@import "sp-p-trade";
+@media(min-width:1024px) and (max-width:1160px){
+  .trade-page{
+    .side-main{width:588px;}
+    .illstr-txt-block{font-size: 12px;
+      .illstr-item{
+        [class*="illstr"]{@include prefixer(transform,scale(.8),$prefixes);margin: 0 -8px;}
+      }
+      p{padding: 0 12px;}
+    }
+    .pic-list{
+      img{width: 170px;
+        & + img{margin-left: 7px;}
+      }
+    }
+    .opgroup-btns{
+      .link-group.group-two{padding-left: 0;padding-right: 0;
+        .btn{width:234px;padding: 0 11px;margin: 0 2px;}
+      }
+    }
+  }
+}
+
+@media (max-width: 1023px) {
+  .container{padding: 0 .2rem;}
+  .trade-page{background-image: url(/images/trade/trade-pagem.jpg);background-size:100% auto;padding-bottom: .5rem;
+    .plrc{padding-left: .3rem;padding-right: .3rem;}
+    .side-main{width:100%;padding-bottom:.58rem;}
+    .side-right{width:100%;background:#f7f7f7;padding-bottom: .56rem;
+      //.form-box{box-shadow: none;background: none;border-radius: 0;width: auto;height: auto;}
+      .account-form{padding: 0 .45rem;}
+      .form-listbox{margin-top: .3rem;
+        .input-label{font-size: .24rem;margin-bottom: .12rem;display: block;}
+        .input-txt{width: 6.2rem;padding:.09rem .2rem;font-size: .24rem;@include placeholders(#4f5362, .24rem);}
+        .input-readonly{padding:.09rem .2rem;@include box-sizing(border-box);font-size: .24rem;}
+        .input-txt-code{width:3.84rem;}
+        .get-code{line-height: .9rem;height: .92rem;font-size: .24rem;width:2.35rem;}
+        //.input-box{border-color:#e5e5e5;border-radius: 0;background: #fff;}
+      }
+      .form-title{padding-top: .4rem;font-size: .34rem;padding-bottom: .2rem;
+        span{font-size: .2rem;}
+      }
+      .submit-btn{margin-top: .6rem;border-radius: .04rem;font-size: .3rem;height: .9rem;line-height: .9rem;}
+    }
+    .p-tit1{font-size: .4rem;padding-top: .26rem;
+      & + .p-txt1{padding-top: .25rem;}
+    }
+    .p-tit2{font-size: .24rem;}
+    .p-txt1{font-size: .2rem;padding-top: .28rem;
+      & + .p-tit2{margin-top: .52rem;}
+    }
+    .p-txt-badge{font-size:.2rem;line-height: .37rem;height:.37rem;padding: 0 .14rem;border-radius: .04rem;margin-top:.4rem;}
+    .illstr-txt-block{font-size: .2rem;padding-top: .4rem;padding-bottom: .04rem;
+      li{width:100%;border-left:1px solid #e5e5e5;border-top:0;height:auto;margin-left: 0;@include box-sizing(border-box);
+        &:first-child{margin-left:0;border-top:1px solid #e5e5e5;}
+      }
+      .illstr-item{position: relative;padding-left: 2.36rem;padding-bottom: .37rem;height:1.8rem;display: table-cell;vertical-align: middle;
+        [class*="illstr"]{position:absolute;left:.35rem;top:50%;margin:-.66rem 0 0;
+          &.illstr2{margin-top: -.93rem;}
+        }
+      }
+      .item-tit{text-align: left;font-size: .24rem;padding-top: .33rem;padding-bottom: .03rem;}
+      p{padding: 0 21px;}
+    }
+    .pic-list{padding: .3rem 0 .6rem;
+      img{width: 31%;
+        & + img{margin-left: .22rem;}
+      }
+    }
+    .opgroup-btns{display: none;}
+  }
+  .breadcrumb{font-size: .2rem;padding: .15rem 0;
+    a{
+      i{margin: 0 .08rem;}
+    }
+  }
+  @import "sp-m-trade";
+}
+@media (max-width: 979px) {
+  .form-title{text-transform: none;}
+}

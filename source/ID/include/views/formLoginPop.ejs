@@ -8,8 +8,16 @@
                 <div class="msg-txt"><% if (locals.msg.txt) { %><%- msg.txt %><% } else {%>Deposit $200,Dapatkan $300<% } %></div>
                 <div class="btn-group">
                     <p>Lanjutkan</p>
-                    <a href="http://www.hsb.co.id/apk/hansonApp_prd-yn08-release.apk" download="" onclick="formReset();dataLayer.push({'event':'download','gtm.elementTarget': $GA_NAME,'gtm.element': 'float_center'});" class="btn mobile">Unduh</a>
+                    <% if (locals.msg.event1) { %>
+                    <a href="<% if (locals.msg.apk) { %><%- msg.apk %><% } else {%>http://www.hsb.co.id/apk/hansonApp_prd-yn08-release.apk<% } %>" onclick="dataLayer.push({'event':'download','gtm.elementTarget': $GA_NAME,'gtm.element': 'float_center'});" class="btn mobile">Unduh</a>
+                    <% } else {%>
+                    <a href="<% if (locals.msg.apk) { %><%- msg.apk %><% } else {%>http://www.hsb.co.id/apk/hansonApp_prd-yn08-release.apk<% } %>" onclick="formReset();dataLayer.push({'event':'download','gtm.elementTarget': $GA_NAME,'gtm.element': 'float_center'});" class="btn mobile">Unduh</a>
+                    <% } %>
+                    <% if (locals.msg.event2) { %>
+                    <a href="javascript:void(0);" class="btn computer" onclick="dataLayer.push({'event':'login','gtm.elementTarget': $GA_NAME,'gtm.element': 'float_center'});">Masuk akun</a>
+                    <% } else {%>
                     <a href="javascript:void(0);" class="btn computer" onclick="toLogin();dataLayer.push({'event':'login','gtm.elementTarget': $GA_NAME,'gtm.element': 'float_center'});">Masuk akun</a>
+                    <% } %>
                 </div>
             </div>
         </div>

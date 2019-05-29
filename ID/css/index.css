@@ -360,14 +360,12 @@ a:active,a:focus{ outline:none; }
 }
 
 /*  ============ sprites ============  */
-.i-arrow-r{ width:8px;height:14px;background-image:url("../images/sp_icon_01.png?=605");background-position:0px 0px;background-size:26px 240px;background-repeat:no-repeat; }
-.i-btn-01{ width:24px;height:25px;background-image:url("../images/sp_icon_01.png?=605");background-position:0px -144px;background-size:26px 240px;background-repeat:no-repeat; }
-.i-btn-02{ width:18px;height:25px;background-image:url("../images/sp_icon_01.png?=605");background-position:0px -179px;background-size:26px 240px;background-repeat:no-repeat; }
-.i-btn-apple{ width:16px;height:22px;background-image:url("../images/sp_icon_01.png?=605");background-position:0px -80px;background-size:26px 240px;background-repeat:no-repeat; }
-.i-btn-googleplay{ width:20px;height:22px;background-image:url("../images/sp_icon_01.png?=605");background-position:0px -112px;background-size:26px 240px;background-repeat:no-repeat; }
-.i-btn-livechat{ width:24px;height:18px;background-image:url("../images/sp_icon_01.png?=605");background-position:0px -24px;background-size:26px 240px;background-repeat:no-repeat; }
-.i-btn-openaccount{ width:26px;height:18px;background-image:url("../images/sp_icon_01.png?=605");background-position:0px -52px;background-size:26px 240px;background-repeat:no-repeat; }
-.i-popup-close{ width:26px;height:26px;background-image:url("../images/sp_icon_01.png?=605");background-position:0px -214px;background-size:26px 240px;background-repeat:no-repeat; }
+.i-btn-02{ width:18px;height:25px;background-image:url("../images/sp_icon_01.png?=722");background-position:0px -120px;background-size:26px 181px;background-repeat:no-repeat; }
+.i-btn-apple{ width:16px;height:22px;background-image:url("../images/sp_icon_01.png?=722");background-position:0px -56px;background-size:26px 181px;background-repeat:no-repeat; }
+.i-btn-googleplay{ width:20px;height:22px;background-image:url("../images/sp_icon_01.png?=722");background-position:0px -88px;background-size:26px 181px;background-repeat:no-repeat; }
+.i-btn-livechat{ width:24px;height:18px;background-image:url("../images/sp_icon_01.png?=722");background-position:0px 0px;background-size:26px 181px;background-repeat:no-repeat; }
+.i-btn-openaccount{ width:26px;height:18px;background-image:url("../images/sp_icon_01.png?=722");background-position:0px -28px;background-size:26px 181px;background-repeat:no-repeat; }
+.i-popup-close{ width:26px;height:26px;background-image:url("../images/sp_icon_01.png?=722");background-position:0px -155px;background-size:26px 181px;background-repeat:no-repeat; }
 
 /*  ============ sprites ============  */
 .bonus-pool-bg{ width:572px;height:203px;background-image:url("../images/sp_p_icons.png?=463");background-position:0px 0px;background-size:572px 203px;background-repeat:no-repeat; }
