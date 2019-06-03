@@ -81,6 +81,11 @@
       [class*="i-x"]{margin-top: -4px;}
       [class*="i-r"]{margin-top: -13px;}
     }
+
+    & + .opgroup-btns{margin-top: -50px;padding-bottom: 20px;
+      .link-group{padding: 0;
+      }
+    }
   }
 }
 
@@ -163,6 +168,8 @@
       .tb-td{
         [class*="i-x"]{margin-top: -.04rem;}
         [class*="i-r"]{margin-top: -.13rem;}
+      }
+      & + .opgroup-btns{margin-top: 0;padding-bottom: 0;
       }
     }
   }

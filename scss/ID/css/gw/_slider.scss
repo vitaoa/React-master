@@ -57,7 +57,7 @@
 }
 .slider-banner {position: relative;width: 100%;height: 660px;overflow: hidden;
   .slide { /* height: 100%;*/height: 660px;width:100%;  float: left;  clear: none;position: relative;
-    & > a{display: block;background-position: center center;background-repeat: no-repeat;/*background-size:cover;*/width:100%;height:100%;}
+    & > a{display: block;background-position: center center;background-repeat: no-repeat;background-size:cover;width:100%;height:100%;}
   }
   .slick-dots {position: absolute;left:0;right:0;z-index:9999;font-size:0;text-align: center;bottom: 40px;
     li {@include inline-block;position: relative;overflow: hidden;margin: 0 2px;width: 55px;padding: 20px 0;
@@ -119,40 +119,20 @@
       .slider-item{box-shadow: 0 0 .32rem 0 rgba(27, 27, 27, 0.1);@include size(4rem,2.7rem);
       }
       .s-title{font-size: .24rem;padding: .25rem;}
-      .user-info{bottom:.26rem;left:.25rem;line-height: 1;}
+      .user-info{bottom:.24rem;left:.25rem;line-height: 1;font-size: 0;}
     }
   }
-  .index-banner{height: 3.8rem;
+  .index-banner{height: 2.56rem;
     & + .opgroup-btns{margin-top: 0;}
   }
-  .slider-banner {height: 3.8rem;
-    .slide {height:3.8rem;
-      & > a{background-size:auto 3.8rem;}
+  .slider-banner {height: 2.56rem;
+    .slide {height:2.56rem;
+      & > a{background-size:auto 2.56rem;}
     }
     .slick-dots {bottom: 0;
       li {margin: 0 .02rem;width: .55rem;padding: .24rem 0;
         &:after,div{height: .04rem;}
       }
-    }
-  }
-  .opgroup-btns{
-    [class*="i-"]{margin-right: 0;position: absolute;top:50%;right:.2rem;margin-top: -.11rem;
-      &[class*="i-btn-0"]{display: none;}
-      &[class*="i-arrow-r"]{margin-top: -.11rem;margin-left: 0;}
-    }
-    .link-group{padding: .3rem .2rem;
-      &.opgroup-btns-bg{background-image: none;}
-      &.group-two{@include clearfix;
-        .btn{float:left;width:48.5%;margin: 0;@include prefixer(transition, none, ("webkit", "moz","ms","o"));
-          &:hover{
-            [class*="i-arrow-r"]{opacity: 1;width:.13rem;margin-left: 0;}
-          }
-          & + .btn{float: right;}
-        }
-      }
-    }
-    .btn{text-align: left;border-radius: .04rem;@include size(100%,.8rem);line-height: 1;font-size: .18rem;@include box-sizing(border-box);position: relative;padding: 0 .2rem;
-      span{font-size: .24rem;display: block;float: none;line-height: 1;padding-top: .17rem;}
     }
   }
 }

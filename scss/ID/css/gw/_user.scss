@@ -5,7 +5,7 @@
     & + .user-data{margin-left: 15px;}
   }
   .user-data{@include inline-block;
-    .u-name{display: block;font-size: 16px;color:#777;}
+    .u-name{display: block;font-size: 16px;color:#777;margin-bottom: 8px;}
     .u-rating{
       i{
         & + i{margin-left: 4px;}
@@ -17,11 +17,11 @@
 @media(max-width:1023px) {
   .user-info{
     .s-avatar{
-      img{border-radius: .02rem;width:.4rem;}
+      img{border-radius: .02rem;width:.5rem;}
       & + .user-data{margin-left: .15rem;}
     }
     .user-data{
-      .u-name{font-size: .2rem;margin-bottom: .02rem;}
+      .u-name{font-size: .2rem;margin-bottom: .08rem;}
       .u-rating{
         i{
           & + i{margin-left: .04rem;}

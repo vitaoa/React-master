@@ -205,8 +205,8 @@ class Slider extends React.Component{
         }
     }
     render(){
-        let arrowPrevEle = this.state.opts.arrowClass?<span className={this.state.opts.arrowClass+" btn-prev"}><i className={this.state.opts.prevClass}></i></span>:"";
-        let arrowNextEle = this.state.opts.arrowClass?<span className={this.state.opts.arrowClass+" btn-next"}><i className={this.state.opts.nextClass}></i></span>:"";
+        let arrowPrevEle = (this.state.opts.arrowClass && this.state.items.length)?<span className={this.state.opts.arrowClass+" btn-prev"}><i className={this.state.opts.prevClass}></i></span>:"";
+        let arrowNextEle = (this.state.opts.arrowClass && this.state.items.length)?<span className={this.state.opts.arrowClass+" btn-next"}><i className={this.state.opts.nextClass}></i></span>:"";
 
         return(
             <div className={this.state.opts.class?"slider "+this.state.opts.class:"slider"}>
@@ -228,7 +228,7 @@ class Slider extends React.Component{
                                     <div className="s-title">{badgeEle}{titleEle}{descEle}</div>
                                     {item.avatar?<UserInfo data={item} />:''}
                                     {iconEle}
-                                    <div dangerouslySetInnerHTML={{__html: item.linkA}} className="slider-link"></div>
+                                    {item.linkA?<div dangerouslySetInnerHTML={{__html: item.linkA}} className="slider-link"></div>:''}
                                 </div>
                             </li>
                         })}
@@ -343,7 +343,7 @@ const advantages={
     "class":"advantages-comp citra-advantage",
     "listClass":"citra-icons-bg",
     "iconClass":"i-citra",
-    "items":["Transparent","Regulation","Justice","Safety"]
+    "items":["transparan","regulasi","keadilan","keselamatan"]
 };
 
 /*part2*/
@@ -370,7 +370,7 @@ const title2 = {
 const btnList2 = {
     opts:{class:"al-c"},
     items:[
-        {linkA:"<a href=\"*.html\" target=\"_blank\" class=\"btn-gw btn-yellow-default\">Detail</a>"},
+        {linkA:"<a href=\"https://www.hsb.co.id/lp/lp20_ayvz_201904hd.html?#utm_source=pcgwpart\" target=\"_blank\" class=\"btn-gw btn-yellow-default\">Detail</a>"},
     ]
 };
 
@@ -470,7 +470,7 @@ const list5 = {
 const btnList5 = {
     opts:{class:"al-c"},
     items:[
-        {linkA:"<a href=\"javascript:;\" target=\"_blank\" class=\"btn-gw btn-yellow-default\">Click to Download</a>"},
+        {linkA:"<a href=\"javascript:;\" target=\"_blank\" onclick='downloadAppgw(this)' rel=\"nofollow\" class=\"btn-gw btn-yellow-default\">Click to Download</a>"},
     ]
 };
 const illustrList5 = {
@@ -487,6 +487,9 @@ function Part6() {
             <TitleBarGW data={title6} />
             <div className="w-part">
                 <ListTB data={listTB6} />
+                <div className="opgroup-btns">
+                    <BannerBtnGroup data={bannerBtns6} />
+                </div>
             </div>
         </div>
     )
@@ -503,20 +506,27 @@ const listTB6 ={
         {
             head:"<span>Platform<br/> Investasi Lain</span>",
             span:true,
-            body:["USD 500 - 1000","USD 30 - 35","100","BAPPEBTI、ICDX、ICH","/","/","/","/","/","/"],
+            body:["USD 500 - 1000","USD 30 - 35","100","Tidak ada lisensi lokal, transaksi tidak dapat dijamin, dan hak dari nasabah sulit dipertahankan","/","/","/","/","/","/"],
             iconClass:["i-x1"]
         },
         {
             head:"<i class='i-vs'></i>",
             span:true,
-            body:["Minimal<br/> deposit","Komisi","Leverage","Lisensi","Cek transaksi<br/> melalui CITRA","Buka akun<br/> dan deposit","Penarikan dari<br/> aplikasi","Kedalaman<br/> pasar","Server cloud","Aplikasi"]
+            body:["Minimal<br/> deposit","Komisi","Leverage","Lisensi","CITRA","Buka akun<br/> dan deposit","Penarikan dari<br/> aplikasi","Kedalaman<br/> pasar","Server cloud","Aplikasi"]
         },
         {
             head:"Hanson",
             span:true,
-            body:["USD 100","USD 1","200","Tidak ada lisensi lokal, transaksi tidak dapat dijamin, dan hak dari nasabah sulit dipertahankan","Nasabah menyediakan <br/>   akun pengecekan","Buka akun dalam 5 menit,<br/> deposit dalam 15 menit","kedatangan segera, kedatangan pada hari yang sama (bank berbeda)","Kedalaman harga 5 tingkat","Ekspansi cepat, transaksi stabil","Dilengkapi dengan artikel, <br/>berita dan event"],
+            body:["USD 100","USD 1","200","BAPPEBTI、ICDX、ICH","Menyadiakan akun pengecekan <br/> transaksi untuk nasabah","Buka akun dalam 5 menit,<br/> deposit dalam 15 menit","kedatangan segera, kedatangan pada hari yang sama (bank berbeda)","Kedalaman harga 5 tingkat","Ekspansi cepat, transaksi stabil","Dilengkapi dengan artikel, <br/>berita dan event"],
             iconClass:["i-r1"]
         }
+    ]
+};
+let bannerBtns6 = {
+    opts:{class:"group-two"},
+    items:[
+        {id:1,class:"btn btn-yellow",linkA:'<a href="https://ui.hsb.co.id/?utm_source=pcgw_part_AkunAlive#/login/RVf" target="_blank" rel="nofollow"><span class="fl">Buka Akun Alive</span>Komisi trading serendah $1<i class="i-arrow-r"></i></a>'},
+        {id:2,class:"btn btn-blue",linkA:'<a href="https://ui.hsb.co.id/?utm_source=pcgw_part_AkunDemo#/register/RVf" target="_blank" rel="nofollow"><span class="fl">Buka Akun Demo</span>Akun Demo Virtual $100000 <i class="i-arrow-r2"></i></a>'}
     ]
 };
 
@@ -537,7 +547,7 @@ function Part7() {
     )
 }
 const title7 = {
-    "title":["Economic<br/> News","Daily<br/> Analysis"],
+    "title":["Daily<br/> Analysis","Economic<br/> News"],
     "hasLine":true,
     "class":"titlebar-gw tab-nav",
 };
@@ -554,7 +564,7 @@ const slider72={
     opts:{class:"sliderLeftRight article-block",arrowClass:"arrow-btn",prevClass:"i-btn-l1",nextClass:"i-btn-r1"},
     items:[
         {picname:"pic-news1.jpg",title:"Informasi berbagai index",badge:["EUR/USD"],iconClass:"i-new-s1",linkA:'<a href="" target="_blank">Selengkapnya <i class="i-arrow-r1"></i></a>'},
-        {picname:"pic-news4.jpg",title:"Informasi berbagai index",badge:["EUR/USD","Event"],linkA:'<a href="" target="_blank">Selengkapnya <i class="i-arrow-r1"></i></a>'},
+        // {picname:"pic-news4.jpg",title:"Informasi berbagai index",badge:["EUR/USD","Event"],linkA:'<a href="" target="_blank">Selengkapnya <i class="i-arrow-r1"></i></a>'},
     ]
 }
 
@@ -575,10 +585,11 @@ const title8 = {
 const slider8={
     opts:{class:"sliderLeftRight feedback-block",itemClass:"user-box",arrowClass:"arrow-btn",prevClass:"i-btn-l2",nextClass:"i-btn-r2"},
     items:[
-        {avatar:"avatar.jpg",avatarName:"Carolos",statLevel:["i-star1","i-star1","i-star1","i-star1","i-star1"],title:"Very good,keep it up",desc:"Give a thumbs-up to fast deposit and good services on Hason!"},
-        {avatar:"avatar.jpg",avatarName:"Gabriel",statLevel:["i-star1","i-star1","i-star1","i-star1","i-star1"],title:"Hason is great",desc:"I haven't missed any important data analysis ever since I downl"},
-        {avatar:"avatar.jpg",avatarName:"Miguel",statLevel:["i-star1","i-star1","i-star1","i-star1","i-star1"],title:"Best trading broker",desc:"I earned $500 by following my friend to place orders!"},
-        {avatar:"avatar.jpg",avatarName:"Fabiana",statLevel:["i-star1","i-star1","i-star1","i-star1","i-star1"],title:"Easy and fun",desc:"This mobile trading App is good. I like it not only because of its fast download speed."},
+        {avatar:"avatar1.png",avatarName:"Carolos",statLevel:["i-star1","i-star1","i-star1","i-star1","i-star1"],title:"Mudah dan Menyenangkan",desc:"Aplikasi ini sangat bagus. saya suka trading menggunakan aplikasi ini. kamu dapat membuka akun dan mengaturnya di aplikasi ini."},
+        {avatar:"avatar2.png",avatarName:"Gabriel",statLevel:["i-star1","i-star1","i-star1","i-star1","i-star1"],title:"Trading broker terbaik",desc:"Mantap Hanson, kamu dapat mengecek setiap transaksi melalui CITRA dan tim cs 24 jam selalu siap membantu Anda."},
+        {avatar:"avatar3.png",avatarName:"Miguel",statLevel:["i-star1","i-star1","i-star1","i-star1","i-star1"],title:"Pengalaman yang baik",desc:"Jempol untuk deposit dan penarikan dana yang sangat cepat and servis lainnya juga bagus."},
+        {avatar:"avatar4.png",avatarName:"Fabiana",statLevel:["i-star1","i-star1","i-star1","i-star1","i-star1"],title:"All in one app",desc:"Hanya membutuhkan waktu yang singkat dan bisa mendapatkan profit di all in one app ini."},
+        {avatar:"avatar5.png",avatarName:"Carna",statLevel:["i-star1","i-star1","i-star1","i-star1","i-star1"],title:"Reputasi bagus",desc:"Saya belajar bagaimana untuk trading dan bagaimana menjadi trader yang baik dari artikel yang disediakan  dalam aplikasi."},
     ]
 }
 

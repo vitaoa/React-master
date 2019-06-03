@@ -23,6 +23,9 @@
     .btn-gw{@include size(226px,50px);line-height: 50px;}
   }
 }
+.part6{
+  & + .part7{margin-top: 80px;}
+}
 
 
 @media(max-width:1023px) {
@@ -45,5 +48,8 @@
     .btn-group{
       .btn-gw{@include size(2.7rem,.66rem);line-height: .66rem;font-size: .24rem;}
     }
+  }
+  .part6{
+    & + .part7{margin-top: .92rem;}
   }
 }

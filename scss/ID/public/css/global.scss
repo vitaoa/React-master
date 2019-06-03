@@ -225,7 +225,7 @@ ul.mobile-submenu > li > a{display:block; padding:.3rem; color:#162E55; backgrou
   .container{width:7.5rem; box-sizing: border-box; padding: 0 .3rem;
     .side-block{
       .block-item{
-        .block-list{font-size: .2rem;}
+        .block-list{font-size: .24rem;}
       }
     }
   }
@@ -301,7 +301,7 @@ table.table_info tbody tr td:not(:last-child){border-right:1px solid #a4b9cc;}
   .download-btn-group{/*margin-right: 52px;*/float: left;padding-top: 38px;}
 }
 .footer-list{margin: 0 -45px;}
-.footer-interact{background: #153040;border-bottom: 1px solid #797979;font-size: 13px;padding: 25px 0;@include clearfix;
+.footer-interact{background: #153040;font-size: 13px;padding: 25px 0;@include clearfix;
   .interactitem{@include inline-block;color:#fff;@include box-sizing(border-box);margin: 0 45px;
     //li{padding-bottom: 10px;}
     i{@include inline-block;float: left;margin-right: 20px;
@@ -826,27 +826,28 @@ table.table_info tbody tr td:not(:last-child){border-right:1px solid #a4b9cc;}
       span{margin: 0 .3rem;}
     }
   }
-  .pnship-advantage {padding:.6rem 0;text-align: center;
-    .pnship-title{font-size: .3rem;padding-bottom: .4rem;
+  .pnship-advantage {padding:.6rem 0;text-align: center;background-size: cover;
+    .pnship-title{font-size: .4rem;padding-bottom: .4rem;
       & +.page-titlebar{margin-top: -.2rem;}
+      br{display:none;}
     }
     .offer-list{/*display: inline-block;text-align: left;*/
-      li{font-size: .2rem;margin-bottom: .1rem;/*line-height: .52rem;*/
-        span{line-height: 1;margin-top: .02rem;font-size: .16rem;}
+      li{font-size: .2rem;margin-bottom: .5rem;/*line-height: .52rem;*/
+        span{line-height: 1;margin-top: .05rem;font-size: .18rem;}
       }
       //i{margin-right: .32rem;}
     }
-    .page-titlebar{font-size: .2rem;}
+    .page-titlebar{font-size: .22rem;}
   }
-  .pnship-icons-bg{background-size: 6rem auto;
+  .pnship-icons-bg{background-size: 3.66rem auto;background-image: url(/images/partnership/pnship-icons-bgm.png);
     &.offer-list{
-      li{top:.2rem;
-        &:first-child{left:-.7rem;
-          & + li{left:.63rem;
-            & + li{left:-1.02rem;
-              & + li{left:1.02rem;
-                & + li{left:-.7rem;
-                  & + li{left:.63rem;}
+      li{top:.4rem;
+        &:first-child{left:-.68rem;
+          & + li{left:.68rem;
+            & + li{left:-.68rem;
+              & + li{left:.68rem;
+                & + li{left:-.68rem;
+                  & + li{left:.68rem;}
                 }
               }
             }
@@ -867,8 +868,10 @@ table.table_info tbody tr td:not(:last-child){border-right:1px solid #a4b9cc;}
     }
     .block-item{
       .item-tit{font-size: .26rem;line-height: 1rem;padding: 0 .4rem;}
-      .block-list{font-size: .2rem;line-height: .2rem;padding: .38rem;
-        li{padding: .16rem 0;}
+      .block-list{font-size: .24rem;line-height: .24rem;padding: .38rem;
+        li{padding: .14rem 0;
+          .i-ps-check{margin-top: .02rem;}
+        }
       }
       & + .block-item{margin-top: .4rem;}
     }
@@ -1047,12 +1050,14 @@ table.table_info tbody tr td:not(:last-child){border-right:1px solid #a4b9cc;}
 
 }
 @import "sp-p-icons";
+@import "sp-p-icons2";
 @import "sp-m-icons";
 @import "sp-m-edukasiforex";
 @import "sp-m-edukasiicons";
 @import "sp-p-popup";
 @media(max-width:1023px) {
   @import "sp-m-popup";
+  @import "sp-m-icons2";
 }
 
 
@@ -1135,9 +1140,9 @@ table.table_info tbody tr td:not(:last-child){border-right:1px solid #a4b9cc;}
     }
     & ~ #page{top: 1.4rem;
       &.mmopen{
-        #site-header{top:0;@include prefixer(transition,none,$prefixes);}
+        #site-header,.header{top:0;@include prefixer(transition,none,$prefixes);}
       }
-      #site-header{top:1.4rem;}
+      #site-header,.header{top:1.4rem;}
     }
   }
 }

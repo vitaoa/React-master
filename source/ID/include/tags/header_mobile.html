@@ -8,7 +8,7 @@
         @@if (context.Siapa){
         <li>
             <a class="btn-mobilemenu" href="javascript:void(0)">Siapa Kami</a>
-            <a class="i-mobilemenu-arrow btn-open-submenu" href="javascript:;"></a>
+            <a class="btn-open-submenu" href="javascript:;"><i class="i-mobilemenu-arrow"></i></a>
             <ul class="mobile-submenu">
                 @@for (var i = 0; i < (context.Siapa.length); i++) {
                 <li><a href="@@if(rootUrl){@@rootUrl}`+context.Siapa[i].url+`">`+context.Siapa[i].text+`</a></li>
@@ -19,7 +19,7 @@
         @@if (context.Products){
         <li>
             <a class="btn-mobilemenu" href="javascript:void(0)">Produk</a>
-            <a class="i-mobilemenu-arrow btn-open-submenu" href="javascript:;"></a>
+            <a class="btn-open-submenu" href="javascript:;"><i class="i-mobilemenu-arrow"></i></a>
             <ul class="mobile-submenu">
                 @@for (var i = 0; i < (context.Products.length); i++) {
                 <li><a href="@@if(rootUrl){@@rootUrl}`+context.Products[i].url+`">`+context.Products[i].text+`</a></li>
@@ -30,7 +30,7 @@
         @@if (context.Market){
         <li>
             <a class="btn-mobilemenu" href="javascript:void(0)">Market Insight</a>
-            <a class="i-mobilemenu-arrow btn-open-submenu" href="javascript:;"></a>
+            <a class="btn-open-submenu" href="javascript:;"><i class="i-mobilemenu-arrow"></i></a>
             <ul class="mobile-submenu">
                 @@for (var i = 0; i < (context.Market.length); i++) {
                 <li><a href="@@if(rootUrl){@@rootUrl}`+context.Market[i].url+`">`+context.Market[i].text+`</a></li>
@@ -47,7 +47,7 @@
         @@if (context.Edukasi){
         <li>
             <a class="btn-mobilemenu" href="javascript:void(0)">Edukasi</a>
-            <a class="i-mobilemenu-arrow btn-open-submenu" href="javascript:;"></a>
+            <a class="btn-open-submenu" href="javascript:;"><i class="i-mobilemenu-arrow"></i></a>
             <ul class="mobile-submenu">
                 @@for (var i = 0; i < (context.Edukasi.length); i++) {
                 <li><a href="@@if(rootUrl){@@rootUrl}`+context.Edukasi[i].url+`">`+context.Edukasi[i].text+`</a></li>
@@ -59,7 +59,7 @@
         @@if (context.Contact) {
         <li>
             <a class="btn-mobilemenu" href="javascript:void(0)">Contact</a>
-            <a class="i-mobilemenu-arrow btn-open-submenu" href="javascript:;"></a>
+            <a class="btn-open-submenu" href="javascript:;"><i class="i-mobilemenu-arrow"></i></a>
             <ul class="mobile-submenu">
                 @@for (var i = 0; i < (context.Contact.length); i++) {
                 <li><a href="@@if(rootUrl){@@rootUrl}`+context.Contact[i].url+`">`+context.Contact[i].text+`</a></li>

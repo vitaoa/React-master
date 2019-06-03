@@ -1,0 +1,61 @@
+
+.video-fixed{position: fixed;z-index: 999999999;bottom: 60px;right:10px;@include size(260px,142px);
+  .video-img{position: relative;z-index: 2;display: block;}
+
+  .video-js{width: 100%;height: 100%;text-align: center;position: absolute;top:0;left:0;
+    &#yyVideom{
+      &.vjs-fullscreen{z-index: 3;opacity: 1;background: #fff;
+      }
+      &.vjs-has-started{z-index: 3;background: #fff;}
+      &.vjs-paused{z-index: -1;opacity: 0;
+        .vjs-tech{display: none;}
+      }
+    }
+    .i-vjs-paused,.i-vjs-playing,.vjs-fullscreen-control{@include prefixer(transform,scale(.5),$prefixes);@include prefixer(transform-origin,center,$prefixes);}
+    &.vjs-fullscreen{
+      .vjs-control-bar{padding: 10px 20px;height:40px;}
+      .vjs-progress-control{width:80%;
+        .vjs-progress-holder{height:4px;}
+      }
+      .i-vjs-paused,.i-vjs-playing,.vjs-fullscreen-control{@include prefixer(transform,scale(1),$prefixes);@include prefixer(transform-origin,center,$prefixes);}
+    }
+    .vjs-poster{background: none;background-size: 100% auto;background-repeat: no-repeat;background-position: center center;}
+    &.vjs-has-started.vjs-user-inactive.vjs-playing{
+      .vjs-control-bar{opacity: 1;}
+    }
+    .vjs-control-bar{@include clearfix;height: 20px;padding: 0 5px;@include rgba-background((#000,.5));}
+    .vjs-slider{@include rgba-background((#fff,.5));}
+    .vjs-play-control{float: left;
+      .i-vjs-paused{@include inline-block;}
+      .i-vjs-playing{display: none;}
+      &.vjs-playing{
+        .i-vjs-paused{display: none;}
+        .i-vjs-playing{@include inline-block;}
+      }
+    }
+    .vjs-fullscreen-control{float: right;}
+    .vjs-control{@include inline-block;}
+    .vjs-control-bar,.vjs-volume-panel,.vjs-current-time,.vjs-time-divider,.vjs-duration,.vjs-progress-control{@include inline-block;}
+    .vjs-progress-control{width: 200px;@include inline-block;
+      .vjs-progress-holder{margin: 9px 0 0;height:2px;}
+    }
+    .vjs-button{
+      & > .vjs-icon-placeholder{
+        &:before{line-height: 20px;display: none;}
+      }
+    }
+    .vjs-play-progress:before{display: none;}
+    .vjs-volume-panel,.vjs-current-time,.vjs-time-divider,.vjs-duration,.vjs-remaining-time{@include opacity(0);display: none;width:0;}
+    .vjs-big-play-button{top:50%;left:50%;margin-left: -22px;margin-top: -22px;
+      .vjs-icon-play:before{display: none;}
+    }
+  }
+  .vjs-close{position: absolute;top:-15px;right:0;cursor: pointer;}
+}
+@media(max-width:1023px) {
+  .video-fixed{@include size(2.3rem,1.25rem);bottom: 72px;right:25px;
+    .video-js{opacity: 1;
+      .vjs-progress-control{width: 1.7rem;}
+    }
+  }
+}

@@ -145,8 +145,8 @@
     	/* COMMON - mobile menu */
 	$('ul.mobile-menu').delegate('li a.btn-open-submenu', 'click', function(e){
 		e.preventDefault();
-
-        var _class = this.className;
+        var _this = $(this).find('i')[0];
+        var _class = _this.className;
         var _classArr = _class.split(' ');
         var _regClass = _class;
         _classArr.forEach(function (e,i) {
@@ -156,14 +156,18 @@
         });
 
 		if( $(this).hasClass('open') ){
-            this.className=this.className.replace(_regClass,'i-mobilemenu-arrow');
+            _this.className=_this.className.replace(_regClass,'i-mobilemenu-arrow');
 			$(this).parent().find('ul.mobile-submenu').slideToggle();
 			$(this).removeClass('open');
 		}else{
-			$('a.btn-open-submenu.open').parent().find('ul.mobile-submenu').slideToggle();
-			$(this).parent().find('ul.mobile-submenu').slideToggle();
-			$('ul.mobile-menu li').find('a.btn-open-submenu.open').removeClass('open i-mobilemenu-arrowd').addClass('i-mobilemenu-arrow');
-            this.className=this.className.replace(_regClass,_regClass+'d');
+            var _thissiblings = $(this).closest('li').siblings('li').find('a.btn-open-submenu.open > i')[0];
+            $('a.btn-open-submenu.open').parent().find('ul.mobile-submenu').slideToggle();
+            $(this).parent().find('ul.mobile-submenu').slideToggle();
+            $('ul.mobile-menu li').find('a.btn-open-submenu.open').removeClass('open');
+            if(!!_thissiblings){
+                _thissiblings.className = _thissiblings.className.replace(_thissiblings.className,'i-mobilemenu-arrow');
+            }
+            _this.className=_this.className.replace(_regClass,_regClass+'d');
 			$(this).addClass('open');
 		}
 	});
@@ -297,3 +301,48 @@
      $(o).closest('.tip-bar').length>0 && $(o).closest('.tip-bar').remove();
      window.sessionStorage.setItem("TipBar",1)
  }
+ function downloadAppgw(_obj) {
+     var mType = mobileType();
+     if(mType == 'android'){
+         $(_obj).attr("href","https://play.google.com/store/apps/details?id=com.ixdigit.hanson#utm_source=pcgw_middle_download_android");
+         dataLayer.push({'event':'Google play','gtm.elementTarget': $GA_NAME,'gtm.element': 'content_middle'});
+     }else if(mType == 'ios'){
+         $(_obj).attr("href","https://itunes.apple.com/id/app/id1403262751?mt=8#utm_source=pcgw_middle_download_ios");
+         dataLayer.push({'event':'App Store','gtm.elementTarget': $GA_NAME,'gtm.element': 'content_middle'});
+     }else{
+         $(_obj).attr("href","https://ui.hsb.co.id/static/mobile.html#/register/RVf#utm_source=pcgw_middle_download");
+         dataLayer.push({'event':'download btn','gtm.elementTarget': $GA_NAME,'gtm.element': 'content_middle'});
+     }
+ }
+ function showNotice(msg) {
+     //发送通知
+     newNotify = function () {
+         var notification = new Notification("Notice:", {
+             dir: "auto",
+             lang: "id",
+             requireInteraction: false,
+             // tag: "testTag",
+             // renotify:true,
+             icon: "https://www.hsb.co.id/public/images/logo.png",
+             body: msg
+         });
+         notification.onclick = function (event) {
+             //回到发送此通知的页面
+             window.focus();
+             //回来后要做什么
+             // window.open('/index.html');
+         }
+     }
+     //权限判断
+     if (Notification.permission == "granted") {
+         newNotify();
+     } else {
+         //请求权限
+         Notification.requestPermission(function (perm) {
+             if (perm == "granted") {
+                 newNotify();
+             }
+         })
+     }
+ }
+ showNotice('sdaaaaaaaa')

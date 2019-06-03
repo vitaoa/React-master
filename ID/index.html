@@ -17,13 +17,99 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="canonical" href="https://www.hsb.co.id">
-    <meta name="author" content="2019.5 Designed by Hero; Coded by Vita">
+    <meta name="author" content="2019.6 Designed by Hero; Coded by Vita">
     <link href="/public/css/global.css" rel="stylesheet" type="text/css">
+    <script async="" src="https://embed.tawk.to/5b34b394eba8cd3125e34265/default" charset="UTF-8" crossorigin="*"></script>
     <script type="text/javascript" src="/public/js/rem.js"></script>
     <script type="text/javascript" src="/public/js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="/public/js/common.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/gw.css">
     <link rel="stylesheet" type="text/css" href="/css/slick.css">
+    <style type="text/css">
+        @keyframes tawkMaxOpen {
+            0% {
+                opacity: 0;
+                transform: translate(0, 30px);
+                ;
+            }
+
+            to {
+                opacity: 1;
+                transform: translate(0, 0px);
+            }
+        }
+
+        @-moz-keyframes tawkMaxOpen {
+            0% {
+                opacity: 0;
+                transform: translate(0, 30px);
+                ;
+            }
+
+            to {
+                opacity: 1;
+                transform: translate(0, 0px);
+            }
+        }
+
+        @-webkit-keyframes tawkMaxOpen {
+            0% {
+                opacity: 0;
+                transform: translate(0, 30px);
+                ;
+            }
+
+            to {
+                opacity: 1;
+                transform: translate(0, 0px);
+            }
+        }
+
+        #zP8Pkha-1559525372231 {
+            outline: none !important;
+            visibility: visible !important;
+            resize: none !important;
+            box-shadow: none !important;
+            overflow: visible !important;
+            background: none !important;
+            opacity: 1 !important;
+            filter: alpha(opacity=100) !important;
+            -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity1) !important;
+            -moz-opacity: 1 !important;
+            -khtml-opacity: 1 !important;
+            top: auto !important;
+            right: 10px !important;
+            bottom: 0px !important;
+            left: auto !important;
+            position: fixed !important;
+            border: 0 !important;
+            min-height: 0 !important;
+            min-width: 0 !important;
+            max-height: none !important;
+            max-width: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            -moz-transition-property: none !important;
+            -webkit-transition-property: none !important;
+            -o-transition-property: none !important;
+            transition-property: none !important;
+            transform: none !important;
+            -webkit-transform: none !important;
+            -ms-transform: none !important;
+            width: auto !important;
+            height: auto !important;
+            display: none !important;
+            z-index: 2000000000 !important;
+            background-color: transparent !important;
+            cursor: auto !important;
+            float: none !important;
+            border-radius: unset !important;
+        }
+
+        #U4goBRC-1559525372232.open {
+            animation: tawkMaxOpen .25s ease !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -38,7 +124,7 @@
         <ul class="mobile-menu">
             <li>
                 <a class="btn-mobilemenu" href="javascript:void(0)">Siapa Kami</a>
-                <a class="i-mobilemenu-arrow btn-open-submenu" href="javascript:;"></a>
+                <a class="btn-open-submenu" href="javascript:;"><i class="i-mobilemenu-arrow"></i></a>
                 <ul class="mobile-submenu">
                     <li><a href="/tengtang/company-profile.html">Company Profile</a></li>
                     <li><a href="/tengtang/office-snapshot.html">Office Snapshot</a></li>
@@ -47,7 +133,7 @@
             </li>
             <li>
                 <a class="btn-mobilemenu" href="javascript:void(0)">Produk</a>
-                <a class="i-mobilemenu-arrow btn-open-submenu" href="javascript:;"></a>
+                <a class="btn-open-submenu" href="javascript:;"><i class="i-mobilemenu-arrow"></i></a>
                 <ul class="mobile-submenu">
                     <li><a href="/trading-produk.html">Produk</a></li>
                     <li><a href="/trading-produk/forex.html">Forex</a></li>
@@ -57,7 +143,7 @@
             </li>
             <li>
                 <a class="btn-mobilemenu" href="javascript:void(0)">Market Insight</a>
-                <a class="i-mobilemenu-arrow btn-open-submenu" href="javascript:;"></a>
+                <a class="btn-open-submenu" href="javascript:;"><i class="i-mobilemenu-arrow"></i></a>
                 <ul class="mobile-submenu">
                     <li><a href="/market-insight/quotes-harga.html">Quote Harga</a></li>
                 </ul>
@@ -68,7 +154,7 @@
             </li>
             <li>
                 <a class="btn-mobilemenu" href="javascript:void(0)">Edukasi</a>
-                <a class="i-mobilemenu-arrow btn-open-submenu" href="javascript:;"></a>
+                <a class="btn-open-submenu" href="javascript:;"><i class="i-mobilemenu-arrow"></i></a>
                 <ul class="mobile-submenu">
                     <li><a href="/edukasi/seminar-pendidikan.html">Event Seminar</a></li>
                     <li><a href="/edukasi/belajar-forex.html">Forex Academy</a></li>
@@ -77,10 +163,12 @@
             </li>
             <li>
                 <a class="btn-mobilemenu" href="javascript:void(0)">Contact</a>
-                <a class="i-mobilemenu-arrow btn-open-submenu" href="javascript:;"></a>
+                <a class="btn-open-submenu" href="javascript:;"><i class="i-mobilemenu-arrow"></i></a>
                 <ul class="mobile-submenu">
                     <li><a href="/tengtang/contact-us.html">Contact Us</a></li>
                     <li><a href="/partnership.html">Partnership</a></li>
+                    <li><a href="/tengtang/office-snapshot.html">Office Snapshot</a></li>
+                    <li><a href="/lp/lp11_plvz_201901pp.html">Company Qualification</a></li>
                     <li><a href="/tengtang/Careers.html">Careers</a></li>
                 </ul>
             </li>
@@ -149,6 +237,8 @@
                             <div class="submenu submenu-products">
                                 <div class="submenu-item"><a href="/tengtang/contact-us.html">Contact Us</a></div>
                                 <div class="submenu-item"><a href="/partnership.html">Partnership</a></div>
+                                <div class="submenu-item"><a href="/tengtang/office-snapshot.html">Office Snapshot</a></div>
+                                <div class="submenu-item"><a href="/lp/lp11_plvz_201901pp.html">Company Qualification</a></div>
                                 <div class="submenu-item"><a href="/tengtang/Careers.html">Careers</a></div>
                             </div>
                         </li>
@@ -189,10 +279,10 @@
                     <div class="w-part">
                         <div class="advantages-comp citra-advantage">
                             <ul class="citra-icons-bg" id="i-citra">
-                                <li><i class="i-citra1"></i><span>Transparent</span></li>
-                                <li><i class="i-citra2"></i><span>Regulation</span></li>
-                                <li><i class="i-citra3"></i><span>Justice</span></li>
-                                <li><i class="i-citra4"></i><span>Safety</span></li>
+                                <li><i class="i-citra1"></i><span>transparan</span></li>
+                                <li><i class="i-citra2"></i><span>regulasi</span></li>
+                                <li><i class="i-citra3"></i><span>keadilan</span></li>
+                                <li><i class="i-citra4"></i><span>keselamatan</span></li>
                             </ul>
                         </div>
                     </div>
@@ -207,7 +297,7 @@
                                         <p class="sub-txt">Hanson Trader dikembangkan oleh Hanson sendiri dengan menyesuaikan kebutuhan dan pola trading nasabah.Trading di Platform，tanpa perantara IB (Introducing Broker), sehingga nasabah bisa menikmati penawaran harga terendah dengan service yang terbaik.</p>
                                     </div>
                                 </div>
-                                <div class="btn-group al-c"><span><a href="*.html" target="_blank" class="btn-gw btn-yellow-default">Detail</a></span></div>
+                                <div class="btn-group al-c"><span><a href="https://www.hsb.co.id/lp/lp20_ayvz_201904hd.html?#utm_source=pcgwpart" target="_blank" class="btn-gw btn-yellow-default">Detail</a></span></div>
                             </div>
                         </div>
                     </div>
@@ -331,7 +421,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="btn-group al-c"><span><a href="javascript:;" target="_blank" class="btn-gw btn-yellow-default">Click to Download</a></span></div>
+                        <div class="btn-group al-c"><span><a href="javascript:;" target="_blank" onclick="downloadAppgw(this)" rel="nofollow" class="btn-gw btn-yellow-default">Click to Download</a></span></div>
                         <div class="illustr-group illustr-mac al-c">
                             <div class="illustr-phone"></div>
                         </div>
@@ -352,7 +442,7 @@
                                     <div class="tb-td"><i class="i-x1"></i><span>USD 500 - 1000</span></div>
                                     <div class="tb-td"><i class="i-x1"></i><span>USD 30 - 35</span></div>
                                     <div class="tb-td"><i class="i-x1"></i><span>100</span></div>
-                                    <div class="tb-td"><i class="i-x1"></i><span>BAPPEBTI、ICDX、ICH</span></div>
+                                    <div class="tb-td"><i class="i-x1"></i><span>Tidak ada lisensi lokal, transaksi tidak dapat dijamin, dan hak dari nasabah sulit dipertahankan</span></div>
                                     <div class="tb-td"><i class="i-x1"></i><span>/</span></div>
                                     <div class="tb-td"><i class="i-x1"></i><span>/</span></div>
                                     <div class="tb-td"><i class="i-x1"></i><span>/</span></div>
@@ -366,7 +456,7 @@
                                     <div class="tb-td"><i></i><span>Komisi</span></div>
                                     <div class="tb-td"><i></i><span>Leverage</span></div>
                                     <div class="tb-td"><i></i><span>Lisensi</span></div>
-                                    <div class="tb-td"><i></i><span>Cek transaksi<br> melalui CITRA</span></div>
+                                    <div class="tb-td"><i></i><span>CITRA</span></div>
                                     <div class="tb-td"><i></i><span>Buka akun<br> dan deposit</span></div>
                                     <div class="tb-td"><i></i><span>Penarikan dari<br> aplikasi</span></div>
                                     <div class="tb-td"><i></i><span>Kedalaman<br> pasar</span></div>
@@ -378,8 +468,8 @@
                                     <div class="tb-td"><i class="i-r1"></i><span>USD 100</span></div>
                                     <div class="tb-td"><i class="i-r1"></i><span>USD 1</span></div>
                                     <div class="tb-td"><i class="i-r1"></i><span>200</span></div>
-                                    <div class="tb-td"><i class="i-r1"></i><span>Tidak ada lisensi lokal, transaksi tidak dapat dijamin, dan hak dari nasabah sulit dipertahankan</span></div>
-                                    <div class="tb-td"><i class="i-r1"></i><span>Nasabah menyediakan <br> akun pengecekan</span></div>
+                                    <div class="tb-td"><i class="i-r1"></i><span>BAPPEBTI、ICDX、ICH</span></div>
+                                    <div class="tb-td"><i class="i-r1"></i><span>Menyadiakan akun pengecekan <br> transaksi untuk nasabah</span></div>
                                     <div class="tb-td"><i class="i-r1"></i><span>Buka akun dalam 5 menit,<br> deposit dalam 15 menit</span></div>
                                     <div class="tb-td"><i class="i-r1"></i><span>kedatangan segera, kedatangan pada hari yang sama (bank berbeda)</span></div>
                                     <div class="tb-td"><i class="i-r1"></i><span>Kedalaman harga 5 tingkat</span></div>
@@ -388,13 +478,19 @@
                                 </li>
                             </ul>
                         </div>
+                        <div class="opgroup-btns">
+                            <div class="link-group group-two">
+                                <div class="btn btn-yellow"><a href="https://ui.hsb.co.id/?utm_source=pcgw_part_AkunAlive#/login/RVf" target="_blank" rel="nofollow"><span class="fl">Buka Akun Alive</span>Komisi trading serendah $1<i class="i-arrow-r"></i></a></div>
+                                <div class="btn btn-blue"><a href="https://ui.hsb.co.id/?utm_source=pcgw_part_AkunDemo#/register/RVf" target="_blank" rel="nofollow"><span class="fl">Buka Akun Demo</span>Akun Demo Virtual $100000 <i class="i-arrow-r2"></i></a></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="part7 bg-f7f7f7 tab-group">
                     <div class="w-part">
                         <div class="titlebar-gw tab-nav">
-                            <h2 class="title active">Economic<br> News</h2>
-                            <h2 class="title">Daily<br> Analysis</h2>
+                            <h2 class="title active">Daily<br> Analysis</h2>
+                            <h2 class="title">Economic<br> News</h2>
                             <div class="titlebar-line"><i class="title-line-b"></i></div>
                         </div>
                         <div class="tab-panel active">
@@ -449,14 +545,6 @@
                                                 <div class="slider-link"><a href="" target="_blank">Selengkapnya <i class="i-arrow-r1"></i></a></div>
                                             </div>
                                         </li>
-                                        <li>
-                                            <div class="slider-item"><img src="/images/pic-news4.jpg" alt="">
-                                                <div class="s-title">
-                                                    <div class="badge-group slider-badge"><span class="badge-item">EUR/USD</span><span class="badge-item">Event</span></div><span>Informasi berbagai index</span>
-                                                </div>
-                                                <div class="slider-link"><a href="" target="_blank">Selengkapnya <i class="i-arrow-r1"></i></a></div>
-                                            </div>
-                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -473,38 +561,42 @@
                             <ul>
                                 <li>
                                     <div class="slider-item user-box">
-                                        <div class="s-title"><span>Very good,keep it up</span><span class="s-desc">Give a thumbs-up to fast deposit and good services on Hason!</span></div>
-                                        <div class="user-info"><span class="s-avatar"><img src="/images/avatars/avatar.jpg" alt=""></span>
+                                        <div class="s-title"><span>Mudah dan Menyenangkan</span><span class="s-desc">Aplikasi ini sangat bagus. saya suka trading menggunakan aplikasi ini. kamu dapat membuka akun dan mengaturnya di aplikasi ini.</span></div>
+                                        <div class="user-info"><span class="s-avatar"><img src="/images/avatars/avatar1.png" alt=""></span>
                                             <div class="user-data"><span class="u-name">Carolos</span><span class="u-rating"><i class="i-star1"></i><i class="i-star1"></i><i class="i-star1"></i><i class="i-star1"></i><i class="i-star1"></i></span></div>
                                         </div>
-                                        <div class="slider-link"></div>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="slider-item user-box">
-                                        <div class="s-title"><span>Hason is great</span><span class="s-desc">I haven't missed any important data analysis ever since I downl</span></div>
-                                        <div class="user-info"><span class="s-avatar"><img src="/images/avatars/avatar.jpg" alt=""></span>
+                                        <div class="s-title"><span>Trading broker terbaik</span><span class="s-desc">Mantap Hanson, kamu dapat mengecek setiap transaksi melalui CITRA dan tim cs 24 jam selalu siap membantu Anda.</span></div>
+                                        <div class="user-info"><span class="s-avatar"><img src="/images/avatars/avatar2.png" alt=""></span>
                                             <div class="user-data"><span class="u-name">Gabriel</span><span class="u-rating"><i class="i-star1"></i><i class="i-star1"></i><i class="i-star1"></i><i class="i-star1"></i><i class="i-star1"></i></span></div>
                                         </div>
-                                        <div class="slider-link"></div>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="slider-item user-box">
-                                        <div class="s-title"><span>Best trading broker</span><span class="s-desc">I earned $500 by following my friend to place orders!</span></div>
-                                        <div class="user-info"><span class="s-avatar"><img src="/images/avatars/avatar.jpg" alt=""></span>
+                                        <div class="s-title"><span>Pengalaman yang baik</span><span class="s-desc">Jempol untuk deposit dan penarikan dana yang sangat cepat and servis lainnya juga bagus.</span></div>
+                                        <div class="user-info"><span class="s-avatar"><img src="/images/avatars/avatar3.png" alt=""></span>
                                             <div class="user-data"><span class="u-name">Miguel</span><span class="u-rating"><i class="i-star1"></i><i class="i-star1"></i><i class="i-star1"></i><i class="i-star1"></i><i class="i-star1"></i></span></div>
                                         </div>
-                                        <div class="slider-link"></div>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="slider-item user-box">
-                                        <div class="s-title"><span>Easy and fun</span><span class="s-desc">This mobile trading App is good. I like it not only because of its fast download speed.</span></div>
-                                        <div class="user-info"><span class="s-avatar"><img src="/images/avatars/avatar.jpg" alt=""></span>
+                                        <div class="s-title"><span>All in one app</span><span class="s-desc">Hanya membutuhkan waktu yang singkat dan bisa mendapatkan profit di all in one app ini.</span></div>
+                                        <div class="user-info"><span class="s-avatar"><img src="/images/avatars/avatar4.png" alt=""></span>
                                             <div class="user-data"><span class="u-name">Fabiana</span><span class="u-rating"><i class="i-star1"></i><i class="i-star1"></i><i class="i-star1"></i><i class="i-star1"></i><i class="i-star1"></i></span></div>
                                         </div>
-                                        <div class="slider-link"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="slider-item user-box">
+                                        <div class="s-title"><span>Reputasi bagus</span><span class="s-desc">Saya belajar bagaimana untuk trading dan bagaimana menjadi trader yang baik dari artikel yang disediakan dalam aplikasi.</span></div>
+                                        <div class="user-info"><span class="s-avatar"><img src="/images/avatars/avatar5.png" alt=""></span>
+                                            <div class="user-data"><span class="u-name">Carna</span><span class="u-rating"><i class="i-star1"></i><i class="i-star1"></i><i class="i-star1"></i><i class="i-star1"></i><i class="i-star1"></i></span></div>
+                                        </div>
                                     </div>
                                 </li>
                             </ul>
@@ -561,8 +653,10 @@
                     </div>
                     <div class="alink-list col-4-1">
                         <div class="foot-tit upper-txt">About Us</div>
-                        <a href="">〉Legalities</a>
-                        <a href="">〉TBC</a>
+                        <a href="/lp/lp11_plvz_201901pp.html">〉Company Qualification</a>
+                        <a href="/tengtang/contact-us.html">〉Contact Us</a>
+                        <a href="/privacy-policy.html">〉Kebijakan Privasi</a>
+                        <a href="/disclaimer.html">〉Terms &amp; Conditions</a>
                     </div>
                     <div class="col-2-1">
                         <div class="foot-tit upper-txt">Notice Board</div>
@@ -677,8 +771,54 @@
                 }
             }
         </script>
+        <div class="video-fixed">
+            <div class="mobile">
+                <a href="javascript:;" id="yyVideomPlayBtn" class="video-img"><img src="/images/index-video-picm.png" alt="Introduction of Hanson Forex Investing"></a>
+                <video id="yyVideom" controls="false" class="video-js" preload="auto">
+                    <source src="https://www.hsb.co.id/video/HansonAdvertise(1)_1.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="computer">
+                <i class="vjs-close"></i>
+                <video id="yyVideo" controls="" webkit-playsinline="true" playsinline="true" class="video-js" preload="auto" poster="/images/index-video-pic.jpg">
+                    <source src="https://www.hsb.co.id/video/HansonAdvertise(1)_1.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
     </div>
+    <div class="popLayer-id popup-tb popOpenAccount" style="display: none;">
+        <div class="popup-tb-cell">
+            <div class="popcon">
+                <i class="i-pop-closeBtn"></i>
+                <div class="popconOpenAccount">
+                    <div class="pop-tit">
+                        <i class="i-gratis"></i> Edukasi Secara Privat <span>Bagaimana Meningkatkan Keuntungan Bersama Hanson Trader</span>
+                    </div>
+                    <div class="pop-txt">
+                        <ul>
+                            <li><i class="i-list-check"></i>Narasumber profesional</li>
+                            <li><i class="i-list-check"></i>Cocok untuk nasabah lama maupun baru</li>
+                            <li><i class="i-list-check"></i>Interaksi face-to-face secara langsung</li>
+                        </ul>
+                    </div>
+                    <div class="op-btn">
+                        <a href="/edukasi/seminar-pendidikan.html" target="_blank" onclick="dataLayer.push({'event':'Event Seminar Daftar Sekarang','gtm.elementTarget': $GA_NAME,'gtm.element': 'float_center'});" class="btn">Daftar Sekarang</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('.popLayer-id [class*="closeBtn"]').click(function() {
+            $(this).closest('.popLayer-id').hide();
+        });
+        setTimeout(function() {
+            $('.popOpenAccount').fadeIn();
+        }, 10000);
+    </script>
     <script src="/js/slick.js"></script>
+    <link href="/public/css/video-js.min.css" rel="stylesheet">
+    <script src="/public/js/video.min.js"></script>
     <script type="text/javascript">
         var $GA_NAME = "index_gw";
         $(function() {
@@ -733,6 +873,38 @@
                     next: '.btn-next'
                 });
             });
+        });
+        $('.vjs-close').click(function() {
+            $(this).closest('.video-fixed').remove();
+        });
+        var myPlayer = videojs(document.getElementById('yyVideo'), {
+            controls: true,
+            loop: false
+        }, function onPlayerReady() {
+            $('.vjs-play-control').append('<i class="i-vjs-paused"></i><i class="i-vjs-playing"></i>');
+            this.on('play', function() {
+                dataLayer.push({
+                    'event': 'videoPlay',
+                    'gtm.elementTarget': 'index_gw',
+                    'gtm.element': 'float_right'
+                })
+            });
+        });
+        var myPlayer1 = videojs(document.getElementById('yyVideom'), {
+            controls: false,
+            loop: false
+        }, function onPlayerReady() {
+            this.on('play', function() {
+                dataLayer.push({
+                    'event': 'videoPlay',
+                    'gtm.elementTarget': 'index_gwmobile',
+                    'gtm.element': 'float_right'
+                })
+            });
+        });
+        $('#yyVideomPlayBtn').on('click', function() {
+            myPlayer1.play();
+            myPlayer1.requestFullscreen();
         });
         $.fn.extend({
             sliderAroundLeftRight: function(options) {
@@ -815,6 +987,51 @@
             }
         })
     </script>
+    <script type="text/javascript" src="https://c.la1t1.salesforceliveagent.com/content/g/js/31.0/deployment.js"></script>
+    <script type="text/javascript">
+        /* <![CDATA[ */
+        var google_conversion_id = 966247676;
+        var google_conversion_label = "dNBTCMTo6AkQ_InfzAM";
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+        /* ]]> */
+    </script>
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
+    <noscript>
+        <div style="display:inline;">
+            <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/966247676/?value=1.00&amp;label=dNBTCMTo6AkQ_InfzAM&amp;guid=ON&amp;script=0" />
+        </div>
+    </noscript>
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {},
+            Tawk_LoadStart = new Date();
+        (function() {
+            var s1 = document.createElement("script"),
+                s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/5b34b394eba8cd3125e34265/default';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+        //    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        //            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        //        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        //    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        //    ga('create', 'UA-52411117-1', 'auto');
+        //    ga('send', 'pageview');
+    </script>
+    <div id="zP8Pkha-1559525372231" class="" style="display: block !important;"><iframe id="U4goBRC-1559525372232" src="about:blank" scrolling="no" title="chat widget" style="outline: currentcolor none medium !important; visibility: visible !important; resize: none !important; box-shadow: none !important; overflow: visible !important; background: transparent none repeat scroll 0% 0% !important; opacity: 1 !important; inset: auto !important; position: static !important; border: 0px none !important; min-height: auto !important; min-width: auto !important; max-height: none !important; max-width: none !important; padding: 0px !important; margin: 0px !important; transition-property: none !important; transform: none !important; width: 350px !important; height: 520px !important; z-index: 999999 !important; cursor: auto !important; float: none !important; border-radius: unset !important; display: none !important;" class="" frameborder="0"></iframe><iframe id="fBAynLY-1559525372232" src="about:blank" scrolling="no" title="chat widget" style="outline: currentcolor none medium !important; visibility: visible !important; resize: none !important; box-shadow: none !important; overflow: visible !important; background: transparent none repeat scroll 0% 0% !important; opacity: 1 !important; inset: auto 10px 0px auto !important; position: fixed !important; border: 0px none !important; padding: 0px !important; transition-property: none !important; z-index: 1000001 !important; cursor: auto !important; float: none !important; height: 40px !important; min-height: 40px !important; max-height: 40px !important; width: 260px !important; min-width: 260px !important; max-width: 260px !important; border-radius: 0px !important; transform: rotate(0deg) translateZ(0px) !important; transform-origin: 0px center 0px !important; margin: 0px !important; display: block !important;" class="" frameborder="0"></iframe><iframe id="FTEy45d-1559525372232" src="about:blank" scrolling="no" title="chat widget" style="outline: currentcolor none medium !important; visibility: visible !important; resize: none !important; box-shadow: none !important; overflow: visible !important; background: transparent none repeat scroll 0% 0% !important; opacity: 1 !important; inset: auto 1px 25px auto !important; position: fixed !important; border: 0px none !important; padding: 0px !important; margin: 0px !important; transition-property: none !important; transform: none !important; z-index: 1000003 !important; cursor: auto !important; float: none !important; border-radius: unset !important; width: 21px !important; max-width: 21px !important; min-width: 21px !important; height: 21px !important; max-height: 21px !important; min-height: 21px !important; display: block !important;" class="" frameborder="0"></iframe>
+        <div style="outline: currentcolor none medium !important; visibility: visible !important; resize: none !important; box-shadow: none !important; overflow: visible !important; background: transparent none repeat scroll 0% 0% !important; opacity: 1 !important; inset: 0px auto auto 0px !important; position: absolute !important; border: 0px none !important; min-height: auto !important; min-width: auto !important; max-height: none !important; max-width: none !important; padding: 0px !important; margin: 0px !important; transition-property: none !important; transform: none !important; width: 100% !important; height: 100% !important; display: none !important; z-index: 1000001 !important; cursor: move !important; float: left !important; border-radius: unset !important;" class=""></div>
+        <div id="i4JFSvt-1559525372231" style="outline: currentcolor none medium !important; visibility: visible !important; resize: none !important; box-shadow: none !important; overflow: visible !important; background: transparent none repeat scroll 0% 0% !important; opacity: 1 !important; inset: 0px auto auto 0px !important; position: absolute !important; border: 0px none !important; min-height: auto !important; min-width: auto !important; max-height: none !important; max-width: none !important; padding: 0px !important; margin: 0px !important; transition-property: none !important; transform: none !important; width: 6px !important; height: 100% !important; display: block !important; z-index: 999998 !important; cursor: w-resize !important; float: none !important; border-radius: unset !important;" class=""></div>
+        <div id="O8ynx9e-1559525372231" style="outline: currentcolor none medium !important; visibility: visible !important; resize: none !important; box-shadow: none !important; overflow: visible !important; background: transparent none repeat scroll 0% 0% !important; opacity: 1 !important; inset: 0px 0px auto auto !important; position: absolute !important; border: 0px none !important; min-height: auto !important; min-width: auto !important; max-height: none !important; max-width: none !important; padding: 0px !important; margin: 0px !important; transition-property: none !important; transform: none !important; width: 6px !important; height: 100% !important; display: block !important; z-index: 999998 !important; cursor: e-resize !important; float: none !important; border-radius: unset !important;" class=""></div>
+        <div id="dwNfVdd-1559525372231" style="outline: currentcolor none medium !important; visibility: visible !important; resize: none !important; box-shadow: none !important; overflow: visible !important; background: transparent none repeat scroll 0% 0% !important; opacity: 1 !important; inset: 0px 0px auto auto !important; position: absolute !important; border: 0px none !important; min-height: auto !important; min-width: auto !important; max-height: none !important; max-width: none !important; padding: 0px !important; margin: 0px !important; transition-property: none !important; transform: none !important; width: 100% !important; height: 6px !important; display: block !important; z-index: 999998 !important; cursor: n-resize !important; float: none !important; border-radius: unset !important;" class=""></div>
+        <div id="rXAwZoW-1559525372231" style="outline: currentcolor none medium !important; visibility: visible !important; resize: none !important; box-shadow: none !important; overflow: visible !important; background: transparent none repeat scroll 0% 0% !important; opacity: 1 !important; inset: auto 0px 0px auto !important; position: absolute !important; border: 0px none !important; min-height: auto !important; min-width: auto !important; max-height: none !important; max-width: none !important; padding: 0px !important; margin: 0px !important; transition-property: none !important; transform: none !important; width: 100% !important; height: 6px !important; display: block !important; z-index: 999998 !important; cursor: s-resize !important; float: none !important; border-radius: unset !important;" class=""></div>
+        <div id="U6EhFDD-1559525372231" style="outline: currentcolor none medium !important; visibility: visible !important; resize: none !important; box-shadow: none !important; overflow: visible !important; background: transparent none repeat scroll 0% 0% !important; opacity: 1 !important; inset: 0px auto auto 0px !important; position: absolute !important; border: 0px none !important; min-height: auto !important; min-width: auto !important; max-height: none !important; max-width: none !important; padding: 0px !important; margin: 0px !important; transition-property: none !important; transform: none !important; width: 12px !important; height: 12px !important; display: block !important; z-index: 999998 !important; cursor: nw-resize !important; float: none !important; border-radius: unset !important;" class=""></div>
+        <div id="byFR0dT-1559525372231" style="outline: currentcolor none medium !important; visibility: visible !important; resize: none !important; box-shadow: none !important; overflow: visible !important; background: transparent none repeat scroll 0% 0% !important; opacity: 1 !important; inset: 0px 0px auto auto !important; position: absolute !important; border: 0px none !important; min-height: auto !important; min-width: auto !important; max-height: none !important; max-width: none !important; padding: 0px !important; margin: 0px !important; transition-property: none !important; transform: none !important; width: 12px !important; height: 12px !important; display: block !important; z-index: 999998 !important; cursor: ne-resize !important; float: none !important; border-radius: unset !important;" class=""></div>
+        <div id="y7BX8yf-1559525372231" style="outline: currentcolor none medium !important; visibility: visible !important; resize: none !important; box-shadow: none !important; overflow: visible !important; background: transparent none repeat scroll 0% 0% !important; opacity: 1 !important; inset: auto auto 0px 0px !important; position: absolute !important; border: 0px none !important; min-height: auto !important; min-width: auto !important; max-height: none !important; max-width: none !important; padding: 0px !important; margin: 0px !important; transition-property: none !important; transform: none !important; width: 12px !important; height: 12px !important; display: block !important; z-index: 999998 !important; cursor: sw-resize !important; float: none !important; border-radius: unset !important;" class=""></div>
+        <div id="DpoPAwN-1559525372231" style="outline: currentcolor none medium !important; visibility: visible !important; resize: none !important; box-shadow: none !important; overflow: visible !important; background: transparent none repeat scroll 0% 0% !important; opacity: 1 !important; inset: auto 0px 0px auto !important; position: absolute !important; border: 0px none !important; min-height: auto !important; min-width: auto !important; max-height: none !important; max-width: none !important; padding: 0px !important; margin: 0px !important; transition-property: none !important; transform: none !important; width: 12px !important; height: 12px !important; display: block !important; z-index: 999999 !important; cursor: se-resize !important; float: none !important; border-radius: unset !important;" class=""></div><iframe id="il4D5HV-1559525372237" src="about:blank" scrolling="no" title="chat widget" style="outline: currentcolor none medium !important; visibility: visible !important; resize: none !important; box-shadow: none !important; overflow: visible !important; background: transparent none repeat scroll 0% 0% !important; opacity: 1 !important; inset: auto 10px 50px auto !important; position: fixed !important; border: 0px none !important; min-height: auto !important; min-width: auto !important; max-height: none !important; max-width: none !important; padding: 0px !important; margin: 0px !important; transition-property: none !important; transform: none !important; width: 378px !important; z-index: 999999 !important; cursor: auto !important; float: none !important; border-radius: unset !important; display: block !important; height: 0px !important;" class="" frameborder="0"></iframe>
+    </div>
 </body>
 
 </html>

@@ -284,9 +284,9 @@ gulp.task('sprites:more',function(cb){
         let basename = path.basename(dirs[i]);
         let prefix = '.png';
         let spriteData = gulp.src(root_DIR+source_DIR + CUR_PATH + `images/slice/${baseDir}/${basename}/*.{png,jpg,gif,jpeg}`)//需要合并的图片地址
-            .pipe(gulpGitStatus({
-                excludeStatus: 'unchanged'
-            }))
+            // .pipe(gulpGitStatus({
+            //     excludeStatus: 'unchanged'
+            // }))
             .pipe(spritesmith({
                 cssOpts: {
                     cssSelector: function(item) {
