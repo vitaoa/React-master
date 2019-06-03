@@ -47,6 +47,7 @@
 
 
 <script src="/js/slick.js"></script>
+<script src="/js/aroundLeftRight.js"></script>
 <link href="/public/css/video-js.min.css" rel="stylesheet">
 <script src="/public/js/video.min.js"></script>
 <script type="text/javascript">
@@ -59,7 +60,7 @@
             speed: 500,
             arrows:false,
             fade: true,
-            cssEase: "linear",
+            cssEase: "linear"
 //                responsive: [
 //                    {
 //                        breakpoint: 1024,
@@ -93,120 +94,38 @@
             $(this).closest('.tab-group').find('.tab-panel').eq(_index).addClass('active').siblings('.tab-panel').removeClass('active');
         });
 
-        $('.sliderLeftRight').each(function () {
-            $(this).sliderAroundLeftRight({
-                wrapper: '.slider-items ul',
-                speed: 3000,
-                loop: false,
-                hover:false,
-                prev: '.btn-prev',
-                next: '.btn-next'
-            });
+        $('.sliderLeftRight').aroundLeftRight({
+            wrapper: '.slider-items ul',
+            speed: 3000,
+            loop: false,
+            hover:false,
+            prev: '.btn-prev',
+            next: '.btn-next'
         });
     });
     $('.vjs-close').click(function () {
         $(this).closest('.video-fixed').remove();
     });
-    var myPlayer = videojs(document.getElementById('yyVideo'), {controls : true,loop : false}, function onPlayerReady() {
-        $('.vjs-play-control').append('<i class="i-vjs-paused"></i><i class="i-vjs-playing"></i>');
-        this.on('play',function () {
-            dataLayer.push({'event':'videoPlay','gtm.elementTarget': 'index_gw','gtm.element': 'float_right'})
+    if (!!document.getElementsByClassName) {
+        var myPlayer = videojs(document.getElementById('yyVideo'), {controls : true,loop : false}, function onPlayerReady() {
+            $('.vjs-play-control').append('<i class="i-vjs-paused"></i><i class="i-vjs-playing"></i>');
+            this.on('play',function () {
+                dataLayer.push({'event':'videoPlay','gtm.elementTarget': 'index_gw','gtm.element': 'float_right'})
+            });
         });
-    });
-    var myPlayer1 = videojs(document.getElementById('yyVideom'), {controls : false,loop : false}, function onPlayerReady() {
-        this.on('play',function () {
-            dataLayer.push({'event':'videoPlay','gtm.elementTarget': 'index_gwmobile','gtm.element': 'float_right'})
+        var myPlayer1 = videojs(document.getElementById('yyVideom'), {controls : false,loop : false}, function onPlayerReady() {
+            this.on('play',function () {
+                dataLayer.push({'event':'videoPlay','gtm.elementTarget': 'index_gwmobile','gtm.element': 'float_right'})
+            });
         });
-    });
-    $('#yyVideomPlayBtn').on('click', function () {
-        myPlayer1.play();
-        myPlayer1.requestFullscreen();
-    });
-    $.fn.extend({
-        sliderAroundLeftRight: function(options) {
-            options = $.extend({}, options || {});
-            var _this = $(this);
-            var slider = _this.find(options.wrapper);
-            var slideprev = _this.find(options.prev);
-            var slidenext = _this.find(options.next);
-            var timeInterval = options.speed;
-            var scrollTimer;
-            var _liWidthFirst = _this.find("li:first").outerWidth(true);
-            var _liWidthLast = _this.find("li:last").outerWidth(true);
+        $('#yyVideomPlayBtn').on('click', function () {
+            myPlayer1.play();
+            myPlayer1.requestFullscreen();
+        });
+    }
 
-            if(_this.width() >= _liWidthFirst*_this.find("li").length){
-                return false;
-            }
-
-            if(options.hover){
-                slider.hover(function() {
-                    clearInterval(scrollTimer);
-                }, function() {
-                    if (options.loop) {
-                        scrollTimer = setInterval(function() {
-                            scrollList();
-                        }, timeInterval);
-                    }
-                });
-            }
-            slideprev.click(function() {
-                clearInterval(scrollTimer);
-                slider.stop(true).animate({
-                    "left": _liWidthLast
-                }, 500, function() {
-                    slider.css({
-                        "left": '0px'
-                    }).find("li:last").prependTo(slider);
-                    if (options.loop) {
-                        scrollTimer = setInterval(function() {
-                            scrollList();
-                        }, timeInterval);
-                    }
-                });
-            });
-            slidenext.click(function() {
-                clearInterval(scrollTimer);
-                slider.stop(true).animate({
-                    "left": -_liWidthFirst + "px"
-                }, 500, function() {
-                    slider.css({
-                        "left": "0px"
-                    }).find("li:first").appendTo(slider);
-                    if (options.loop) {
-                        scrollTimer = setInterval(function() {
-                            scrollList();
-                        }, timeInterval);
-                    }
-                })
-            });
-            slidenext.hover(function() {
-                $(this).addClass('hover')
-            }, function() {
-                $(this).removeClass('hover')
-            });
-            slideprev.hover(function() {
-                $(this).addClass('hover')
-            }, function() {
-                $(this).removeClass('hover')
-            });
-
-            function scrollList() {
-                slider.stop(true).animate({
-                    "left": -_liWidthFirst + "px"
-                }, 500, function() {
-                    slider.css({
-                        "left": "0px"
-                    }).find("li:first").appendTo(slider);
-                })
-            }
-            if (options.loop) {
-                slider.trigger("mouseout");
-            }
-        }
-    })
 </script>
 </body>
-
 <!-- Live Chat --><script type='text/javascript' src='https://c.la1t1.salesforceliveagent.com/content/g/js/31.0/deployment.js'></script><!-- Live Chat -->
 <!-- Google Code for Not Thank You Page -->
 <!-- Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. For instructions on adding this tag and more information on the above requirements, read the setup guide: google.com/ads/remarketingsetup -->

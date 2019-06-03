@@ -462,10 +462,10 @@ gulp.task('dev',gulp.series('jsx:copy','ejs','picbase64:sass',function () {
 //---------------------------------------打包(处理过react页面)----------------------------//
 gulp.task('modified:clean',function (cb) {
     env = 'production';
-    gulp.src(root_DIR+CUR_PATH+Download_Temple+'**/*.*')
-        .pipe(clean({
-            options:{force:true}
-        }));
+    // gulp.src(root_DIR+CUR_PATH+Download_Temple+'**/*.*')
+    //     .pipe(clean({
+    //         options:{force:true}
+    //     }));
     cb();
 });
 gulp.task('modified:jsx', (cb) => {

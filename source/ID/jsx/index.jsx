@@ -310,7 +310,7 @@ function BannerBtnGroup(props) {
 let bannerBtns = {
     opts:{class:"w-part group-two opgroup-btns-bg"},
     items:[
-        {id:1,class:"btn btn-yellow",linkA:'<a href="https://ui.hsb.co.id/?utm_source=pcgw_banner_AkunAlive#/login/RVf" target="_blank" rel="nofollow"><i class="i-btn-01 fl"></i><span class="fl">Buka Akun Alive</span>Komisi trading serendah $1<i class="i-arrow-r"></i></a>'},
+        {id:1,class:"btn btn-yellow",linkA:'<a href="https://ui.hsb.co.id/?utm_source=pcgw_banner_AkunAlive#/login/RVf" target="_blank" rel="nofollow"><i class="i-btn-01 fl"></i><span class="fl">Buka akun live</span>Komisi trading serendah $1<i class="i-arrow-r"></i></a>'},
         {id:2,class:"btn btn-blue",linkA:'<a href="https://ui.hsb.co.id/?utm_source=pcgw_banner_AkunDemo#/register/RVf" target="_blank" rel="nofollow"><i class="i-btn-03 fl"></i><span class="fl">Buka Akun Demo</span>Akun Demo Virtual $100000 <i class="i-arrow-r2"></i></a>'}
     ]
 };
@@ -329,7 +329,7 @@ function Part1() {
 }
 const title1 = {
     "title":"Dijamin tidak ada <br/> kecurangan sistem",
-    "subTitle":'Salah satu broker pertama di indonesia yang menyediakan fasilitas "CITRA" dimana <br/> nasabah dapat melihat setiap transaksi mereka secara langsung',
+    "subTitle":'Salah satu broker pertama di Indonesia yang menyediakan fasilitas "CITRA" dimana <br/> nasabah dapat melihat setiap transaksi mereka secara langsung',
     "hasLine":true,
     "class":"titlebar-gw al-c"
 };
@@ -454,9 +454,9 @@ function Part5() {
     )
 }
 const title5 = {
-    "title":"Hason Trading Platform",
+    "title":"HANSON TRADING PLATFORM",
     "hasLine":true,
-    "subTxt":"Mensupport PC dan Perangkat Mobile",
+    "subTxt":"Mendukung perangkat PC dan Mobile",
     "class":"titlebar-gw al-c",
 };
 const list5 = {
@@ -517,7 +517,7 @@ const listTB6 ={
         {
             head:"Hanson",
             span:true,
-            body:["USD 100","USD 1","200","BAPPEBTI、ICDX、ICH","Menyadiakan akun pengecekan <br/> transaksi untuk nasabah","Buka akun dalam 5 menit,<br/> deposit dalam 15 menit","kedatangan segera, kedatangan pada hari yang sama (bank berbeda)","Kedalaman harga 5 tingkat","Ekspansi cepat, transaksi stabil","Dilengkapi dengan artikel, <br/>berita dan event"],
+            body:["USD 100","USD 1","200","BAPPEBTI、ICDX、ICH","Menyadiakan akun pengecekan <br/> transaksi untuk nasabah","Buka akun dalam 5 menit,<br/> deposit dalam 15 menit","penarikan dana sangat cepat. Dana dapat diterima di hari yang sama (bank berbeda)","Kedalaman harga 5 tingkat","Ekspansi cepat, transaksi stabil","Dilengkapi dengan artikel, <br/>berita dan event"],
             iconClass:["i-r1"]
         }
     ]
@@ -525,7 +525,7 @@ const listTB6 ={
 let bannerBtns6 = {
     opts:{class:"group-two"},
     items:[
-        {id:1,class:"btn btn-yellow",linkA:'<a href="https://ui.hsb.co.id/?utm_source=pcgw_part_AkunAlive#/login/RVf" target="_blank" rel="nofollow"><span class="fl">Buka Akun Alive</span>Komisi trading serendah $1<i class="i-arrow-r"></i></a>'},
+        {id:1,class:"btn btn-yellow",linkA:'<a href="https://ui.hsb.co.id/?utm_source=pcgw_part_AkunAlive#/login/RVf" target="_blank" rel="nofollow"><span class="fl">Buka akun live</span>Komisi trading serendah $1<i class="i-arrow-r"></i></a>'},
         {id:2,class:"btn btn-blue",linkA:'<a href="https://ui.hsb.co.id/?utm_source=pcgw_part_AkunDemo#/register/RVf" target="_blank" rel="nofollow"><span class="fl">Buka Akun Demo</span>Akun Demo Virtual $100000 <i class="i-arrow-r2"></i></a>'}
     ]
 };

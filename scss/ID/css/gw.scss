@@ -30,3 +30,6 @@ body{@include prefixer(user-select, none,$prefixes);overflow-x: hidden;}
 @media(max-width:750px) {
   .wrapper,.w-part{width:7.5rem;}
 }
+
+/* ============ Compatible ============ */
+@import "gw/compatible";

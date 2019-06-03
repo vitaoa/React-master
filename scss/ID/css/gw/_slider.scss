@@ -62,11 +62,11 @@
   .slick-dots {position: absolute;left:0;right:0;z-index:9999;font-size:0;text-align: center;bottom: 40px;
     li {@include inline-block;position: relative;overflow: hidden;margin: 0 2px;width: 55px;padding: 20px 0;
       &.slick-active {
-        &:after {@include opacity(1);@include prefixer(animation,3s linear forwards fillPaginationBullet,$prefixes);}
+        &:after {@include rgba-background((#fff,0));@include prefixer(animation,3s linear forwards fillPaginationBullet,$prefixes);}
       }
       &:after,div{position: absolute;top: 50%;content: "";display: block;width: 100%;background: #fff;height: 4px;}
-      div{@include opacity(.2);}
-      &:after{@include opacity(0);}
+      div{@include rgba-background((#fff,.8));}
+      &:after{@include rgba-background((#fff,1));}
     }
   }
 }
