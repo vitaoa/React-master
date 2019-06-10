@@ -31,41 +31,6 @@ a:active,a:focus { outline: none;}
 .mo{ display: none}
 
 
-/*banner begin*/
-//$bannerW:646%/1920*100;
-//$bonus-pool-bgW:572%/1920*100;
-.slider-banner {  position: relative;  width: 100%;  height: auto;  overflow: hidden;
-  //.bonus-banner{position: absolute;top:0;left:0;padding-top: 4%;right:0;bottom:0;text-align: center;}
-  //.bonus-topic{margin-bottom: 2%;
-  //  img{width: $bannerW;}
-  //}
-  //.money-containter{position: relative;width: $bonus-pool-bgW;margin: 0 auto;
-  //  .bonus-pool-bg{width: 100%;}
-  //  .period {font-weight: normal;font-size:.16rem;text-align: center;color: #fff4c8;position: absolute;bottom:0;left: 0;width: 100%;line-height: 38px;}
-  //}
-  //[class*="bonuspool-border"]{padding-top: 10%;
-  //  [class*="bonuspool-"]{@include inline-block;}
-  //  .bonuspool-number{line-height:1;color:#fff000;font-size: .82rem;overflow: hidden;text-shadow:0 0 .05rem rgba(255,222,0,.8);
-  //    .number-unit{@include prefixer(transform,scale(0.88),$prefixes);@include inline-block;}
-  //    i{font-style: normal;display: block;}
-  //  }
-  //}
-}
-.slider-banner .slides {  height: auto; overflow: hidden;  -webkit-backface-visibility: hidden;  -webkit-transform-style: preserve-3d;
-  -webkit-transition: all 500ms cubic-bezier(0.165, 0.840, 0.440, 1.000);
-  -moz-transition: all 500ms cubic-bezier(0.165, 0.840, 0.440, 1.000);
-  -ms-transition: all 500ms cubic-bezier(0.165, 0.840, 0.440, 1.000);
-  -o-transition: all 500ms cubic-bezier(0.165, 0.840, 0.440, 1.000);
-  transition: all 500ms cubic-bezier(0.165, 0.840, 0.440, 1.000);
-}
-.slider-banner .slide {  height: auto;  float: left;  clear: none;position: relative;
-  & > a{display: block;}
-}
-.slider-banner .slider-nav {  position: absolute;  bottom: 110px;  }
-.slider-banner .slider-nav__item {  width: 40px;  height: 4px;  float: left;  clear: none;  display: block;  margin: 0 5px;  @include rgba-background((#fff,.5));}
-.slider-banner .slider-nav__item:hover { background: #e77f22;}
-.slider-banner .slider-nav__item--current {  background: #e77f22;}
-.slider-arrows{ display: none}
 /*banner edn*/
 /*content begin*/
 .container-box{ width: 100%; position: relative; overflow: hidden;   }
@@ -218,44 +183,6 @@ a:active,a:focus { outline: none;}
 .logo-christmas{position: relative;}
 .logo-christmas .i-christmashat{position:absolute;top:-2px;right:-11px;display: block;background: url(../images/i-christmashat.png) no-repeat center center;width:25px;height:20px;}
 
-.opgroup-btns{text-align: center;
-  [class*="i-"]{@include inline-block;margin-top: 17px;margin-right: 15px;@include prefixer(transition, all .3s cubic-bezier(0.35, 0.21, 0.4, 1.13), ("webkit", "moz","ms","o"));
-    &.i-arrow-r{margin-top: 23px;*margin-top:7px;margin-right: 0;margin-left: 10px;}
-  }
-  .link-group{max-width: 1190px;margin: 0 auto;@include clearfix;
-    &.group-two{
-      .btn{width:45.6%;@include prefixer(transition, all .3s cubic-bezier(0.35, 0.21, 0.4, 1.13), ("webkit", "moz","ms","o"));
-        &:hover{
-          [class*="i-btn-0"]{opacity: 0;width:0;margin-right: 0;}
-          .i-arrow-r{opacity: 0;width:0;margin-left: 0;}
-        }
-      }
-    }
-  }
-  .btn{text-align: right;border-radius: 6px;@include size(540px,60px);line-height: 60px;font-size: 16px;@include box-sizing(content-box);@include inline-block;padding: 0 2%;
-
-    span{font-size: 20px;color:#fff;}
-    a{display: block;
-      &.a-link{@include inline-block;margin-top: 11px;*margin-top:0;}
-    }
-  }
-  .btn-yellow{background: #e77f22;color:#f8d9be;
-    a{color:#f8d9be;}
-    &:hover{background: #ed8b33;}
-  }
-  .btn-blue{background: #436bdc;/*padding-right: 1%;*/color:#84a3f9;
-    a{color:#84a3f9;}
-    .i-arrow-r{background-position:0px -24px;}
-    &:hover{background: #4a71df;}
-  }
-  .a-link{@include size(124px,38px);margin-left:10px;line-height:38px;border-radius:6px;font-size: 15px;color:#fff;border:1px solid #678bf2;text-align: center;
-    [class*="i-btn-"]{margin-top: 7px;*margin-top:-2px;margin-right: 6px;}
-    &:hover{background:#5c7dda;}
-  }
-}
-.index-banner{position: relative;
-  .opgroup-btns{position: absolute;bottom:0;left:0;right:0;@include rgba-background((#000,.4));padding: 20px 0;}
-}
 .map-block{}
 
 /*ICDX*/
