@@ -15,90 +15,93 @@
         function AroundLeftRight(element, options) {
             options = $.extend({}, options || {});
             var _this = $(element);
-            var slider = _this.find(options.wrapper);
-            var slideprev = _this.find(options.prev);
-            var slidenext = _this.find(options.next);
-            var timeInterval = options.speed;
-            var scrollTimer;
-            var _liWidthFirst = _this.find("li:first").outerWidth(true);
-            var _liWidthLast = _this.find("li:last").outerWidth(true);
+            var _ = this;
+            _.slider = _this.find(options.wrapper);
+            _.slideprev = _this.find(options.prev);
+            _.slidenext = _this.find(options.next);
+            _.timeInterval = options.speed;
+            _._liWidthFirst = _this.find("li:first").outerWidth(true);
+            _._liWidthLast = _this.find("li:last").outerWidth(true);
 
-            if(_this.width() >= _liWidthFirst*_this.find("li").length){
+            if(_this.width() >= _._liWidthFirst*_this.find("li").length){
                 return false;
             }
 
             if(options.hover){
-                slider.hover(function() {
-                    clearInterval(scrollTimer);
+                _.slider.hover(function() {
+                    clearInterval(_.scrollTimer);
                 }, function() {
                     if (options.loop) {
-                        scrollTimer = setInterval(function() {
-                            scrollList();
+                        _.scrollTimer = setInterval(function() {
+                            _.scrollList();
                         }, timeInterval);
                     }
                 });
             }
-            slideprev.click(function() {
-                clearInterval(scrollTimer);
-                slider.stop(true).animate({
-                    "left": _liWidthLast
+            _.slideprev.click(function() {
+                clearInterval(_.scrollTimer);
+                _.slider.stop(true).animate({
+                    "left": _._liWidthLast
                 }, 500, function() {
-                    slider.css({
+                    _.slider.css({
                         "left": '0px'
-                    }).find("li:last").prependTo(slider);
+                    }).find("li:last").prependTo(_.slider);
                     if (options.loop) {
-                        scrollTimer = setInterval(function() {
-                            scrollList();
-                        }, timeInterval);
+                        _.scrollTimer = setInterval(function() {
+                            _.scrollList();
+                        }, _.timeInterval);
                     }
                 });
             });
-            slidenext.click(function() {
-                clearInterval(scrollTimer);
-                slider.stop(true).animate({
-                    "left": -_liWidthFirst + "px"
+            _.slidenext.click(function() {
+                clearInterval(_.scrollTimer);
+                _.slider.stop(true).animate({
+                    "left": -_._liWidthFirst + "px"
                 }, 500, function() {
-                    slider.css({
+                    _.slider.css({
                         "left": "0px"
-                    }).find("li:first").appendTo(slider);
+                    }).find("li:first").appendTo(_.slider);
                     if (options.loop) {
-                        scrollTimer = setInterval(function() {
-                            scrollList();
-                        }, timeInterval);
+                        _.scrollTimer = setInterval(function() {
+                            _.scrollList();
+                        }, _.timeInterval);
                     }
                 })
             });
-            slidenext.hover(function() {
+            _.slidenext.hover(function() {
                 $(this).addClass('hover')
             }, function() {
                 $(this).removeClass('hover')
             });
-            slideprev.hover(function() {
+            _.slideprev.hover(function() {
                 $(this).addClass('hover')
             }, function() {
                 $(this).removeClass('hover')
             });
 
-            function scrollList() {
-                slider.stop(true).animate({
-                    "left": -_liWidthFirst + "px"
-                }, 500, function() {
-                    slider.css({
-                        "left": "0px"
-                    }).find("li:first").appendTo(slider);
-                })
-            }
-            if (options.loop) {
-                slider.trigger("mouseout");
-            }
-        };
+            _.init(options.loop);
+        }
         return AroundLeftRight;
     }());
+    AroundLeftRight.prototype.init=function (creation) {
+        if (creation) {
+            _.slider.trigger("mouseout");
+        }
+    };
+    AroundLeftRight.prototype.scrollList=function () {
+        _.slider.stop(true).animate({
+            "left": -_._liWidthFirst + "px"
+        }, 500, function() {
+            _.slider.css({
+                "left": "0px"
+            }).find("li:first").appendTo(_.slider);
+        })
+    };
 
     $.fn.aroundLeftRight = function() {
         var _ = this,
             opt = arguments[0],
-            args = Array.prototype.slice.call(arguments, 1),
+            args = [].slice.call(arguments, 1),
             l = _.length,
             i = 0,
             ret;

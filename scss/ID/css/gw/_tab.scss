@@ -3,6 +3,9 @@
 .tab-group{
   i{@include inline-block;}
   .tab-nav{line-height: 1;
+    .title{display: none;
+      &.active{display: block;}
+    }
   }
   .tab-panel{visibility: hidden;height: 0;
     &.active{visibility: visible;height: auto;}

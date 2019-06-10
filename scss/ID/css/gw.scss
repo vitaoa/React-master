@@ -5,6 +5,9 @@
 body{@include prefixer(user-select, none,$prefixes);overflow-x: hidden;}
 .w-part{width: 1190px;margin: 0 auto;}
 .bg-f7f7f7{background-color: #f7f7f7;}
+.container{
+  .w-part{width:auto;}
+}
 
 @import "gw/common";
 

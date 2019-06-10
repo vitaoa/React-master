@@ -6,7 +6,7 @@
     /*header*/
     .header{
         .head-btn{
-            .highlight{width:120px;
+            .highlight{min-width:100px;
                 [class*="head-icon"]{display: none;}
             }
         }

@@ -47,7 +47,6 @@
 
 
 <script src="/js/slick.js"></script>
-<script src="/js/aroundLeftRight.js"></script>
 <link href="/public/css/video-js.min.css" rel="stylesheet">
 <script src="/public/js/video.min.js"></script>
 <script type="text/javascript">
@@ -87,6 +86,25 @@
 //                    }
 //                ]
         });
+        $('.part7').find('.slider-items').slick({
+            prevArrow: '<div data-role="none" class="arrow-btn btn-prev" aria-label="Previous" tabindex="0" role="button"><i class="i-btn-l1"></i></div>',
+            nextArrow: '<div  data-role="none" class="arrow-btn btn-next" aria-label="Next" tabindex="0" role="button"><i class="i-btn-r1"></i></div>',
+            swipe:false,
+            slidesToShow: 3,
+            variableWidth: true
+        });
+        $('.part8').find('.slider-items').slick({
+            prevArrow: '<div data-role="none" class="arrow-btn btn-prev" aria-label="Previous" tabindex="0" role="button"><i class="i-btn-l2"></i></div>',
+            nextArrow: '<div  data-role="none" class="arrow-btn btn-next" aria-label="Next" tabindex="0" role="button"><i class="i-btn-r2"></i></div>',
+            centerMode: true,
+            variableWidth: true
+        });
+
+        $('.tab-group').find('.tab-panel').each(function (e) {
+            if($(this).find('.slider-items li').length>0){
+                $(this).closest('.tab-group').find('.tab-nav .title').eq(e).show();
+            }
+        });
         $('body').on('click','.tab-nav .title',function () {
             var _index = $(this).index();
             $(this).addClass('active').siblings('.title').removeClass('active');
@@ -94,14 +112,6 @@
             $(this).closest('.tab-group').find('.tab-panel').eq(_index).addClass('active').siblings('.tab-panel').removeClass('active');
         });
 
-        $('.sliderLeftRight').aroundLeftRight({
-            wrapper: '.slider-items ul',
-            speed: 3000,
-            loop: false,
-            hover:false,
-            prev: '.btn-prev',
-            next: '.btn-next'
-        });
     });
     $('.vjs-close').click(function () {
         $(this).closest('.video-fixed').remove();

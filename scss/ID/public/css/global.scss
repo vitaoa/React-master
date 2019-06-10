@@ -1143,6 +1143,7 @@ table.table_info tbody tr td:not(:last-child){border-right:1px solid #a4b9cc;}
         #site-header,.header{top:0;@include prefixer(transition,none,$prefixes);}
       }
       #site-header,.header{top:1.4rem;}
+      .menu-list.sidebar{top:2.28rem;}
     }
   }
 }

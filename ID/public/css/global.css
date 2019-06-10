@@ -971,4 +971,5 @@ table.table_info tbody tr td:not(:last-child){ border-right:1px solid #a4b9cc; }
     .tip-bar ~ #page{ top:1.4rem; }
     .tip-bar ~ #page.mmopen #site-header,.tip-bar ~ #page.mmopen .header{ top:0;-webkit-transition:none;-moz-transition:none;-ms-transition:none;-o-transition:none;transition:none; }
     .tip-bar ~ #page #site-header,.tip-bar ~ #page .header{ top:1.4rem; }
+    .tip-bar ~ #page .menu-list.sidebar{ top:2.28rem; }
 }

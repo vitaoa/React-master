@@ -59,7 +59,9 @@ $footer-bg1:#0d1b32;
     ul{position: relative;top:0;
       li{margin-bottom: 6px;}
     }
-    .btn-anchor{padding: 0 2%;height:50px;line-height: 50px;}
+    .btn-anchor{padding: 0 2%;height:50px;line-height: 1.4;
+      & > span{padding-top: 10px;margin: 0;}
+    }
     .op-btn{position: absolute;right:0;top:0;width:30px;
       a{display: block;background: $footer-bg1;height:22px;text-align: center;line-height: 22px;
         i{vertical-align: middle;@include opacity(1);margin: 0;float: none;
@@ -150,7 +152,9 @@ $footer-bg1:#0d1b32;
       ul{
         li{margin-bottom: .06rem;}
       }
-      .btn-anchor{height:.6rem;line-height: .6rem;}
+      .btn-anchor{height:.6rem;
+        & > span{padding-top: .06rem;}
+      }
       .op-btn{width:.3rem;
         a{height:.27rem;line-height: .27rem;
           & + a{margin-top: .06rem;}

@@ -212,27 +212,26 @@ class Slider extends React.Component{
             <div className={this.state.opts.class?"slider "+this.state.opts.class:"slider"}>
                 {arrowPrevEle}{arrowNextEle}
                 <div className="slider-items">
-                    <ul>
-                        {this.state.items.map((item,index)=>{
-                            let picEle = item.picname?<img src={"/images/"+item.picname} alt=""/>:'';
-                            let titleEle = item.title?<span dangerouslySetInnerHTML={{__html:item.title}}></span>:'';
-                            let descEle = item.desc?<span dangerouslySetInnerHTML={{__html:item.desc}} className="s-desc"></span>:'';
-                            let badgeEle;
-                            let iconEle = item.iconClass?<i className={"s-icon "+item.iconClass}></i>:'';
-                            if(item.badge && item.badge.length){
-                                badgeEle= <BadgeGroup data={item.badge} props={{class:'slider-badge'}} />;
-                            }
-                            return <li key={index}>
-                                <div className={this.state.opts.itemClass?"slider-item "+this.state.opts.itemClass:"slider-item"}>
-                                    {picEle}
-                                    <div className="s-title">{badgeEle}{titleEle}{descEle}</div>
-                                    {item.avatar?<UserInfo data={item} />:''}
-                                    {iconEle}
-                                    {item.linkA?<div dangerouslySetInnerHTML={{__html: item.linkA}} className="slider-link"></div>:''}
-                                </div>
-                            </li>
-                        })}
-                    </ul>
+                    {this.state.items.map((item,index)=>{
+                        let picEle = item.picname?<img src={"/images/"+item.picname} alt=""/>:'';
+                        let titleEle = item.title?<span dangerouslySetInnerHTML={{__html:item.title}}></span>:'';
+                        let descEle = item.desc?<span dangerouslySetInnerHTML={{__html:item.desc}} className="s-desc"></span>:'';
+                        let badgeEle,dateEle;
+                        let iconEle = item.iconClass?<i className={"s-icon "+item.iconClass}></i>:'';
+                        if(item.badge && item.badge.length){
+                            badgeEle= <BadgeGroup data={item.badge} props={{class:'slider-badge'}} />;
+                        }
+                        if(item.date){
+                            dateEle = <span className="badge-group time-badge" data-time="2019/05/28 15:40">2019/05/28</span>
+                        }
+                        return  <div className={this.state.opts.itemClass?"slider-item "+this.state.opts.itemClass:"slider-item"} key={index}>
+                            {picEle}{dateEle}
+                            <div className="s-title">{badgeEle}{titleEle}{descEle}</div>
+                            {item.avatar?<UserInfo data={item} />:''}
+                            {iconEle}
+                            {item.linkA?<div dangerouslySetInnerHTML={{__html: item.linkA}} className="slider-link"></div>:''}
+                        </div>
+                    })}
                 </div>
             </div>
         )
@@ -552,18 +551,20 @@ const title7 = {
     "class":"titlebar-gw tab-nav",
 };
 const slider71={
-    opts:{class:"sliderLeftRight article-block",arrowClass:"arrow-btn",prevClass:"i-btn-l1",nextClass:"i-btn-r1"},
+    opts:{class:"sliderLeftRight article-block"},
     items:[
-        {picname:"pic-news1.jpg",title:"Informasi berbagai index",badge:["EUR/USD"],iconClass:"i-new-s1",linkA:'<a href="" target="_blank">Selengkapnya <i class="i-arrow-r1"></i></a>'},
+        {picname:"pic-news1.jpg",title:"Informasi berbagai index",badge:["EUR/USD"],date:'2019/05/28',iconClass:"i-new-s1",linkA:'<a href="" target="_blank">Selengkapnya <i class="i-arrow-r1"></i></a>'},
         {picname:"pic-news2.jpg",title:"Informasi berbagai index berbagai index",badge:["EUR/USD","Event"],iconClass:"i-new-s1",linkA:'<a href="" target="_blank">Selengkapnya <i class="i-arrow-r1"></i></a>'},
         {picname:"pic-news3.jpg",title:"Informasi berbagai index",badge:["EUR/USD"],linkA:'<a href="" target="_blank">Selengkapnya <i class="i-arrow-r1"></i></a>'},
+        {picname:"pic-news4.jpg",title:"Informasi berbagai index",badge:["EUR/USD","Event"],linkA:'<a href="" target="_blank">Selengkapnya <i class="i-arrow-r1"></i></a>'},
+        {picname:"pic-news4.jpg",title:"Informasi berbagai index",badge:["EUR/USD","Event"],linkA:'<a href="" target="_blank">Selengkapnya <i class="i-arrow-r1"></i></a>'},
         {picname:"pic-news4.jpg",title:"Informasi berbagai index",badge:["EUR/USD","Event"],linkA:'<a href="" target="_blank">Selengkapnya <i class="i-arrow-r1"></i></a>'},
     ]
 }
 const slider72={
-    opts:{class:"sliderLeftRight article-block",arrowClass:"arrow-btn",prevClass:"i-btn-l1",nextClass:"i-btn-r1"},
+    opts:{class:"sliderLeftRight article-block"},
     items:[
-        {picname:"pic-news1.jpg",title:"Informasi berbagai index",badge:["EUR/USD"],iconClass:"i-new-s1",linkA:'<a href="" target="_blank">Selengkapnya <i class="i-arrow-r1"></i></a>'},
+        // {picname:"pic-news1.jpg",title:"Informasi berbagai index",badge:["EUR/USD"],iconClass:"i-new-s1",linkA:'<a href="" target="_blank">Selengkapnya <i class="i-arrow-r1"></i></a>'},
         // {picname:"pic-news4.jpg",title:"Informasi berbagai index",badge:["EUR/USD","Event"],linkA:'<a href="" target="_blank">Selengkapnya <i class="i-arrow-r1"></i></a>'},
     ]
 }
@@ -583,7 +584,7 @@ const title8 = {
     "class":"titlebar-gw al-c",
 };
 const slider8={
-    opts:{class:"sliderLeftRight feedback-block",itemClass:"user-box",arrowClass:"arrow-btn",prevClass:"i-btn-l2",nextClass:"i-btn-r2"},
+    opts:{class:"sliderLeftRight feedback-block",itemClass:"user-box"},
     items:[
         {avatar:"avatar1.png",avatarName:"Carolos",statLevel:["i-star1","i-star1","i-star1","i-star1","i-star1"],title:"Mudah dan Menyenangkan",desc:"Aplikasi ini sangat bagus. saya suka trading menggunakan aplikasi ini. kamu dapat membuka akun dan mengaturnya di aplikasi ini."},
         {avatar:"avatar2.png",avatarName:"Gabriel",statLevel:["i-star1","i-star1","i-star1","i-star1","i-star1"],title:"Trading broker terbaik",desc:"Mantap Hanson, kamu dapat mengecek setiap transaksi melalui CITRA dan tim cs 24 jam selalu siap membantu Anda."},

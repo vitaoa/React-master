@@ -18,7 +18,7 @@ $headerH:80px;
         & + a{margin-left: 10px;}
       }
     }
-    .highlight{@include inline-block;vertical-align:middle;text-align:center;border:1px solid $c-yellow-default;border-radius: 2px;height:28px;line-height: 28px;width:148px;font-size: 12px;
+    .highlight{@include inline-block;vertical-align:middle;text-align:center;border:1px solid $c-yellow-default;border-radius: 2px;height:28px;line-height: 28px;min-width:138px;padding:0 5px;font-size: 12px;
       [class*="head-icon"]{margin-right: 6px;}
     }
     .btn-yellow{background: $c-yellow-default;color:#fff;}
