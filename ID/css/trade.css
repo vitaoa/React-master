@@ -182,9 +182,9 @@ body{ font-size:14px;color:#333;line-height:1.4; }
 }
 
 /*  ============ sprites ============  */
-.illstr1{ width:190px;height:132px;background-image:url("../images/sp_p_trade.png?=993");background-position:0px 0px;background-size:190px 416px;background-repeat:no-repeat; }
-.illstr2{ width:190px;height:132px;background-image:url("../images/sp_p_trade.png?=993");background-position:0px -142px;background-size:190px 416px;background-repeat:no-repeat; }
-.illstr3{ width:190px;height:132px;background-image:url("../images/sp_p_trade.png?=993");background-position:0px -284px;background-size:190px 416px;background-repeat:no-repeat; }
+.illstr1{ width:190px;height:132px;background-image:url("../images/sp_p_trade.png?=434");background-position:0px 0px;background-size:190px 416px;background-repeat:no-repeat; }
+.illstr2{ width:190px;height:132px;background-image:url("../images/sp_p_trade.png?=434");background-position:0px -142px;background-size:190px 416px;background-repeat:no-repeat; }
+.illstr3{ width:190px;height:132px;background-image:url("../images/sp_p_trade.png?=434");background-position:0px -284px;background-size:190px 416px;background-repeat:no-repeat; }
 @media (min-width: 1024px) and (max-width: 1160px) {
     .trade-page .side-main{ width:588px; }
     .trade-page .illstr-txt-block{ font-size:12px; }
@@ -236,9 +236,9 @@ body{ font-size:14px;color:#333;line-height:1.4; }
     .breadcrumb a i{ margin:0 .08rem; }
 
     /*  ============ sprites ============  */
-    .illstr1{ width:190px;height:132px;background-image:url("../images/sp_m_trade.png?=993");background-position:0px 0px;background-size:190px 471px;background-repeat:no-repeat; }
-    .illstr2{ width:180px;height:187px;background-image:url("../images/sp_m_trade.png?=993");background-position:0px -284px;background-size:190px 471px;background-repeat:no-repeat; }
-    .illstr3{ width:190px;height:132px;background-image:url("../images/sp_m_trade.png?=993");background-position:0px -142px;background-size:190px 471px;background-repeat:no-repeat; }
+    .illstr1{ width:190px;height:132px;background-image:url("../images/sp_m_trade.png?=434");background-position:0px 0px;background-size:190px 471px;background-repeat:no-repeat; }
+    .illstr2{ width:180px;height:187px;background-image:url("../images/sp_m_trade.png?=434");background-position:0px -284px;background-size:190px 471px;background-repeat:no-repeat; }
+    .illstr3{ width:190px;height:132px;background-image:url("../images/sp_m_trade.png?=434");background-position:0px -142px;background-size:190px 471px;background-repeat:no-repeat; }
 
     /*  ============ sprites rem ============  */
 }

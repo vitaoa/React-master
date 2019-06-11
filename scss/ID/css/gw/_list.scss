@@ -26,8 +26,9 @@
     li{float: none;@include inline-block;width: auto;padding: 0 24px;}
     .list-item{@include size(360px,430px);display: table-cell;vertical-align: middle;
       &:hover,&.hover{background-color: #fff;box-shadow: 0 0 32px 0 rgba(27, 27, 27, 0.1);
-        @include prefixer(transition,all .15s ease-out,$prefixes);@include prefixer(transform,scale(1.08),$prefixes);
+        @include prefixer(transition,all .15s ease-out,$prefixes);
         .btn-group{display: block;}
+        [class*="item-"]{@include prefixer(transform,scale(1.08),$prefixes);}
       }
       .item-icon{margin-bottom: 27px;}
     }
@@ -55,7 +56,7 @@
   .tb-th{font-size: 24px;font-weight: bold;
     br{display: none;}
   }
-  .tb-td{font-size: 20px;}
+  .tb-td{font-size: 20px;padding-right: 20px;}
 
   &.platform-tb{padding-top: 10px;padding-bottom: 144px;
     .tb-cell0{text-align: right;
@@ -66,12 +67,12 @@
       & > [class*="tb-t"]{padding-left: 95px;}
       [class*="i-"]{left:40px;}
     }
-    .tb-cell0,.tb-cell2{width:35%;
+    .tb-cell0,.tb-cell2{width:40%;
       & > [class*="tb-t"]{background-color: #f1f1f1;
         &:nth-child(even){background-color: #f7f7f7;}
       }
     }
-    .tb-cell1{width: 30%;color:#fff;
+    .tb-cell1{width: 20%;color:#fff;
       & > [class*="tb-t"]{background-color: #ec6b41;
         &:nth-child(even){background-color: #f3764c;}
       }
@@ -151,7 +152,7 @@
     .tb-th{font-size: .24rem;
       br{display: block;}
     }
-    .tb-td{font-size: .18rem;}
+    .tb-td{font-size: .18rem;padding-right: .1rem;}
 
     &.platform-tb{padding-top: 0;padding-bottom: .92rem;
       .tb-cell0{

@@ -37,7 +37,7 @@
     .s-icon{position: absolute;top:10px;right:10px;}
     .slider-link{line-height: 70px;padding: 0 20px;}
   }
-  &.feedback-block{margin: -17px -15px 125px;width:auto;height: 308px;overflow: hidden;
+  &.feedback-block{margin: -17px -15px 125px;width:auto;height: 333px;overflow: hidden;
     .arrow-btn {top: 50%;margin-top: -70px;
       &.btn-prev {left: 0;margin-left: 15px;}
       &.btn-next {right: 0;margin-right:15px;left:auto;}
@@ -46,7 +46,7 @@
       li{margin: 0;padding:34px 15px;}
       .slider-item{margin:34px 15px;float: left;}
     }
-    .slider-item{box-shadow: 0 0 32px 0 rgba(27, 27, 27, 0.1);background: #fff;@include size(400px,230px);
+    .slider-item{box-shadow: 0 0 32px 0 rgba(27, 27, 27, 0.1);background: #fff;@include size(400px,255px);
     }
     .s-title{font-size: 24px;color:#444;font-weight: bold;padding: 25px;}
     .s-desc{font-weight: normal;}
@@ -54,15 +54,15 @@
   }
 }
 
-.index-banner{position: relative;height: 660px;z-index: 1;
+.index-banner{position: relative;height: 650px;z-index: 1;
   .slider-banner{height: 100%;}
   & + .opgroup-btns{margin-top: -32px;position: relative;z-index: 2;}
 }
-.slider-banner {position: relative;width: 100%;height: 660px;overflow: hidden;
-  .slide { /* height: 100%;*/height: 660px;width:100%;  float: left;  clear: none;position: relative;
-    & > a{display: block;background-position: center center;background-repeat: no-repeat;background-size:cover;width:100%;height:100%;}
+.slider-banner {position: relative;width: 100%;height: 650px;overflow: hidden;
+  .slide { /* height: 100%;*/height: 650px;width:100%;  float: left;  clear: none;position: relative;
+    & > a{display: block;background-position: center center;background-repeat: no-repeat;width:100%;height:100%;}
   }
-  .slick-dots {position: absolute;left:0;right:0;z-index:9999;font-size:0;text-align: center;bottom: 40px;
+  .slick-dots {position: absolute;left:0;right:0;z-index:9999;font-size:0;text-align: center;bottom: 30px;
     li {@include inline-block;position: relative;overflow: hidden;margin: 0 2px;width: 55px;padding: 20px 0;
       &.slick-active {
         &:after {@include rgba-background((#fff,0));@include prefixer(animation,3s linear forwards fillPaginationBullet,$prefixes);}
@@ -113,7 +113,7 @@
       .s-icon{/*position: absolute;*/top:.1rem;right:.1rem;}
       .slider-link{line-height: .7rem;padding: 0 .2rem;}
     }
-    &.feedback-block{margin: -.35rem -.15rem .86rem;width:auto;height: 3.38rem;
+    &.feedback-block{margin: -.35rem -.15rem .86rem;width:auto;height: 3.5rem;
       .arrow-btn {margin-top: -.8rem;
         &.btn-prev {margin-left:0;}
         &.btn-next {margin-right:0;}
@@ -122,7 +122,7 @@
         li{margin: 0;padding:.34rem .15rem;}
         .slider-item{margin:.34rem .15rem;}
       }
-      .slider-item{box-shadow: 0 0 .32rem 0 rgba(27, 27, 27, 0.1);@include size(4rem,2.7rem);
+      .slider-item{box-shadow: 0 0 .32rem 0 rgba(27, 27, 27, 0.1);@include size(4rem,2.82rem);
       }
       .s-title{font-size: .24rem;padding: .25rem;}
       .user-info{bottom:.24rem;left:.25rem;line-height: 1;font-size: 0;}

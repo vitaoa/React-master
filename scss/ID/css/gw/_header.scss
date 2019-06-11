@@ -27,8 +27,8 @@ $headerH:80px;
   }
 }
 .head-menu{position:absolute; left:195px;right:350px; top:0; font-size:16px;text-align: center;
-  ul{padding:0; margin:0; text-align:right;@include clearfix;
-    & > li{display:block; float:left; list-style:none; padding:0 18px;position: relative;
+  ul{padding:0; margin:0; text-align:center;
+    & > li{@include inline-block; list-style:none; padding:0 14px;position: relative;
       &:first-child{padding-left:0;}
       &:last-child{padding-right:0;}
       &:hover{

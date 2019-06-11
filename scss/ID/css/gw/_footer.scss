@@ -9,7 +9,9 @@ $footer-bg1:#0d1b32;
   .border-line{border-bottom: 1px dotted #283a57;}
   .risk-warning{}
   .alink-list{
-    a{display: block;line-height: 2.57;}
+    a{display: block;line-height: 2.57;@include prefixer(transition,all .3s ease,$prefixes);left:0;
+      &:hover{color:#fff;position:relative;left: 10px;}
+    }
     .foot-tit{}
   }
   .footer-contact{
@@ -97,6 +99,7 @@ $footer-bg1:#0d1b32;
     .alink-list{
       a{line-height: 2;display: inline-block;
         & + a{margin-left: .15rem;}
+        &:hover{left: 0;}
       }
       .foot-tit{}
     }
