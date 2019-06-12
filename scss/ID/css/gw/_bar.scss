@@ -14,10 +14,7 @@
       &.s2{font-size: .22rem;color:#a5a5a5;}
     }
     & ~ #page{top: 1.4rem;
-      &.mmopen{
-        #site-header,.header{top:0;@include prefixer(transition,none,$prefixes);}
-      }
-      #site-header,.header{top:1.4rem;}
+      .header{top:1.4rem;}
       .menu-list.sidebar{top:2.28rem;}
     }
   }

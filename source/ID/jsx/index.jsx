@@ -446,7 +446,8 @@ function Part5() {
             <TitleBarGW data={title5} />
             <div className="w-part">
                 <ListGroup data={list5} />
-                <BtnGroup data={btnList5} />
+                <BtnGroup data={btnList51} />
+                <BtnGroup data={btnList52} />
                 <Illustr data={illustrList5} />
             </div>
         </div>
@@ -466,10 +467,17 @@ const list5 = {
         {txtTop:"Informasi berbagai index",txt:"Hanson Trader menyediakan informasi<br/> 17 macam index untuk nasabah."},
     ]
 };
-const btnList5 = {
-    opts:{class:"al-c"},
+const btnList51 = {
+    opts:{class:"al-c computer"},
     items:[
         {linkA:"<a href=\"javascript:;\" target=\"_blank\" onclick='downloadAppgw(this)' rel=\"nofollow\" class=\"btn-gw btn-yellow-default\">Click to Download</a>"},
+    ]
+};
+const btnList52 = {
+    opts:{class:"al-c mobile"},
+    items:[
+        {linkA:"<a href=\"https://www.hsb.co.id/apk/hansonApp_yn100_prd_release.apk\" target=\"_blank\" onclick=\"dataLayer.push({'event':'Google play','gtm.elementTarget': $GA_NAME,'gtm.element': 'content_center'});\" rel=\"nofollow\" class=\"btn-gw btn-yellow\"><i class='i-download-btng'></i>Google Play</a>"},
+        {linkA:"<a href=\"https://itunes.apple.com/id/app/hanson-forex-trader/id1403262751\" target=\"_blank\" onclick=\"dataLayer.push({'event':'App Store','gtm.elementTarget': $GA_NAME,'gtm.element': 'content_center'});\" rel=\"nofollow\" class=\"btn-gw btn-yellow\"><i class='i-download-btna'></i>Apple Store</a>"},
     ]
 };
 const illustrList5 = {

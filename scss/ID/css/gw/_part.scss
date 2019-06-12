@@ -20,7 +20,13 @@
     .sub-txt{color:#fff;}
   }
   .btn-group{
-    .btn-gw{@include size(226px,50px);line-height: 50px;}
+    .btn-gw{@include size(226px,50px);line-height: 50px;
+      i{@include inline-block;vertical-align: middle;margin-right: .2rem;}
+    }
+    &.mobile{
+      .btn-gw{@include size(2.7rem,.7rem);line-height: .7rem;margin: 0 .15rem;
+      }
+    }
   }
 }
 .part6{

@@ -1,6 +1,6 @@
 
 /*advantages*/
-.advantages-comp{padding-top: 90px;
+.advantages-comp{padding-top: 90px;overflow: hidden;
   [class*="-icons-bg"]{@include clearfix;
     li{position: relative;width: 50%;float: left;font-size: 18px;margin-bottom: 51px;color:#444;text-align: center;}
     i{@include inline-block;}

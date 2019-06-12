@@ -20,12 +20,12 @@
     [class*="i-arrow-r"]{position: absolute;top:50%;right:0;margin-top: -10px;}
   }
 
-  &.article-block{font-size: 24px;padding-top: 0;
+  &.article-block{font-size: 24px;padding-top: 0;height:454px;padding-bottom: 195px;
     .arrow-btn {top: 100%;margin-top: -195px;*margin-top:-160px;
-      &.btn-prev {left: 0;margin-left: 15px;}
-      &.btn-next {right: auto;left:85px;}
+      &.btn-prev {left: 0;margin-left: 0;}
+      &.btn-next {right: auto;left:70px;}
     }
-    .slider-items{width:1000%;padding-bottom: 195px;
+    .slider-items{width:1000%;position: absolute;;left:0;top:0;
       li{margin: 0;padding:42px 15px;}
       .slider-item{margin:42px 15px;float: left;
         &:first-child{margin-left: 0;}
@@ -40,10 +40,10 @@
     .s-icon{position: absolute;top:10px;right:10px;}
     .slider-link{line-height: 70px;padding: 0 20px;}
   }
-  &.feedback-block{margin: -17px -15px 125px;width:auto;height: 333px;overflow: hidden;
+  &.feedback-block{margin: -17px 0 125px;width:auto;height: 333px;overflow: hidden;
     .arrow-btn {top: 50%;margin-top: -70px;
-      &.btn-prev {left: 0;margin-left: 15px;}
-      &.btn-next {right: 0;margin-right:15px;left:auto;}
+      &.btn-prev {left: 0;margin-left: 0;}
+      &.btn-next {right: 0;left:auto;}
     }
     .slider-items{
       li{margin: 0;padding:34px 15px;}
@@ -98,12 +98,12 @@
       [class*="i-arrow-r"]{margin-top: -.1rem;}
     }
 
-    &.article-block{font-size: .24rem;/*padding-top: 0;*/
+    &.article-block{font-size: .24rem;height:4.65rem;padding-bottom: 1.8rem;
       .arrow-btn {margin-top: -1.8rem;
-        &.btn-prev {margin-left: .15rem;}
-        &.btn-next {left:1.43rem;}
+        &.btn-prev {}
+        &.btn-next {left:1.28rem;}
       }
-      .slider-items{padding-bottom: 1.8rem;
+      .slider-items{
         li{padding:.48rem .15rem;
           &:first-child{margin-left: 0;}
           &:last-child{margin-right: 0;}
@@ -119,7 +119,7 @@
       .s-icon{/*position: absolute;*/top:.1rem;right:.1rem;}
       .slider-link{line-height: .7rem;padding: 0 .2rem;}
     }
-    &.feedback-block{margin: -.35rem -.15rem .86rem;width:auto;height: 3.5rem;
+    &.feedback-block{margin: -.35rem 0 .86rem;width:auto;height: 3.5rem;
       .arrow-btn {margin-top: -.8rem;
         &.btn-prev {margin-left:0;}
         &.btn-next {margin-right:0;}

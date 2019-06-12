@@ -136,13 +136,12 @@ gulp.task('ejs',function(cb) {
                 type:"text/javascript",
                 jsxUrl: _url.host+":"+_url.port+_url.path+CUR_PATH+Download_Temple+file.replace(root_DIR+ source_DIR + CUR_PATH,'').replace('.ejs','.js'),
                 destDir:root_DIR+CUR_PATH+Download_Temple,
-                rootUrl:'/download/'
+                // rootUrl:'/download/'
+                rootUrl:'/'
             };
         }
         if(webUrl==='package'){
-            reactOpts = {
-                rootUrl:'/'
-            };
+            reactOpts.destDir=root_DIR+CUR_PATH;
         }
 
 
@@ -155,7 +154,6 @@ gulp.task('ejs',function(cb) {
             value = {}
         }
         // console.log(value)
-
         gulp.src(file, {base: root_DIR+source_DIR+CUR_PATH})
             .pipe(gulpGitStatus({
                 excludeStatus: 'unchanged'//["modified", "unchanged", "untracked"]
@@ -201,7 +199,7 @@ gulp.task('downloadHtml',gulp.series('clean:downloadHtml',function(cb) {
     }).forEach(function (file,r,n) {
         setTimeout(function(){
             //第二步:编译ejs下载模板
-            console.log("downloadHtml ============ total:"+(n.length+1)+"，number "+r+":"+file);
+            console.log("downloadHtml ============ total:"+(n.length)+"，number "+r+":"+file);
             _templeSrc = _url.host+":"+_url.port+_url.path+Temple_DIR+Temple_Name.replace('.ejs','.html');
             gulp.src(root_DIR+Temple_DIR+Temple_Name, {base: root_DIR+Temple_DIR})
                 .pipe(ejs({templeOps:{"url":_url.host+":"+_url.port+_url.path+file.replace(root_DIR,'').replace('.ejs','.html'),"title":path.basename(file)}}))
@@ -497,6 +495,8 @@ gulp.task('dev',gulp.series('jsx:copy','ejs','modified:jsx','ejs','picbase64:sas
 gulp.task('modified:clean',function (cb) {
     webUrl = 'package';
     gulp.src(root_DIR+CUR_PATH+Download_Temple+'**/*.*')
+        .pipe(changed(root_DIR+CUR_PATH+Download_Temple, {hasChanged: changed.compareSha1Digest}))
+        .pipe(debug({title: '编译 modified clean:'}))
         .pipe(clean({
             options:{force:true}
         }));

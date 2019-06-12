@@ -7,12 +7,13 @@
   font-style: normal;
 }
 .pops{font-family: 'pops';}
-body{@include prefixer(user-select, none,$prefixes);overflow-x: hidden;font-family:Arial;}
+body{@include prefixer(user-select, none,$prefixes);font-family:Arial;background: #fff;}
 .w-part{width: 1190px;margin: 0 auto;}
 .bg-f7f7f7{background-color: #f7f7f7;}
 .container{
   .w-part{width:auto;}
 }
+.index-page .part7{overflow: hidden;}
 
 @import "gw/common";
 

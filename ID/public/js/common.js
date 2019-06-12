@@ -173,7 +173,6 @@ $(document).ready(function(){
         }
     });
 
-
     /* COMMON - mobile menu open/close */
     $('body').delegate('.btn-mobile-menu a', 'click', function(e){
         e.preventDefault();
@@ -182,7 +181,8 @@ $(document).ready(function(){
     $(window).resize(closeMobileMenu);
 
     function mobileMenu(){
-        if( $('#page').hasClass('mmopen') ){
+        console.log('mobileMenu');
+        if( $('body').hasClass('mmopen') ){
             closeMobileMenu();
         }else{
             openMobileMenu();
@@ -190,43 +190,23 @@ $(document).ready(function(){
     }
 
     function openMobileMenu(){
-        var winWidth = $(window).width();
-
-        disableMobileNavBtn();
-        $('#page').css({'position':'fixed', 'width':winWidth+'px'});
         $('body').addClass('mmopen');
         $('#page').addClass('mmopen');
         $('#mobile-menu').addClass('mmopen');
         $('#page').append('<div class="mmblocker"></div>');
-        setTimeout(activateMobileNavBtn,800);
 
         $('.mmblocker').click(closeMobileMenu);
     }
 
     function closeMobileMenu(){
-        if( $('#page').hasClass('mmopen') ){
-            disableMobileNavBtn();
+        if( $('body').hasClass('mmopen') ){
             $('body').removeClass('mmopen');
-            $('#page').removeClass('mmopen');
             $('#mobile-menu').removeClass('mmopen');
+            $('#page').removeClass('mmopen');
             $('.mmblocker').remove();
-            setTimeout(function(){
-                $('#page').css({'position':'', 'width':''});
-                activateMobileNavBtn();
-            },800);
         }
     }
 
-    function activateMobileNavBtn(){
-        $('body').delegate('.btn-mobile-menu a', 'click', function(e){
-            e.preventDefault();
-            mobileMenu();
-        })
-    }
-
-    function disableMobileNavBtn(){
-        $('body').undelegate('.btn-mobile-menu a', 'click');
-    }
 
 
     /* PRODUCTS - left menu */
