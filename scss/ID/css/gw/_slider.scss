@@ -20,17 +20,20 @@
     [class*="i-arrow-r"]{position: absolute;top:50%;right:0;margin-top: -10px;}
   }
 
-  &.article-block{font-size: 24px;padding-top: 0;margin: 0 -15px;
+  &.article-block{font-size: 24px;padding-top: 0;
     .arrow-btn {top: 100%;margin-top: -195px;*margin-top:-160px;
       &.btn-prev {left: 0;margin-left: 15px;}
       &.btn-next {right: auto;left:85px;}
     }
     .slider-items{width:1000%;padding-bottom: 195px;
       li{margin: 0;padding:42px 15px;}
-      .slider-item{margin:42px 15px;float: left;}
+      .slider-item{margin:42px 15px;float: left;
+        &:first-child{margin-left: 0;}
+      }
     }
-    .slider-item{box-shadow: 0 0 32px 0 rgba(27, 27, 27, 0.1);background: #fff;@include size(380px,370px);
+    .slider-item{box-shadow: 0 0 32px 0 rgba(27, 27, 27, 0.1);background: #fff;@include size(380px,370px);@include prefixer(transition,all .3s ease,$prefixes);top:0;
       img{@include size(380px,300px);display: block;}
+      &:hover{top:-10px;}
     }
     .s-title{color:#fff;position: absolute;bottom:96px;left:20px;text-shadow:0 0 5px #000;}
     .time-badge{position: absolute;left:10px;top:10px;}
@@ -48,7 +51,9 @@
     }
     .slider-item{box-shadow: 0 0 32px 0 rgba(27, 27, 27, 0.1);background: #fff;@include size(400px,255px);
     }
-    .s-title{font-size: 24px;color:#444;font-weight: bold;padding: 25px;}
+    .s-title{font-size: 24px;color:#444;padding: 25px;
+      & > span:first-child{font-family: 'pops';}
+    }
     .s-desc{font-weight: normal;}
     .user-info{position: absolute;bottom:25px;left:25px;}
   }
@@ -93,7 +98,7 @@
       [class*="i-arrow-r"]{margin-top: -.1rem;}
     }
 
-    &.article-block{font-size: .24rem;/*padding-top: 0;*/margin: 0 -.15rem;
+    &.article-block{font-size: .24rem;/*padding-top: 0;*/
       .arrow-btn {margin-top: -1.8rem;
         &.btn-prev {margin-left: .15rem;}
         &.btn-next {left:1.43rem;}
@@ -107,6 +112,7 @@
       }
       .slider-item{box-shadow: 0 0 .32rem 0 rgba(27, 27, 27, 0.1);@include size(3.8rem,3.7rem);
         img{@include size(3.8rem,3rem);}
+        &:hover{top:0;}
       }
       .s-title{/*color:#fff;position: absolute;*/bottom:.96rem;left:.2rem; text-shadow:0 0 .05rem #000;}
       .time-badge{left:.1rem;top:.1rem;}

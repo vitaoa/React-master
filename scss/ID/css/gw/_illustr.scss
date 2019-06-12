@@ -1,4 +1,7 @@
 
+@import "../sp-p-illustr1";
+@import "../sp-p-illustr2";
+
 /*illustr*/
 .illustr-group{display: block;margin: 0 auto;
   i{@include inline-block;}
@@ -9,6 +12,9 @@
 
 
 @media(max-width:1023px) {
+  @import "../sp-m-illustr1";
+  @import "../sp-m-illustr2";
+
   .illustr-group{
     &.illustr-mac{margin-top: 1.3rem;margin-bottom:63px;left: -.4rem;
       .illustr-phone{top:-.31rem;right:-.2rem;}

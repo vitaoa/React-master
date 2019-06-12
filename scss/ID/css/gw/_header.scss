@@ -34,7 +34,7 @@ $headerH:80px;
       &:hover{
         & > .submenu { display: block; }
       }
-      & > a,& > span{color:#444;font-weight: bold;position: relative;top:4px;}
+      & > a,& > span{color:#444;font-weight: bold;position: relative;top:4px;font-family: 'pops';}
       & > span{ cursor: default;}
       a:hover,a:focus,a.current{color:$c-yellow-default; text-decoration:none;}
     }

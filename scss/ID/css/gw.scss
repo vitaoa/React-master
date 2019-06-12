@@ -2,7 +2,12 @@
 @import "../../mixins/library";
 @import "../../mixins/keyframes/keyframes";
 
-body{@include prefixer(user-select, none,$prefixes);overflow-x: hidden;}
+@include font-face('pops','../font/Poppins-SemiBold',("eot","woff","ttf","svg"),false){
+  font-weight: normal;
+  font-style: normal;
+}
+.pops{font-family: 'pops';}
+body{@include prefixer(user-select, none,$prefixes);overflow-x: hidden;font-family:Arial;}
 .w-part{width: 1190px;margin: 0 auto;}
 .bg-f7f7f7{background-color: #f7f7f7;}
 .container{
@@ -14,10 +19,6 @@ body{@include prefixer(user-select, none,$prefixes);overflow-x: hidden;}
 //******* sprites
 //----------------------------
 @import "sp-p-icon1";
-@import "sp-p-illustr1";
-@import "sp-p-illustr2";
-@import "sp-p-common";
-@import "sp-p-null";
 .i-new1{@include prefixer(animation,anibounceTop 2s cubic-bezier(0.21, 0.4, 0.68, 1.35) infinite,$prefixes);}
 
 
@@ -29,7 +30,8 @@ body{@include prefixer(user-select, none,$prefixes);overflow-x: hidden;}
 @media(max-width:1023px) {
   .wrapper{max-width: 750px;margin: 0 auto;}
   .w-part{width: auto;max-width: 750px;padding-left: .2rem;padding-right: .2rem;@include box-sizing(border-box);}
-  @import "gw-mw979";
+
+  @import "sp-m-icon1";
 }
 @media(max-width:750px) {
   .wrapper,.w-part{width:7.5rem;}

@@ -1,0 +1,89 @@
+
+@import "../sp-p-popup";
+/*popup*/
+.popup-tb{display: table;width:100%;height:100%;
+  .popup-tb-cell{display: table-cell;vertical-align: middle;}
+}
+.popLayer-id{position:fixed;left:0;top:0;width:100%;height:100%;@include rgba-background((#000,.26));z-index:999999999999999999999999;
+  i{@include inline-block;}
+  .popcon{margin: 0 auto;position: relative;*top:80px;
+    @include prefixer(animation, fadeInUp .3s ease-in, $prefixes);
+    [class*="closeBtn"]{cursor: pointer;position: absolute;right:0;top:0;@include prefixer(transition,all .3s ease,$prefixes);
+      &:hover{@include prefixer(transform,rotate(180deg),$prefixes);}
+    }
+    .pop-tit{
+      span{display:block;}
+    }
+    .pop-txt{}
+    .op-btn{
+      .btn{@include inline-block;text-align: center;}
+    }
+  }
+}
+/*开户弹窗*/
+.popOpenAccount{
+  .popcon{@include size(852px,460px);border-radius: 6px;box-shadow: 0px 1px 45.54px 0.46px rgba(109, 109, 109, .68);
+    .popconOpenAccount{background-color:#fff;padding-left:52%;height:100%;border-radius: 6px;}
+    [class*="closeBtn"]{top:-12px;right:-12px;}
+    .i-gratis{display: block;margin-bottom: 10px;}
+    .pop-tit{color:#e77f22;font-size:33px;font-family: 'pops';padding-top: 50px;line-height: 1.2;
+      span{font-size:18px;color:#333;padding-top: 10px;}
+    }
+    .pop-txt{font-size: 16px;color:#919191;padding-top: 20px;
+      li{line-height:24px;margin-bottom: 15px;position: relative;padding-left: 30px;padding-right: 30px;
+        .i-list-check{position: absolute;left:0;top:7px;}
+      }
+    }
+    .op-btn{padding-top:20px;
+      .btn{border-radius: 8px;background-color: #e77f22;width: 345px;height: 60px;line-height:60px;color:#fff;font-size: 28px;}
+    }
+  }
+  .popconOpenAccount{background-image: url(/public/images/popconOpenAccount.png);background-repeat: no-repeat;background-position: left center;}
+}
+
+@media(max-width:1023px){
+  @import "../sp-m-popup";
+  /*popup*/
+  /*开户弹窗*/
+  .popOpenAccount{
+    .popcon{@include size(5.5rem,8rem);border-radius: .06rem;box-shadow: 0 .01rem .45rem 0 rgba(109, 109, 109, .68);
+      .popconOpenAccount{padding-left:.52rem;border-radius: .06rem;}
+      [class*="closeBtn"]{top:-.27rem;right:-.27rem;}
+      .i-gratis{margin-bottom: .1rem;}
+      .pop-tit{font-size:.4rem;padding-top: 3.4rem;padding-right: .4rem;
+        span{font-size:.22rem;padding-top: .1rem;}
+      }
+      .pop-txt{font-size: .22rem;padding-top: .4rem;
+        li{line-height:.24rem;margin-bottom: .15rem;padding-left: .3rem;padding-right: .3rem;
+          .i-list-check{top:.07rem;}
+        }
+      }
+      .op-btn{padding-top:.35rem;
+        .btn{border-radius: .08rem;width: 4.46rem;height: .8rem;line-height:.8rem;font-size: .3rem;}
+      }
+    }
+    .popconOpenAccount{background-image: url(/public/images/popconOpenAccount-m.png);background-position: center top;background-size: 101% auto;}
+  }
+
+  /*tip-bar*/
+  .tip-bar{color:#fff;padding:0;position: fixed;top:0;left:0;width:100%;background: #383838;height:1.4rem;z-index: 1000;
+    a{color:#fff;}
+    .a-close{@include inline-block;position: absolute;left:0;top:0;height:100%;line-height:1.4rem;width:.5rem;background: #2a2a2a;text-align: center;}
+    .a-download{display: block;position: relative;margin-left:.5rem;line-height: .3rem;padding-top: .25rem;padding-bottom: .25rem;
+      .tip-bar-logo{float: left;margin: 0 .4rem;}
+      .tip-bar-linkarrow{position: absolute;right:.3rem;top:50%;margin-top: -.15rem;}
+    }
+    i{@include inline-block;vertical-align: middle;}
+    span{display: block;
+      &.s1{font-size: .3rem;text-transform: uppercase;}
+      &.s2{font-size: .22rem;color:#a5a5a5;}
+    }
+    & ~ #page{top: 1.4rem;
+      &.mmopen{
+        #site-header,.header{top:0;@include prefixer(transition,none,$prefixes);}
+      }
+      #site-header,.header{top:1.4rem;}
+      .menu-list.sidebar{top:2.28rem;}
+    }
+  }
+}

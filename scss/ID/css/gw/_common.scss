@@ -1,3 +1,6 @@
+
+@import "../sp-p-common";
+
 @import "variable";
 @import "header";
 @import "title";
@@ -13,4 +16,9 @@
 @import "footer";
 @import "video";
 @import "null";
+@import "popup";
+@import "bar";
 
+@media(max-width:1023px) {
+  @import "../sp-m-common";
+}

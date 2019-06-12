@@ -1,4 +1,3 @@
-@charset "UTF-8";
 body{ font-family:'Open Sans', sans-serif;font-size:14px;color:#333;-webkit-tap-highlight-color:rgba(0, 0, 0, 0); }
 body,p,ol,ul,li,h1,h2,h3,h4,h5,h6,dl,dt,dd,pre,input,table,tr,td,form{ margin:0;padding:0; }
 ol,ul,li{ list-style:none; }
@@ -869,28 +868,6 @@ table.table_info tbody tr td:not(:last-child){ border-right:1px solid #a4b9cc; }
     .tit-dot-brown{ background-position:0rem 0rem;background-size:2.5rem 18.46rem;width:0.1rem;height:0.1rem; }
     .tit-dot-red{ background-position:0rem -0.2rem;background-size:2.5rem 18.46rem;width:0.12rem;height:0.12rem; }
 }
-
-/*  ============ sprites ============  */
-.i-list-check{ width:14px;height:10px;background-image:url("../images/sp_p_popup.png?=920");background-position:0px 0px;background-size:24px 44px;background-repeat:no-repeat; }
-.i-pop-closeBtn{ width:24px;height:24px;background-image:url("../images/sp_p_popup.png?=920");background-position:0px -20px;background-size:24px 44px;background-repeat:no-repeat; }
-@media (max-width: 1023px) {
-
-    /*  ============ sprites ============  */
-    .i-list-check{ width:16px;height:12px;background-image:url("../images/sp_m_popup.png?=920");background-position:0px 0px;background-size:90px 251px;background-repeat:no-repeat; }
-    .i-pop-closeBtn{ width:56px;height:56px;background-image:url("../images/sp_m_popup.png?=920");background-position:0px -95px;background-size:90px 251px;background-repeat:no-repeat; }
-    .tip-bar-linkarrow{ width:13px;height:31px;background-image:url("../images/sp_m_popup.png?=920");background-position:0px -54px;background-size:90px 251px;background-repeat:no-repeat; }
-    .tip-bar-logo{ width:90px;height:90px;background-image:url("../images/sp_m_popup.png?=920");background-position:0px -161px;background-size:90px 251px;background-repeat:no-repeat; }
-    .tip-btn-close{ width:22px;height:22px;background-image:url("../images/sp_m_popup.png?=920");background-position:0px -22px;background-size:90px 251px;background-repeat:no-repeat; }
-
-    /*  ============ sprites rem ============  */
-}
-@media (max-width: 1023px) and (max-width: 750px) {
-    .i-list-check{ background-position:0rem 0rem;background-size:0.9rem 2.51rem;width:0.16rem;height:0.12rem; }
-    .i-pop-closeBtn{ background-position:0rem -0.95rem;background-size:0.9rem 2.51rem;width:0.56rem;height:0.56rem; }
-    .tip-bar-linkarrow{ background-position:0rem -0.54rem;background-size:0.9rem 2.51rem;width:0.13rem;height:0.31rem; }
-    .tip-bar-logo{ background-position:0rem -1.61rem;background-size:0.9rem 2.51rem;width:0.9rem;height:0.9rem; }
-    .tip-btn-close{ background-position:0rem -0.22rem;background-size:0.9rem 2.51rem;width:0.22rem;height:0.22rem; }
-}
 @media (max-width: 1023px) {
 
     /*  ============ sprites ============  */
@@ -912,64 +889,4 @@ table.table_info tbody tr td:not(:last-child){ border-right:1px solid #a4b9cc; }
     .i-icon-ib5{ background-position:0rem -3.38rem;background-size:0.67rem 4.82rem;width:0.67rem;height:0.67rem; }
     .i-icon-ib6{ background-position:0rem -4.15rem;background-size:0.67rem 4.82rem;width:0.67rem;height:0.67rem; }
     .i-ps-check{ background-position:0rem 0rem;background-size:0.67rem 4.82rem;width:0.2rem;height:0.2rem; }
-}
-
-/* popup */
-.popup-tb{ display:table;width:100%;height:100%; }
-.popup-tb .popup-tb-cell{ display:table-cell;vertical-align:middle; }
-.popLayer-id{ position:fixed;left:0;top:0;width:100%;height:100%;background:url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7) repeat;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#BD000000',endColorstr='#BD000000');zoom:1;background:rgba(0, 0, 0, 0.74);z-index:999999999999999999999999; }
-:root .popLayer-id{ filter:none\9; }
-.popLayer-id i{ display:inline-block;vertical-align:top;*display:inline;*zoom:1; }
-.popLayer-id .popcon{ margin:0 auto;position:relative;*top:80px;-webkit-animation:fadeInUp 0.3s ease-in;-moz-animation:fadeInUp 0.3s ease-in;-ms-animation:fadeInUp 0.3s ease-in;-o-animation:fadeInUp 0.3s ease-in;animation:fadeInUp 0.3s ease-in; }
-.popLayer-id .popcon [class*="closeBtn"]{ cursor:pointer;position:absolute;right:0;top:0;-webkit-transition:all 0.3s ease;-moz-transition:all 0.3s ease;-ms-transition:all 0.3s ease;-o-transition:all 0.3s ease;transition:all 0.3s ease; }
-.popLayer-id .popcon [class*="closeBtn"]:hover{ -webkit-transform:rotate(180deg);-moz-transform:rotate(180deg);-ms-transform:rotate(180deg);-o-transform:rotate(180deg);transform:rotate(180deg); }
-.popLayer-id .popcon .pop-tit span{ display:block; }
-.popLayer-id .popcon .op-btn .btn{ display:inline-block;vertical-align:top;*display:inline;*zoom:1;text-align:center; }
-
-/* 开户弹窗 */
-.popOpenAccount .popcon{ width:852px;height:460px;border-radius:6px;box-shadow:0px 1px 45.54px 0.46px rgba(109, 109, 109, 0.68); }
-.popOpenAccount .popcon .popconOpenAccount{ background-color:#fff;padding-left:52%;height:100%;border-radius:6px; }
-.popOpenAccount .popcon [class*="closeBtn"]{ top:-12px;right:-12px; }
-.popOpenAccount .popcon .i-gratis{ display:block;margin-bottom:10px; }
-.popOpenAccount .popcon .pop-tit{ color:#e77f22;font-size:33px;font-weight:bold;padding-top:50px;line-height:1.2; }
-.popOpenAccount .popcon .pop-tit span{ font-size:18px;color:#333;padding-top:10px; }
-.popOpenAccount .popcon .pop-txt{ font-size:16px;color:#919191;padding-top:20px; }
-.popOpenAccount .popcon .pop-txt li{ line-height:24px;margin-bottom:15px;position:relative;padding-left:30px;padding-right:30px; }
-.popOpenAccount .popcon .pop-txt li .i-list-check{ position:absolute;left:0;top:7px; }
-.popOpenAccount .popcon .op-btn{ padding-top:20px; }
-.popOpenAccount .popcon .op-btn .btn{ border-radius:8px;background-color:#e77f22;width:345px;height:60px;line-height:60px;color:#fff;font-size:28px; }
-.popOpenAccount .popconOpenAccount{ background-image:url(/public/images/popconOpenAccount.png);background-repeat:no-repeat;background-position:left center; }
-@media (max-width: 1023px) {
-
-    /* popup */
-
-    /* 开户弹窗 */
-    .popOpenAccount .popcon{ width:5.5rem;height:8rem;border-radius:.06rem;box-shadow:0 0.01rem 0.45rem 0 rgba(109, 109, 109, 0.68); }
-    .popOpenAccount .popcon .popconOpenAccount{ padding-left:.52rem;border-radius:.06rem; }
-    .popOpenAccount .popcon [class*="closeBtn"]{ top:-.27rem;right:-.27rem; }
-    .popOpenAccount .popcon .i-gratis{ margin-bottom:.1rem; }
-    .popOpenAccount .popcon .pop-tit{ font-size:.4rem;padding-top:3.4rem;padding-right:.4rem; }
-    .popOpenAccount .popcon .pop-tit span{ font-size:.22rem;padding-top:.1rem; }
-    .popOpenAccount .popcon .pop-txt{ font-size:.22rem;padding-top:.4rem; }
-    .popOpenAccount .popcon .pop-txt li{ line-height:.24rem;margin-bottom:.15rem;padding-left:.3rem;padding-right:.3rem; }
-    .popOpenAccount .popcon .pop-txt li .i-list-check{ top:.07rem; }
-    .popOpenAccount .popcon .op-btn{ padding-top:.35rem; }
-    .popOpenAccount .popcon .op-btn .btn{ border-radius:.08rem;width:4.46rem;height:.8rem;line-height:.8rem;font-size:.3rem; }
-    .popOpenAccount .popconOpenAccount{ background-image:url(/public/images/popconOpenAccount-m.png);background-position:center top;background-size:101% auto; }
-
-    /* tip-bar */
-    .tip-bar{ color:#fff;padding:0;position:fixed;top:0;left:0;width:100%;background:#383838;height:1.4rem;z-index:1000; }
-    .tip-bar a{ color:#fff; }
-    .tip-bar .a-close{ display:inline-block;vertical-align:top;*display:inline;*zoom:1;position:absolute;left:0;top:0;height:100%;line-height:1.4rem;width:.5rem;background:#2a2a2a;text-align:center; }
-    .tip-bar .a-download{ display:block;position:relative;margin-left:.5rem;line-height:.3rem;padding-top:.25rem;padding-bottom:.25rem; }
-    .tip-bar .a-download .tip-bar-logo{ float:left;margin:0 .4rem; }
-    .tip-bar .a-download .tip-bar-linkarrow{ position:absolute;right:.3rem;top:50%;margin-top:-.15rem; }
-    .tip-bar i{ display:inline-block;vertical-align:top;*display:inline;*zoom:1;vertical-align:middle; }
-    .tip-bar span{ display:block; }
-    .tip-bar span.s1{ font-size:.3rem;text-transform:uppercase; }
-    .tip-bar span.s2{ font-size:.22rem;color:#a5a5a5; }
-    .tip-bar ~ #page{ top:1.4rem; }
-    .tip-bar ~ #page.mmopen #site-header,.tip-bar ~ #page.mmopen .header{ top:0;-webkit-transition:none;-moz-transition:none;-ms-transition:none;-o-transition:none;transition:none; }
-    .tip-bar ~ #page #site-header,.tip-bar ~ #page .header{ top:1.4rem; }
-    .tip-bar ~ #page .menu-list.sidebar{ top:2.28rem; }
 }
