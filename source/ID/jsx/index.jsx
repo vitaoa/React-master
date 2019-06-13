@@ -1,7 +1,4 @@
-let btnTxt={
-    text:["Buka akun live","Buka Akun Demo"],
-    texts:["Komisi trading serendah $1","Akun Demo Virtual $100000"]
-}
+
 class TitleBarGW extends React.Component {
     render(){
         const title = this.props.data.title ? true:false;
@@ -153,13 +150,13 @@ class ListTB extends React.Component{
                             {item.body.map((td,index)=>{
                                 if(hasIcon && hasIcon.length>0){
                                     if(hasIcon.length==1){
-                                        iconEle[index]=hasIcon[0];
+                                        iconEle[index]=<i className={hasIcon[0]}></i>
                                     }else{
-                                        iconEle[index]=hasIcon[index];
+                                        iconEle[index]=<i className={hasIcon[index]}></i>;
                                     }
                                 }
                                 if(item.span){
-                                    return <div className="tb-td" key={index}><i className={iconEle[index]}></i><span dangerouslySetInnerHTML={{__html: td}}></span></div>
+                                    return <div className="tb-td" key={index}>{iconEle[index]}<span dangerouslySetInnerHTML={{__html: td}}></span></div>
                                 }else{
                                     return <div className="tb-td" key={index} dangerouslySetInnerHTML={{__html: td}}></div>
                                 }
@@ -210,14 +207,13 @@ class Slider extends React.Component{
     render(){
         let arrowPrevEle = (this.state.opts.arrowClass && this.state.items.length)?<span className={this.state.opts.arrowClass+" btn-prev"}><i className={this.state.opts.prevClass}></i></span>:"";
         let arrowNextEle = (this.state.opts.arrowClass && this.state.items.length)?<span className={this.state.opts.arrowClass+" btn-next"}><i className={this.state.opts.nextClass}></i></span>:"";
-
         return(
             <div className={this.state.opts.class?"slider "+this.state.opts.class:"slider"}>
                 {arrowPrevEle}{arrowNextEle}
                 <div className="slider-items">
                     {this.state.items.map((item,index)=>{
-                        let picEle = item.picname?<img src={"/images/"+item.picname} alt=""/>:'';
-                        let titleEle = item.title?<span dangerouslySetInnerHTML={{__html:item.title}}></span>:'';
+                        let picEle = item.picname?(this.state.opts.cover?<div className="img-cover"><img src={"/images/"+item.picname} alt=""/><i className="i-cover"></i></div>:<img src={"/images/"+item.picname} alt=""/>):'';
+                        let titleEle = item.title?<span className="title-txt" dangerouslySetInnerHTML={{__html:item.title}}></span>:'';
                         let descEle = item.desc?<span dangerouslySetInnerHTML={{__html:item.desc}} className="s-desc"></span>:'';
                         let badgeEle,dateEle;
                         let iconEle = item.iconClass?<i className={"s-icon "+item.iconClass}></i>:'';
@@ -225,7 +221,7 @@ class Slider extends React.Component{
                             badgeEle= <BadgeGroup data={item.badge} props={{class:'slider-badge'}} />;
                         }
                         if(item.date){
-                            dateEle = <span className="badge-group time-badge" data-time="2019/05/28 15:40">2019/05/28</span>
+                            dateEle = <span className="badge-group time-badge" data-time={item.date}>{item.date}</span>
                         }
                         return  <div className={this.state.opts.itemClass?"slider-item "+this.state.opts.itemClass:"slider-item"} key={index}>
                             {picEle}{dateEle}
@@ -562,21 +558,21 @@ const title7 = {
     "class":"titlebar-gw tab-nav",
 };
 const slider71={
-    opts:{class:"sliderLeftRight article-block"},
+    opts:{class:"sliderLeftRight article-block",cover:true},
     items:[
-        {picname:"pic-news1.jpg",title:"Informasi berbagai index",badge:["EUR/USD"],date:'2019/05/28',iconClass:"i-new-s1",linkA:'<a href="" target="_blank">Selengkapnya <i class="i-arrow-r1"></i></a>'},
-        {picname:"pic-news2.jpg",title:"Informasi berbagai index berbagai index",badge:["EUR/USD","Event"],iconClass:"i-new-s1",linkA:'<a href="" target="_blank">Selengkapnya <i class="i-arrow-r1"></i></a>'},
-        {picname:"pic-news3.jpg",title:"Informasi berbagai index",badge:["EUR/USD"],linkA:'<a href="" target="_blank">Selengkapnya <i class="i-arrow-r1"></i></a>'},
-        {picname:"pic-news4.jpg",title:"Informasi berbagai index",badge:["EUR/USD","Event"],linkA:'<a href="" target="_blank">Selengkapnya <i class="i-arrow-r1"></i></a>'},
-        {picname:"pic-news4.jpg",title:"Informasi berbagai index",badge:["EUR/USD","Event"],linkA:'<a href="" target="_blank">Selengkapnya <i class="i-arrow-r1"></i></a>'},
-        {picname:"pic-news4.jpg",title:"Informasi berbagai index",badge:["EUR/USD","Event"],linkA:'<a href="" target="_blank">Selengkapnya <i class="i-arrow-r1"></i></a>'},
+        {picname:"pic-news1.jpg",title:"Bagaimana Anda melihat kondisi pasar forex, bagaimana pendatang baru memahami pasar forex? Bagaimana trader pemula berinvestasi dalam pasar forex dan menghasilkan uang (part 1)",date:'2019/06/13',iconClass:"i-new-s1",linkA:'<a href="" target="_blank">Read More  <i class="i-arrow-r1"></i></a>'},
+        {picname:"pic-news2.jpg",title:"Informasi berbagai index berbagai index",badge:["EUR/USD","Event"],date:'2019/06/11',iconClass:"i-new-s1",linkA:'<a href="" target="_blank">Read More  <i class="i-arrow-r1"></i></a>'},
+        {picname:"pic-news3.jpg",title:"Pemberitahuan settlement price yang kedaluwarsa 11 Juni 2019",badge:["EUR/USD"],linkA:'<a href="" target="_blank">Read More  <i class="i-arrow-r1"></i></a>'},
+        {picname:"pic-news4.jpg",title:"Informasi berbagai index",badge:["EUR/USD","Event"],linkA:'<a href="" target="_blank">Read More  <i class="i-arrow-r1"></i></a>'},
+        {picname:"pic-news4.jpg",title:"Informasi berbagai index",badge:["EUR/USD","Event"],linkA:'<a href="" target="_blank">Read More  <i class="i-arrow-r1"></i></a>'},
+        {picname:"pic-news4.jpg",title:"Informasi berbagai index",badge:["EUR/USD","Event"],linkA:'<a href="" target="_blank">Read More  <i class="i-arrow-r1"></i></a>'},
     ]
 }
 const slider72={
     opts:{class:"sliderLeftRight article-block"},
     items:[
-        // {picname:"pic-news1.jpg",title:"Informasi berbagai index",badge:["EUR/USD"],iconClass:"i-new-s1",linkA:'<a href="" target="_blank">Selengkapnya <i class="i-arrow-r1"></i></a>'},
-        // {picname:"pic-news4.jpg",title:"Informasi berbagai index",badge:["EUR/USD","Event"],linkA:'<a href="" target="_blank">Selengkapnya <i class="i-arrow-r1"></i></a>'},
+        // {picname:"pic-news1.jpg",title:"Informasi berbagai index",badge:["EUR/USD"],iconClass:"i-new-s1",linkA:'<a href="" target="_blank">Read More  <i class="i-arrow-r1"></i></a>'},
+        // {picname:"pic-news4.jpg",title:"Informasi berbagai index",badge:["EUR/USD","Event"],linkA:'<a href="" target="_blank">Read More  <i class="i-arrow-r1"></i></a>'},
     ]
 }
 

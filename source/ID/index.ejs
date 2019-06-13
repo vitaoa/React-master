@@ -90,7 +90,21 @@
             swipe:false,
             infinite: false,
             slidesToShow: 3,
-            variableWidth: true
+            variableWidth: true,
+            responsive: [
+                {
+                    breakpoint: 1366,
+                    settings: {
+                        slidesToShow: 2,
+                    }
+                },
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 1,
+                    }
+                }
+            ]
         });
         $('.part8').find('.slider-items').slick({
             prevArrow: '<div data-role="none" class="arrow-btn btn-prev" aria-label="Previous" tabindex="0" role="button"><i class="i-btn-l2"></i></div>',
@@ -110,6 +124,7 @@
             $(this).parent().find('.title-line-b').css({'left':$(this)[0].offsetLeft+'px'});
             $(this).closest('.tab-group').find('.tab-panel').eq(_index).addClass('active').siblings('.tab-panel').removeClass('active');
         });
+        $('.slider.article-block .time-badge').badgeNew();
 
     });
     $('.vjs-close').click(function () {

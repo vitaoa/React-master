@@ -98,7 +98,7 @@ $footer-bg1:#0d1b32;
     .border-line{border-bottom-width: .02rem;}
     .alink-list{
       a{line-height: 2;display: inline-block;
-        & + a{margin-left: .15rem;}
+        & + a{margin-left: .1rem;}
         &:hover{left: 0;}
       }
       .foot-tit{}
@@ -119,13 +119,13 @@ $footer-bg1:#0d1b32;
     .footer-list-col{padding-bottom: .52rem;}
     .footer-interact{padding: .3rem 0 0;}
   }
-  .footer-bottom{text-align: center;line-height: .5rem;
+  .footer-bottom{text-align: left;line-height: .5rem;
     .footer-social{float: none;display: block;padding: .28rem 0 .02rem;
       i{vertical-align: middle;
-        & + i{margin-left: .35rem;}
+        & + i{margin-left: .25rem;}
       }
       a{
-        & + a{margin-left: .35rem;}
+        & + a{margin-left: .25rem;}
       }
     }
   }

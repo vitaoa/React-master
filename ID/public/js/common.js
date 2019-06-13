@@ -298,3 +298,11 @@ function downloadAppgw(_obj) {
     }
 }
 
+$.fn.badgeNew=function () {
+    return this.each(function () {
+        var _dt = $(this).data('time');
+        if(!!_dt && _dt===new Date().toLocaleDateString().replace(/(?=\b\d\b)/g,"0")){
+            $(this).parent().find('.s-icon').show();
+        }
+    });
+}

@@ -158,7 +158,7 @@ gulp.task('ejs',function(cb) {
             .pipe(gulpGitStatus({
                 excludeStatus: 'unchanged'//["modified", "unchanged", "untracked"]
             }))
-            .pipe(changed(reactOpts.destDir, {hasChanged: changed.compareSha1Digest}))
+            // .pipe(changed(reactOpts.destDir, {hasChanged: changed.compareSha1Digest}))
             .pipe(debug({title: '编译 '+env+' ejs:'}))
             .pipe(ejs({msg:value,dateYMD:{"year":_dateYear,"month":_dateMonth,"day":_dateDay},rollupOps:{"url":reactOpts.jsxUrl,"title":path.basename(file).split('.')[0]},reactOpts:reactOpts,lpNAME:_lpNAME}))
             .pipe(rename({ extname: '.html' }))
@@ -459,7 +459,7 @@ gulp.task('jsx:copy',function (cb) {
             .pipe(gulpGitStatus({
                 excludeStatus: 'unchanged'//["modified", "unchanged", "untracked"]
             }))
-            .pipe(changed(root_DIR+CUR_PATH+'dist/', {hasChanged: changed.compareSha1Digest}))
+            // .pipe(changed(root_DIR+CUR_PATH+'dist/', {hasChanged: changed.compareSha1Digest}))
             .pipe(debug({title: '编译 copy jsx:'}))
             .pipe(gulp.dest(root_DIR+CUR_PATH+'dist/'))
     });
@@ -481,11 +481,14 @@ gulp.task('modified:jsx', (cb) => {
         .pipe(gulp.dest(root_DIR+CUR_PATH+Download_Temple))
     cb();
 });
+gulp.task('modified:files',gulp.series('modified:jsx','ejs',function (cb) {
+    cb();
+}))
 //---------------------------------------jsx编译----------------------------//
 
 //---------------------------------------开发(没有处理react页面)----------------------------//
-gulp.task('dev',gulp.series('jsx:copy','ejs','modified:jsx','ejs','picbase64:sass',function () {
-    gulpWatch(root_DIR+source_DIR + CUR_PATH+JSX_DIR+'**/*.jsx', gulp.series('jsx:copy','modified:jsx'));
+gulp.task('dev',gulp.series('jsx:copy','ejs','modified:files','picbase64:sass',function () {
+    gulpWatch(root_DIR+source_DIR + CUR_PATH+'**/*.jsx', gulp.series('jsx:copy','modified:files'));
     gulpWatch(root_DIR+source_DIR + CUR_PATH+'**/*.{ejs,html}', gulp.series('ejs'));
     gulpWatch(root_DIR+SASS_DIR + CUR_PATH+'**/*.scss', gulp.series('picbase64:sass'));
 }));
@@ -502,10 +505,7 @@ gulp.task('modified:clean',function (cb) {
         }));
     cb();
 });
-gulp.task('modified:files',gulp.series('modified:clean','modified:jsx','ejs',function (cb) {
-    cb();
-}))
-gulp.task('package',gulp.series('modified:files','picbase64:sass','downloadHtml',function (cb) {
+gulp.task('package',gulp.series('modified:clean','modified:files','picbase64:sass','downloadHtml',function (cb) {
     cb();
     console.info('打包完成');
 }));

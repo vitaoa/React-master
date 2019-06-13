@@ -147,14 +147,26 @@
 
   .list-tb{
     .tb-cell{
-      & > [class*="tb-t"]{line-height: .86rem;
-        .i-vs{margin: -.03rem 0;}
+      & > [class*="tb-t"]{line-height: 1.26rem;
+        .i-vs{margin: .17rem 0 0;}
       }
     }
     .tb-th{font-size: .24rem;
       br{display: block;}
     }
-    .tb-td{font-size: .18rem;padding-right: .1rem;}
+    .tb-td{font-size: .24rem;padding-right: 0;
+      span{@include prefixer(transform,scale(.8),$prefixes);@include prefixer(transform-origin,left,$prefixes);margin-right: -.44rem;}
+    }
+    .tb-cell0{
+      .tb-td{
+        span{@include prefixer(transform-origin,right,$prefixes);margin-left: -.44rem;margin-right: 0;}
+      }
+    }
+    .tb-cell1{
+      .tb-td{
+        span{@include prefixer(transform-origin,center,$prefixes);margin: 0;}
+      }
+    }
 
     &.platform-tb{padding-top: 0;padding-bottom: .92rem;
       .tb-cell0{
@@ -163,7 +175,7 @@
       }
       .tb-cell2{
         & > [class*="tb-t"]{padding-left: .55rem;}
-        [class*="i-"]{left:.2rem;}
+        [class*="i-"]{left:.16rem;}
       }
       .tb-cell0{width:36%;}
       .tb-cell2{width:43%;}
