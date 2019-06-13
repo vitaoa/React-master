@@ -3,6 +3,8 @@ var gulp = require('gulp');
 var rename = require('gulp-rename');
 const changed = require('gulp-changed');
 const debug = require('gulp-debug');
+// const tap = require('gulp-tap');
+// const through = require('through2');
 
 /*css*/
 const sass = require('gulp-sass');
@@ -66,38 +68,28 @@ if(global){
 
 
 //---------------------------------------scss编译----------------------------//
-let scssLists = getFiles(root_DIR+SASS_DIR + CUR_PATH+FILENAME+'.*',[],'.scss');
-let cssLists= matchResult(scssLists,['sp-','-mw979.','/_'],[]);
+// let scssLists = getFiles(root_DIR+SASS_DIR + CUR_PATH+FILENAME+'.*',[],'.scss');
+// let cssLists= matchResult(scssLists,['sp-','-mw979.','/_'],[]);
 
 // base64
 gulp.task('picbase64:sass',function (cb) {
-    glob.sync(root_DIR+SASS_DIR + CUR_PATH+'**/*.scss').filter(function (file) {
-        let endsWith = '.scss';
-        let match =false;
-        ['sp-','-mw979.','/_'].forEach(function (val) {
-            match=(file.indexOf(val)!=-1 || match)?true:false;
-        });
-        return !match && file.indexOf('css/')!=-1 && ((CUR_PATH.indexOf('app/')===-1 || CUR_PATH.indexOf('lp/')===-1) ? file.endsWith(endsWith) && file.indexOf('include/')===-1 && file.indexOf('app/')===-1 && file.indexOf('lp/')===-1:file.endsWith(endsWith) && file.indexOf('include/')===-1);
-    }).forEach(function (file,r) {
-        return gulp.src(file, {base: root_DIR+SASS_DIR})
-            .pipe(gulpGitStatus({
-                excludeStatus: 'unchanged'//["modified", "unchanged", "untracked"]
-            }))
-            .pipe(changed(root_DIR, {hasChanged: changed.compareSha1Digest}))
-            .pipe(debug({title: '编译 scss:'}))
-            .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
-            .pipe(gulp.dest(root_DIR))
-            .pipe(base64({
-                extensions: ['png','svg',/\.jpg#datauri$/i],
-                include:    ['/base64/'],
-                maxImageSize:100*1024, // bytes
-                debug: false
-            }))
-            .pipe(gulp.dest(root_DIR))
-            .pipe(cssFormat({tab:4,indent: 1, hasSpace: false}))
-            .pipe(gulp.dest(root_DIR));
-    })
-    cb();
+    return gulp.src([root_DIR+SASS_DIR + CUR_PATH+ 'css/**/*.scss','!'+root_DIR+SASS_DIR + CUR_PATH+'**/sp-*.*','!'+root_DIR+SASS_DIR + CUR_PATH+'**/*-mw979.*'], {base: root_DIR+SASS_DIR})
+        // .pipe(gulpGitStatus({
+        //     excludeStatus: 'unchanged'//["modified", "unchanged", "untracked"]
+        // }))
+        .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
+        .pipe(changed(root_DIR, {hasChanged: changed.compareSha1Digest}))
+        .pipe(debug({title: '编译 scss:'}))
+        .pipe(gulp.dest(root_DIR))
+        .pipe(base64({
+            extensions: ['png','svg',/\.jpg#datauri$/i],
+            include:    ['/base64/'],
+            maxImageSize:100*1024, // bytes
+            debug: false
+        }))
+        .pipe(gulp.dest(root_DIR))
+        .pipe(cssFormat({tab:4,indent: 1, hasSpace: false}))
+        .pipe(gulp.dest(root_DIR));
 });
 //---------------------------------------scss编译----------------------------//
 
@@ -110,15 +102,24 @@ const _dateYear = _date.split('-')[0];
 const _dateMonth = _date.split('-')[1];
 const _dateDay = _date.split('-')[2];
 const cfg = require(root_DIR+source_DIR + 'datas/config.json');
+let name;
+name = CUR_PATH.split('/')[0];
+let value;
+if(cfg.hasOwnProperty(name)){//cfg 为 存放数据的配置文件
+    value = cfg[name];
+} else {
+    value = {}
+}
 gulp.task('ejs',function(cb) {
-    glob.sync(root_DIR+source_DIR + CUR_PATH+'**/*.ejs').filter(function (file) {
+    glob.sync(root_DIR+source_DIR+CUR_PATH+"**/*.ejs").filter(function (file) {
         let endsWith = '.ejs';
         return (CUR_PATH.indexOf('app/')===-1 || CUR_PATH.indexOf('lp/')===-1) ? file.endsWith(endsWith) && file.indexOf('include/')===-1 && file.indexOf('app/')===-1 && file.indexOf('lp/')===-1:file.endsWith(endsWith) && file.indexOf('include/')===-1;
     }).forEach(function (file,r) {
-        let _lpNAME;
-        if(file.indexOf('/lp/')!=-1){
-            _lpNAME = file.split('/lp/')[1].split('/')[0];
-        }
+        // console.log(file)
+        // let _lpNAME;
+        // if(file.indexOf('/lp/')!=-1){
+        //     _lpNAME = file.split('/lp/')[1].split('/')[0];
+        // }
         let reactOpts = {
             reactUrl : _url.host+":"+_url.port+_url.path + 'node_modules/react/dist/react.js',
             reactDomUrl : _url.host+":"+_url.port+_url.path + 'node_modules/react-dom/dist/react-dom.js',
@@ -144,24 +145,16 @@ gulp.task('ejs',function(cb) {
             reactOpts.destDir=root_DIR+CUR_PATH;
         }
 
-
-        let name;
-        name = file.replace(root_DIR+source_DIR,'').split('/')[0];
-        let value;
-        if(cfg.hasOwnProperty(name)){//cfg 为 存放数据的配置文件
-            value = cfg[name];
-        } else {
-            value = {}
-        }
         // console.log(value)
+
         gulp.src(file, {base: root_DIR+source_DIR+CUR_PATH})
             .pipe(gulpGitStatus({
                 excludeStatus: 'unchanged'//["modified", "unchanged", "untracked"]
             }))
-            // .pipe(changed(reactOpts.destDir, {hasChanged: changed.compareSha1Digest}))
-            .pipe(debug({title: '编译 '+env+' ejs:'}))
-            .pipe(ejs({msg:value,dateYMD:{"year":_dateYear,"month":_dateMonth,"day":_dateDay},rollupOps:{"url":reactOpts.jsxUrl,"title":path.basename(file).split('.')[0]},reactOpts:reactOpts,lpNAME:_lpNAME}))
+            .pipe(ejs({msg:value,dateYMD:{"year":_dateYear,"month":_dateMonth,"day":_dateDay},rollupOps:{"url":reactOpts.jsxUrl},reactOpts:reactOpts/*,lpNAME:_lpNAME*/}))
             .pipe(rename({ extname: '.html' }))
+            .pipe(changed(reactOpts.destDir, {hasChanged: changed.compareSha1Digest}))
+            .pipe(debug({title: '编译 '+env+' ejs:'}))
             .pipe(gulp.dest(reactOpts.destDir))
             .pipe(fileinclude({
                 prefix: '@@',
@@ -178,6 +171,26 @@ gulp.task('ejs',function(cb) {
     cb();
 });
 
+// 获取指定路径下的文件
+function getfiles(globPath) {
+    let entries = [];
+    globPath.forEach(function(e) {
+        entries = entries.concat(glob.sync(e))
+    });
+    return entries;
+}
+
+gulp.task('ejsCode',function(cb) {
+    let _files = getfiles([root_DIR+source_DIR+CUR_PATH+"!(app|include)*.ejs",root_DIR+source_DIR+CUR_PATH+"!(app|include)/**/*.ejs"]);
+    console.log(_files)
+    let _TESTTT='';
+    // let dirs = glob.sync(root_DIR+source_DIR+CUR_PATH+"**/*.ejs");
+
+    return gulp.src(_files, {base: root_DIR+source_DIR+CUR_PATH})
+        .pipe(changed('/dist', {hasChanged: changed.compareSha1Digest}))
+        .pipe(debug({title: '编译 '+_TESTTT+' ejsCode:'}))
+        .pipe(gulp.dest('/dist'));
+});
 /*
  * 将react页面保存为静态html文件(task:saveAsHtml)
  * */
@@ -252,7 +265,7 @@ gulp.task('downloadHtml',gulp.series('clean:downloadHtml',function(cb) {
                                         "end_with_newline": false
                                     }))
                                     .pipe(changed(root_DIR +CUR_PATH, {hasChanged: changed.compareSha1Digest}))
-                                    .pipe(debug({title: '编译:'}))
+                                    .pipe(debug({title: '编译'+_curHtml+' :'}))
                                     .pipe(gulp.dest(root_DIR+CUR_PATH));
                             }
                         }) ;
@@ -294,9 +307,6 @@ gulp.task('sprites:more',function(cb){
         let basename = path.basename(dirs[i]);
         let prefix = '.png';
         let spriteData = gulp.src(root_DIR+source_DIR + CUR_PATH + `images/slice/${baseDir}/${basename}/*.{png,jpg,gif,jpeg}`)//需要合并的图片地址
-            // .pipe(gulpGitStatus({
-            //     excludeStatus: 'unchanged'
-            // }))
             .pipe(spritesmith({
                 cssOpts: {
                     cssSelector: function(item) {
@@ -403,6 +413,11 @@ gulp.task('sprites:more',function(cb){
 
         if(basename.indexOf('svg_')===-1){
             spriteData.img
+                .pipe(gulpGitStatus({
+                    excludeStatus: 'unchanged'
+                }))
+                .pipe(changed(root_DIR+CUR_PATH+'dist/', {hasChanged: changed.compareSha1Digest}))
+                .pipe(debug({title: '编译 sprites:'}))
                 .pipe(vinylBuffer())
                 // .pipe(imagemin({
                 //     // optimizationLevel:3, //类型：Number  默认：3  取值范围：0-7（优化等级）
@@ -412,8 +427,8 @@ gulp.task('sprites:more',function(cb){
                 //     multipass: true       //类型：Boolean 默认：false 多次优化svg直到完全优化
                 // }))
                 .pipe(tinypng_nokey()).on('error', function(err) {
-                console.error(err.message);
-            })
+                    console.error(err.message);
+                })
                 .pipe(gulp.dest(root_DIR+CUR_PATH + "images"));
         }
 
@@ -451,44 +466,34 @@ gulp.task("clean",gulp.series('clean:dist', function(cb){
 //---------------------------------------jsx编译----------------------------//
 gulp.task('jsx:copy',function (cb) {
     env = 'development';
-    glob.sync(root_DIR+source_DIR + CUR_PATH+JSX_DIR+'**/*.*').filter(function (file) {
-        let endsWith = '.jsx';
-        return (CUR_PATH.indexOf('app/')===-1 || CUR_PATH.indexOf('lp/')===-1) ? file.endsWith(endsWith) && file.indexOf('include/')===-1 && file.indexOf('app/')===-1 && file.indexOf('lp/')===-1:file.endsWith(endsWith) && file.indexOf('include/')===-1;
-    }).forEach(function (file,r) {
-        return gulp.src(file, {base: root_DIR+source_DIR+CUR_PATH})
-            .pipe(gulpGitStatus({
-                excludeStatus: 'unchanged'//["modified", "unchanged", "untracked"]
-            }))
-            // .pipe(changed(root_DIR+CUR_PATH+'dist/', {hasChanged: changed.compareSha1Digest}))
-            .pipe(debug({title: '编译 copy jsx:'}))
-            .pipe(gulp.dest(root_DIR+CUR_PATH+'dist/'))
-    });
-    cb();
+    return gulp.src([root_DIR+source_DIR+CUR_PATH+JSX_DIR+'**/*.jsx','!'+root_DIR+source_DIR + CUR_PATH+JSX_DIR+'common/**/*.*'], {base: root_DIR+source_DIR+CUR_PATH})
+        // .pipe(gulpGitStatus({
+        //     excludeStatus: 'unchanged'//["modified", "unchanged", "untracked"]
+        // }))
+        .pipe(changed(root_DIR+CUR_PATH+'dist/', {hasChanged: changed.compareSha1Digest}))
+        .pipe(debug({title: '编译 '+env+' copy jsx:'}))
+        .pipe(gulp.dest(root_DIR+CUR_PATH+'dist/'));
 });
 gulp.task('modified:jsx', (cb) => {
     env = 'production';
-    gulp.src([root_DIR+source_DIR+CUR_PATH+'**/*.jsx','!'+root_DIR+source_DIR + CUR_PATH+'include/**/*.*','!'+root_DIR+source_DIR + CUR_PATH+'app/**/*.*'], {base: root_DIR+source_DIR+CUR_PATH+JSX_DIR})
-        .pipe(gulpGitStatus({
-            excludeStatus: 'unchanged'//["modified", "unchanged", "untracked"]
-        }))
+    return gulp.src([root_DIR+source_DIR+CUR_PATH+JSX_DIR+'**/*.jsx','!'+root_DIR+source_DIR + CUR_PATH+JSX_DIR+'common/**/*.*'], {base: root_DIR+source_DIR+CUR_PATH+JSX_DIR})
+        // .pipe(gulpGitStatus({
+        //     excludeStatus: 'unchanged'//["modified", "unchanged", "untracked"]
+        // }))
         .pipe(changed(root_DIR+CUR_PATH+Download_Temple, {hasChanged: changed.compareSha1Digest}))
-        .pipe(debug({title: '编译 modified jsx:'}))
+        .pipe(debug({title: '编译 '+env+' modified jsx:'}))
         .pipe(gulpbabel({
             presets: [
                 ["@babel/preset-react"],
             ],
         }))
-        .pipe(gulp.dest(root_DIR+CUR_PATH+Download_Temple))
-    cb();
+        .pipe(gulp.dest(root_DIR+CUR_PATH+Download_Temple));
 });
-gulp.task('modified:files',gulp.series('modified:jsx','ejs',function (cb) {
-    cb();
-}))
 //---------------------------------------jsx编译----------------------------//
 
 //---------------------------------------开发(没有处理react页面)----------------------------//
-gulp.task('dev',gulp.series('jsx:copy','ejs','modified:files','picbase64:sass',function () {
-    gulpWatch(root_DIR+source_DIR + CUR_PATH+'**/*.jsx', gulp.series('jsx:copy','modified:files'));
+gulp.task('dev',gulp.series('picbase64:sass','jsx:copy','ejs','modified:jsx','ejs',function () {
+    gulpWatch(root_DIR+source_DIR + CUR_PATH+JSX_DIR+'**/*.jsx', gulp.series('jsx:copy','modified:jsx'));
     gulpWatch(root_DIR+source_DIR + CUR_PATH+'**/*.{ejs,html}', gulp.series('ejs'));
     gulpWatch(root_DIR+SASS_DIR + CUR_PATH+'**/*.scss', gulp.series('picbase64:sass'));
 }));
@@ -497,15 +502,15 @@ gulp.task('dev',gulp.series('jsx:copy','ejs','modified:files','picbase64:sass',f
 //---------------------------------------打包(处理过react页面)----------------------------//
 gulp.task('modified:clean',function (cb) {
     webUrl = 'package';
-    gulp.src(root_DIR+CUR_PATH+Download_Temple+'**/*.*')
-        .pipe(changed(root_DIR+CUR_PATH+Download_Temple, {hasChanged: changed.compareSha1Digest}))
-        .pipe(debug({title: '编译 modified clean:'}))
-        .pipe(clean({
-            options:{force:true}
-        }));
+    // gulp.src(root_DIR+CUR_PATH+Download_Temple+'**/*.*')
+    //     .pipe(changed(root_DIR+CUR_PATH+Download_Temple, {hasChanged: changed.compareSha1Digest}))
+    //     .pipe(debug({title: '编译 modified clean:'}))
+    //     .pipe(clean({
+    //         options:{force:true}
+    //     }));
     cb();
 });
-gulp.task('package',gulp.series('modified:clean','modified:files','picbase64:sass','downloadHtml',function (cb) {
+gulp.task('package',gulp.series('modified:clean','modified:jsx','ejs','picbase64:sass','downloadHtml',function (cb) {
     cb();
     console.info('打包完成');
 }));

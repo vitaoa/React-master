@@ -46,6 +46,7 @@
 <script src="/js/slick.js"></script>
 <link href="/public/css/video-js.min.css" rel="stylesheet">
 <script src="/public/js/video.min.js"></script>
+<script src="/public/js/notification.js"></script>
 <script type="text/javascript">
     var $GA_NAME = "index_gw";
 
@@ -84,10 +85,11 @@
 //                    }
 //                ]
         });
+
         $('.part7').find('.slider-items').slick({
             prevArrow: '<div data-role="none" class="arrow-btn btn-prev" aria-label="Previous" tabindex="0" role="button"><i class="i-btn-l1"></i></div>',
             nextArrow: '<div  data-role="none" class="arrow-btn btn-next" aria-label="Next" tabindex="0" role="button"><i class="i-btn-r1"></i></div>',
-            swipe:false,
+//            swipe:false,
             infinite: false,
             slidesToShow: 3,
             variableWidth: true,
@@ -111,6 +113,12 @@
             nextArrow: '<div  data-role="none" class="arrow-btn btn-next" aria-label="Next" tabindex="0" role="button"><i class="i-btn-r2"></i></div>',
             centerMode: true,
             variableWidth: true
+        });
+
+        $(window).on("load resize", function () {
+            if(window.innerWidth || $(window).width()>1024){
+                $('.part7').find('.slider-items').css("margin-left",$('.header .w-part').offset().left);
+            }
         });
 
         $('.tab-group').find('.tab-panel').each(function (e) {

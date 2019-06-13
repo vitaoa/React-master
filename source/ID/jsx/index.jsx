@@ -542,12 +542,12 @@ function Part7() {
         <div className="part7 bg-f7f7f7 tab-group">
             <div className="w-part">
                 <TitleBarGW data={title7} />
-                <div className="tab-panel active">
-                    <Slider data={slider71} />
-                </div>
-                <div className="tab-panel">
-                    <Slider data={slider72} />
-                </div>
+            </div>
+            <div className="tab-panel active">
+                <Slider data={slider71} />
+            </div>
+            <div className="tab-panel">
+                <Slider data={slider72} />
             </div>
         </div>
     )
