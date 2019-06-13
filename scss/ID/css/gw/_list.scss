@@ -4,8 +4,8 @@
   .list-item{@include inline-block;}
   .item-icon{@include inline-block;}
   .item-txt{
-    .txt-top{font-size: 24px;color:#444;font-family: 'pops';margin-bottom: 8px;}
-    .txt{font-size: 16px;color:#777;line-height: 1.6;}
+    .txt-top{font-size: 24px;color:#444;font-weight:500;margin-bottom: 8px;}
+    .txt{font-size: 16px;color:#777;line-height: 1.6;font-weight: 500;}
   }
 
   &.list-col-2{@include clearfix;
@@ -53,10 +53,10 @@
       span{@include inline-block;vertical-align:middle;line-height: 1;}
     }
   }
-  .tb-th{font-size: 24px;font-family: 'pops';
+  .tb-th{font-size: 24px;font-weight:500;
     br{display: none;}
   }
-  .tb-td{font-size: 20px;padding-right: 20px;}
+  .tb-td{font-size: 18px;padding-right: 20px;}
 
   &.platform-tb{padding-top: 10px;padding-bottom: 144px;
     .tb-cell0{text-align: right;

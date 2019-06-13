@@ -16,3 +16,12 @@
     left: translateY(-0) translateX(0)
   }
 }
+
+@include keyframes(anibounceTop,$prefixes) {
+  0%{#{prefixerAttr(transform, $current-prefix)}: translateY(0);}
+  5%{#{prefixerAttr(transform, $current-prefix)}: translateY(-.2rem);}
+  10%{#{prefixerAttr(transform, $current-prefix)}: translateY(-.05rem);}
+  15%{#{prefixerAttr(transform, $current-prefix)}: translateY(-.2rem);}
+  20%{#{prefixerAttr(transform, $current-prefix)}: translateY(-.05rem);}
+  100%{#{prefixerAttr(transform, $current-prefix)}: translateY(0);}
+}

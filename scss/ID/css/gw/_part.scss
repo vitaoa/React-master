@@ -23,14 +23,20 @@
     .btn-gw{@include size(226px,50px);line-height: 50px;
       i{@include inline-block;vertical-align: middle;margin-right: .2rem;}
     }
-    &.mobile{
-      .btn-gw{@include size(2.7rem,.7rem);line-height: .7rem;margin: 0 .15rem;
+    &.mobile{padding: 0 .5rem;@include clearfix;
+      & > span{float: left;width:48.5%;
+        & + span{margin-left: 1.6%;float: right;}
+      }
+      .btn-gw{@include size(2.9rem,.7rem);line-height: .7rem;
       }
     }
   }
 }
 .part6{
   & + .part7{margin-top: 80px;}
+}
+.part9{padding-bottom: 60px;
+  .titlebar-gw{padding-bottom: 0;}
 }
 
 
@@ -58,4 +64,7 @@
   .part6{
     & + .part7{margin-top: .92rem;}
   }
+  .part9{padding-bottom: .6rem;
+  }
+
 }

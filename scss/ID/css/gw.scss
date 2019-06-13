@@ -2,12 +2,47 @@
 @import "../../mixins/library";
 @import "../../mixins/keyframes/keyframes";
 
-@include font-face('pops','../font/Poppins-SemiBold',("eot","woff","ttf","svg"),false){
-  font-weight: normal;
-  font-style: normal;
+//@include font-face('pops','../font/Poppins-SemiBold',("eot","woff","ttf","svg"),false){
+//  font-weight: normal;
+//  font-style: normal;
+//}
+//
+//@include font-face('pops','../font/avenirnextdemibold',("eot","woff","ttf","svg"),false){
+//  font-weight: normal;
+//  font-style: normal;
+//}
+//@include font-face('anb','../font/AvenirNextBold',("eot","woff","ttf","svg"),false){
+//  font-weight: normal;
+//  font-style: normal;
+//}
+//
+//.pops{font-family: 'pops';}
+
+@include font-face('Avenir Next OT','../font/2fgPZL',("eot","woff","ttf","svg"),false){
+  font-weight: 400;
+  font-display:swap
 }
-.pops{font-family: 'pops';}
-body{@include prefixer(user-select, none,$prefixes);font-family:Arial;background: #fff;}
+@include font-face('Avenir Next OT','../font/20Rwl3',("eot","woff","ttf","svg"),false){
+  font-weight: 500;
+  font-display:swap
+}
+@include font-face('Avenir Next OT','../font/1NivJO',("eot","woff","ttf","svg"),false){
+  font-weight: 600;
+  font-display:swap
+}
+@include font-face('Avenir Next OT','../font/30FGTu',("eot","woff","ttf","svg"),false){
+  font-weight: 700;
+  font-display:swap
+}
+
+body {
+  font-family: 'Avenir Next OT',Arial,sans-serif;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased
+}
+body{@include prefixer(user-select, none,$prefixes);background: #fff;}
 .w-part{width: 1190px;margin: 0 auto;}
 .bg-f7f7f7{background-color: #f7f7f7;}
 .container{

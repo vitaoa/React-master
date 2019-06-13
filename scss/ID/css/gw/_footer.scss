@@ -2,7 +2,7 @@
 /*footer*/
 $footer-bg:#10203a;
 $footer-bg1:#0d1b32;
-.footer{background: $footer-bg;font-family: Arial;font-size: 14px;color:#999;line-height: 1.7;
+.footer{background: $footer-bg;font-size: 14px;color:#999;line-height: 1.7;
   a{color:#999;}
   i{@include inline-block;}
   .foot-tit{font-size: 16px;color:#fff;margin-bottom: 10px;}
@@ -62,7 +62,7 @@ $footer-bg1:#0d1b32;
       li{margin-bottom: 6px;}
     }
     .btn-anchor{padding: 0 2%;height:50px;line-height: 1.4;
-      & > span{padding-top: 6px;margin: 0;}
+      & > span{padding-top: 6px;margin: 0;display: block;}
     }
     .op-btn{position: absolute;right:0;top:0;width:30px;
       a{display: block;background: $footer-bg1;height:22px;text-align: center;line-height: 22px;

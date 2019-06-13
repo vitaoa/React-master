@@ -50,7 +50,7 @@ body.mmopen { overflow: hidden; }
   }
   .head-btn{text-transform: uppercase;text-align: right;
     .globalnav{padding:0;margin:0;font-size: 0;
-      a{text-decoration:none;
+      a{text-decoration:none;font-weight:500;
         & + a{margin-left: 10px;}
       }
     }
@@ -70,7 +70,7 @@ body.mmopen { overflow: hidden; }
       &:hover{
         & > .submenu { display: block; }
       }
-      & > a,& > span{color:#444;font-weight: bold;position: relative;top:4px;font-family: 'pops';}
+      & > a,& > span{color:#444;font-weight: bold;position: relative;top:4px;font-weight:700;}
       & > span{ cursor: default;}
       a:hover,a:focus,a.current{color:$c-yellow-default; text-decoration:none;}
     }

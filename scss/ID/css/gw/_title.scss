@@ -2,7 +2,7 @@
 /*titlebar-gw*/
 .titlebar-gw{font-size: 44px;color:$c-blue-default;padding-top: 110px;padding-bottom: 42px;
   & > h2{font-size: 100%;font-weight: normal;}
-  .title{font-family: 'pops';text-transform: uppercase;
+  .title{font-weight:600;text-transform: uppercase;
     br{display: none;}
   }
   .titlebar-line{line-height: 1;
@@ -39,7 +39,7 @@
       br{display: block;}
     }
     .titlebar-line{
-      .title-line-b{@include size(.6rem,.04rem);margin-top: 15px;border-radius: .02rem;
+      .title-line-b{@include size(.6rem,2px);margin-top: 15px;border-radius: .02rem;
         & + .sub-title{margin-top: .06rem;}
       }
     }

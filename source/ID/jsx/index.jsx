@@ -1,4 +1,7 @@
-
+let btnTxt={
+    text:["Buka akun live","Buka Akun Demo"],
+    texts:["Komisi trading serendah $1","Akun Demo Virtual $100000"]
+}
 class TitleBarGW extends React.Component {
     render(){
         const title = this.props.data.title ? true:false;
@@ -601,6 +604,32 @@ const slider8={
         {avatar:"avatar5.png",avatarName:"Carna",statLevel:["i-star1","i-star1","i-star1","i-star1","i-star1"],title:"Reputasi bagus",desc:"Saya belajar bagaimana untuk trading dan bagaimana menjadi trader yang baik dari artikel yang disediakan  dalam aplikasi."},
     ]
 }
+/*part9*/
+function Part9() {
+    return (
+        <div className="part9 bg-f7f7f7">
+            <TitleBarGW data={title9} />
+            <div className="w-part">
+                <div className="opgroup-btns">
+                    <BannerBtnGroup data={bannerBtns9} />
+                </div>
+            </div>
+        </div>
+    )
+}
+const title9 = {
+    "title":"Siap untuk trading?",
+    "hasLine":true,
+    "subTxt":"trading dengan deposit lebih KECIL, buka akun dalam SATU menit",
+    "class":"titlebar-gw al-c",
+};
+let bannerBtns9 = {
+    opts:{class:"group-two"},
+    items:[
+        {id:1,class:"btn btn-yellow",linkA:'<a href="https://ui.hsb.co.id/?utm_source=gw_bottom_AkunAlive#/login/RVf" target="_blank" rel="nofollow"><span class="fl">Buka akun live</span>Komisi trading serendah $1<i class="i-arrow-r"></i></a>'},
+        {id:2,class:"btn btn-blue",linkA:'<a href="https://ui.hsb.co.id/?utm_source=gw_bottom_AkunDemo#/register/RVf" target="_blank" rel="nofollow"><span class="fl">Buka Akun Demo</span>Akun Demo Virtual $100000 <i class="i-arrow-r2"></i></a>'}
+    ]
+};
 
 function BodyHtml() {
     return (
@@ -617,6 +646,7 @@ function BodyHtml() {
             <Part6 />
             <Part7 />
             <Part8 />
+            <Part9 />
         </div>
     )
 }

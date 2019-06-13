@@ -16,7 +16,7 @@
   .s-desc{font-size: 16px;color:#777;display: block;margin-top: 12px;line-height: 1.6;}
   .s-icon{}
   .slider-link{display: block;font-size: 20px;color:#f15724;position: relative;
-    a{color:#f15724;display: block;position: relative;}
+    a{color:#f15724;display: block;position: relative;font-weight:600;}
     [class*="i-arrow-r"]{position: absolute;top:50%;right:0;margin-top: -10px;}
   }
 
@@ -52,7 +52,7 @@
     .slider-item{box-shadow: 0 0 32px 0 rgba(27, 27, 27, 0.1);background: #fff;@include size(400px,255px);
     }
     .s-title{font-size: 24px;color:#444;padding: 25px;
-      & > span:first-child{font-family: 'pops';}
+      & > span:first-child{font-weight:500;}
     }
     .s-desc{font-weight: normal;}
     .user-info{position: absolute;bottom:25px;left:25px;}
@@ -134,12 +134,12 @@
       .user-info{bottom:.24rem;left:.25rem;line-height: 1;font-size: 0;}
     }
   }
-  .index-banner{height: 2.56rem;
+  .index-banner{height: 3.8rem;
     & + .opgroup-btns{margin-top: 0;}
   }
-  .slider-banner {height: 2.56rem;
-    .slide {height:2.56rem;
-      & > a{background-size:auto 2.56rem;}
+  .slider-banner {height: 3.8rem;
+    .slide {height:3.8rem;
+      & > a{background-size:cover;}
     }
     .slick-dots {bottom: 0;
       li {margin: 0 .02rem;width: .55rem;padding: .24rem 0;

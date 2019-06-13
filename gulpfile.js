@@ -80,9 +80,9 @@ gulp.task('picbase64:sass',function (cb) {
         return !match && file.indexOf('css/')!=-1 && ((CUR_PATH.indexOf('app/')===-1 || CUR_PATH.indexOf('lp/')===-1) ? file.endsWith(endsWith) && file.indexOf('include/')===-1 && file.indexOf('app/')===-1 && file.indexOf('lp/')===-1:file.endsWith(endsWith) && file.indexOf('include/')===-1);
     }).forEach(function (file,r) {
         return gulp.src(file, {base: root_DIR+SASS_DIR})
-            // .pipe(gulpGitStatus({
-            //     excludeStatus: 'unchanged'//["modified", "unchanged", "untracked"]
-            // }))
+            .pipe(gulpGitStatus({
+                excludeStatus: 'unchanged'//["modified", "unchanged", "untracked"]
+            }))
             .pipe(changed(root_DIR, {hasChanged: changed.compareSha1Digest}))
             .pipe(debug({title: '编译 scss:'}))
             .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
